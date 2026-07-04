@@ -1,0 +1,81 @@
+/* 
+* Breakpoint variables
+*/
+
+$breakpoints: (
+    'sm': 640px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px,
+    '2xl': 1536px,
+);
+
+/*
+* color variables
+*/
+
+$color-primary: #5d50c6;
+$color-secondary: #f85e9f;
+$color-orange: #ff5722;
+$color-yellow: #facd49;
+$color-background: #fff;
+$color-text: rgba(0, 0, 0, 1);
+$color-text-muted: rgba(25, 24, 37, 0.6);
+$color-gray: #6c757d;
+
+/*
+* Typography variables
+*/
+
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+
+/*
+* Icon variables
+*/
+$icon-font-family: 'travlog-icons' !default;
+$icon-font-path: 'fonts' !default;
+
+$icon-add-user: '\e900';
+$icon-arrow-circle-down: '\e901';
+$icon-arrow-circle-up: '\e902';
+$icon-arrow-left: '\e903';
+$icon-arrow-right: '\e904';
+$icon-cross-circle: '\e905';
+$icon-facebook: '\e906';
+$icon-instagram: '\e907';
+$icon-location: '\e908';
+$icon-menu: '\e909';
+$icon-menu-close: '\e90a';
+$icon-play-circle: '\e90b';
+$icon-send: '\e90c';
+$icon-star: '\e90d';
+$icon-twitter: '\e90e';
+$icon-work: '\e90f';
+
+/*
+* Spacing variables
+*/
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+/*
+* Border radius variables
+*/
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-radius-full: 50%;
+
+/*
+* Container variables
+*/
+
+$container-padding-default: 1rem;
+$container-padding-desktop: 2rem;

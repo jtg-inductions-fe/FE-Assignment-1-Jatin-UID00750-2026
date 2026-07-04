@@ -1,0 +1,10 @@
+/**
+ * Converts pixel values to rem units.
+ *
+ * @param {Number} $px - The pixel value to convert.
+ * @return {Number} - The equivalent value in rem units.
+ */
+
+@function rem($px) {
+    @return ($px / 16) * 1rem;
+}

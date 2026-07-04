@@ -1,0 +1,106 @@
+/* 
+ * Icon font styles
+ */
+
+@font-face {
+    font-family: '#{$icon-font-family}';
+    src: url('/assets/icons/#{$icon-font-family}.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.icon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: '#{$icon-font-family}' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add-user {
+    &:before {
+        content: $icon-add-user;
+    }
+}
+.icon-arrow-circle-down {
+    &:before {
+        content: $icon-arrow-circle-down;
+    }
+}
+.icon-arrow-circle-up {
+    &:before {
+        content: $icon-arrow-circle-up;
+    }
+}
+.icon-arrow-left {
+    &:before {
+        content: $icon-arrow-left;
+    }
+}
+.icon-arrow-right {
+    &:before {
+        content: $icon-arrow-right;
+    }
+}
+.icon-cross-circle {
+    &:before {
+        content: $icon-cross-circle;
+    }
+}
+.icon-facebook {
+    &:before {
+        content: $icon-facebook;
+    }
+}
+.icon-instagram {
+    &:before {
+        content: $icon-instagram;
+    }
+}
+.icon-location {
+    &:before {
+        content: $icon-location;
+    }
+}
+.icon-menu {
+    &:before {
+        content: $icon-menu;
+    }
+}
+.icon-menu-close {
+    &:before {
+        content: $icon-menu-close;
+    }
+}
+.icon-play-circle {
+    &:before {
+        content: $icon-play-circle;
+    }
+}
+.icon-send {
+    &:before {
+        content: $icon-send;
+    }
+}
+.icon-star {
+    &:before {
+        content: $icon-star;
+    }
+}
+.icon-twitter {
+    &:before {
+        content: $icon-twitter;
+    }
+}
+.icon-work {
+    &:before {
+        content: $icon-work;
+    }
+}

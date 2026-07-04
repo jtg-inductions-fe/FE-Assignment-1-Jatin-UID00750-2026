@@ -1,0 +1,64 @@
+/** Mixin for flexbox centering
+*/
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/** Mixin for responsive media queries
+ * @param {String} $size - The breakpoint size (e.g., 'sm', 'md', 'lg', 'xl', '2xl')
+*/
+@mixin respond-to($size) {
+    @if map-has-key($breakpoints, $size) {
+        @media (min-width: map-get($breakpoints, $size)) {
+            @content;
+        }
+    } @else {
+        @warn "No value found for breakpoint: #{$size}";
+    }
+}
+
+/** Mixin for button styles
+ * @param {Color} $bg-color - The background color of the button
+ * @param {Color} $text-color - The text color of the button
+*/
+
+@mixin button-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+/** Mixin for fluid typography
+ * @param {Number} $min-font-size - The minimum font size in rem
+ * @param {Number} $max-font-size - The maximum font size in rem
+ * @param {Number} $min-vw - The minimum viewport width in px (default: 320px)
+ * @param {Number} $max-vw - The maximum viewport width in px (default: 1200px)
+ */
+
+@mixin fluid-type(
+    $min-font-size,
+    $max-font-size,
+    $min-vw: 320px,
+    $max-vw: 1200px
+) {
+    font-size: clamp(
+        #{$min-font-size},
+        calc(
+            #{$min-font-size} + (#{$max-font-size} - #{$min-font-size}) * ((
+                            100vw - #{$min-vw}
+                        ) / (#{$max-vw} - #{$min-vw}))
+        ),
+        $max-font-size
+    );
+}
