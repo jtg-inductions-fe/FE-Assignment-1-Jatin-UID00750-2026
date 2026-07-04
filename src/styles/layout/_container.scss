@@ -9,8 +9,8 @@
         padding-inline: $container-padding-desktop;
     }
 
-    @each $breakpoints, $value in $breakpoints {
-        @include respond-to($value) {
+    @each $breakpoint, $value in $breakpoints {
+        @include respond-to($breakpoint) {
             max-width: $value;
         }
     }

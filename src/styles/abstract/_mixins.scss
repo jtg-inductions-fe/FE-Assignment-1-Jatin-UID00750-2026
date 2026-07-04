@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 /** Mixin for flexbox centering
 */
 
@@ -30,12 +32,12 @@
     color: $text-color;
     padding: $spacing-sm $spacing-md;
     border: none;
-    border-radius: 4px;
+    border-radius: $border-radius-sm;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: darken($bg-color, 10%);
+        background-color: color.scale($bg-color, $lightness: -10%);
     }
 }
 
