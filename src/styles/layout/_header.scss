@@ -1,0 +1,130 @@
+@use '../components/buttons';
+@use '../abstract' as *;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: $spacing-md;
+
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+        @include respond-to('sm') {
+            order: 2;
+        }
+        @include respond-to('lg') {
+            order: 3;
+        }
+    }
+
+    &__hamburger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+        font-size: rem(48);
+        @include respond-to('lg') {
+            display: none;
+        }
+    }
+
+    &__links {
+        position: relative;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        top: 102%;
+        right: 0;
+        scale: 0;
+        transform-origin: top right;
+        width: max-content;
+        background-color: $color-primary;
+        color: $color-background;
+        padding: 1rem;
+        border-radius: $border-radius-md;
+        transition: all 0.5s ease-in-out;
+
+        &--active {
+            scale: 1;
+        }
+
+        @include respond-to('sm') {
+            left: 0;
+            right: auto;
+            transform-origin: top left;
+        }
+
+        @include respond-to('lg') {
+            flex-direction: row;
+            gap: clamp(2rem, 5vw, 4rem);
+            justify-content: space-between;
+            font-size: rem(14);
+            position: static;
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            color: $color-text-muted;
+            scale: 1;
+        }
+    }
+
+    &__logo {
+        width: rem(40);
+        z-index: 99;
+
+        @include respond-to('sm') {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @include respond-to('lg') {
+            position: static;
+            transform: none;
+        }
+        & > img {
+            width: 100%;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    .icon-menu,
+    .icon-menu-close {
+        color: $color-primary;
+        font-size: inherit;
+        cursor: pointer;
+    }
+
+    .icon-menu--hidden {
+        display: none;
+    }
+    .icon-menu-close--hidden {
+        display: none;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+        font-size: rem(16);
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $color-secondary;
+            @include respond-to('lg') {
+                color: $color-text;
+            }
+        }
+    }
+}

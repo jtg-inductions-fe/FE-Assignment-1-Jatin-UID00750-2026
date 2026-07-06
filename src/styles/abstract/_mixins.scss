@@ -1,4 +1,6 @@
 @use 'sass:color';
+@use './variables' as *;
+@use './functions' as *;
 
 /** Mixin for flexbox centering
 */
@@ -30,10 +32,15 @@
 @mixin button-styles($bg-color, $text-color) {
     background-color: $bg-color;
     color: $text-color;
-    padding: $spacing-sm $spacing-md;
+    padding: $spacing-md $spacing-xl;
     border: none;
-    border-radius: $border-radius-sm;
+    border-radius: $border-radius-xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
     cursor: pointer;
+    font-size: rem(14);
     transition: background-color 0.3s ease;
 
     &:hover {

@@ -58,9 +58,38 @@
         />
     </head>
     <body>
-        <header></header>
+        <header>
+            <div class="container header__wrapper">
+                <nav class="navbar">
+                    <div class="navbar__logo">
+                        <a href="#" aria-label="Travlog Home">
+                            <img src="/logo.svg" alt="Travlog Logo" />
+                        </a>
+                    </div>
+                    <div class="navbar__links">
+                        <div class="navbar__hamburger">
+                            <button
+                                class="icon icon-menu"
+                                aria-label="Open menu"
+                            ></button>
+                            <button
+                                class="icon icon-menu-close icon-menu-close--hidden"
+                                aria-label="Close menu"
+                            ></button>
+                        </div>
+                        <div class="navbar__menu">
+                            <a href="#" class="navbar__link">Home</a>
+                            <a href="#" class="navbar__link">Discover</a>
+                            <a href="#" class="navbar__link">Special Deals</a>
+                            <a href="#" class="navbar__link">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
         <main></main>
         <footer></footer>
+        <div class="circle-bg"></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

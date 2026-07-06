@@ -3,6 +3,7 @@
 */
 
 $breakpoints: (
+    'xs': 430px,
     'sm': 640px,
     'md': 768px,
     'lg': 1024px,
@@ -70,6 +71,7 @@ $spacing-2xl: 48px;
 $border-radius-sm: 4px;
 $border-radius-md: 8px;
 $border-radius-lg: 16px;
+$border-radius-xl: 32px;
 $border-radius-full: 50%;
 
 /*

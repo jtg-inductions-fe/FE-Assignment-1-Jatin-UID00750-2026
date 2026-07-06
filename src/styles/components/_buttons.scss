@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+
+.btn,
+.btn-primary {
+    @include button-styles($color-primary, #ffffff);
+}
+
+.btn-ghost {
+    @include button-styles($color-background, $color-text);
+}
