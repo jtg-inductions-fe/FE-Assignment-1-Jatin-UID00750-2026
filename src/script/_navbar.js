@@ -151,3 +151,25 @@ IS_MOBILE_AND_TABLET.addEventListener(
 handleScreenChangeForMobile(IS_MOBILE);
 handleScreenChangeForTablet(IS_TABLET);
 handleScreenChangeForMobileAndTablet(IS_MOBILE_AND_TABLET);
+
+let animationFrameId = null;
+
+const resizeObserver = new ResizeObserver(() => {
+    // Immediately disable transitions on resize detection
+    NAVBAR_MENU.classList.add('no-transition');
+
+    // Cancel any pending frame requests
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
+
+    // Schedule the removal for the next idle render frame
+    animationFrameId = requestAnimationFrame(() => {
+        animationFrameId = requestAnimationFrame(() => {
+            NAVBAR_MENU.classList.remove('no-transition');
+        });
+    });
+});
+
+// Start observing the navbar-menu
+resizeObserver.observe(NAVBAR_MENU);
