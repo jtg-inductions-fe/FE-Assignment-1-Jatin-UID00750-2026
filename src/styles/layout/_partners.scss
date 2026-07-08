@@ -1,0 +1,35 @@
+@use '../abstract' as *;
+
+.partner-ribbon {
+    @include flex-center;
+    flex-wrap: wrap;
+    column-gap: $spacing-lg;
+    row-gap: $spacing-xl;
+    max-width: rem(580);
+    margin-inline: auto;
+    margin-top: $spacing-3xl;
+
+    &__partner-logo {
+        width: auto;
+        height: rem(20);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @include respond-to('xs') {
+            height: rem(32);
+        }
+    }
+
+    @include respond-to('xs') {
+        margin-top: calc(2 * $spacing-3xl);
+    }
+
+    @include respond-to('lg') {
+        justify-content: space-between;
+        max-width: none;
+    }
+}

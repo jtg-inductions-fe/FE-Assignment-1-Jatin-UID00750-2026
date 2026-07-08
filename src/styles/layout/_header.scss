@@ -6,6 +6,8 @@
     align-items: center;
     justify-content: space-between;
     padding-block: $spacing-md;
+    position: relative;
+    z-index: 999;
 
     &__buttons {
         display: flex;

@@ -47,7 +47,12 @@
             href="/apple-touch-icon.png"
             sizes="180x180"
         />
-
+        <link
+            rel="preload"
+            as="image"
+            href="/assets/images/travel.png"
+            fetchpriority="high"
+        />
         <link rel="stylesheet" href="src/styles/main.scss" />
         <link
             href="/assets/icons/travlog-icons.woff2"
@@ -87,9 +92,118 @@
                 </nav>
             </div>
         </header>
-        <main></main>
+        <main>
+            <section id="hero-section">
+                <div class="container hero__wrapper">
+                    <div class="hero">
+                        <div class="hero__text-content">
+                            <div class="badge">
+                                Explore the world!
+                                <span class="icon icon-work"></span>
+                            </div>
+                            <h1 class="heading-1 hero__headline">
+                                Travel
+                                <span class="hero__highlight"
+                                    >top destination</span
+                                >
+                                of the world
+                            </h1>
+                            <p class="hero__sub-headline">
+                                We always make our customer happy by providing
+                                as many choices as possible
+                            </p>
+                            <div class="hero__cta">
+                                <button class="btn-primary hero__cta-button">
+                                    Get Started
+                                </button>
+                                <button class="btn-outline hero__cta-button">
+                                    <span class="icon icon-play-circle"></span>
+                                    Watch Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hero__media-content">
+                            <div class="hero__collage">
+                                <div>
+                                    <img
+                                        src="/assets/images/travel-location-img01.webp"
+                                        alt="travel location one"
+                                        fetchpriority="high"
+                                    />
+                                    <div
+                                        class="badge-icon hero__badge hero__badge-send"
+                                    >
+                                        <span class="icon icon-send"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img
+                                        src="/assets/images/travel-location-img02.webp"
+                                        alt="travel location two"
+                                        fetchpriority="high"
+                                    />
+                                </div>
+                                <div>
+                                    <img
+                                        src="/assets/images/travel-location-img03.webp"
+                                        alt="travel location three"
+                                        fetchpriority="high"
+                                    />
+                                    <div class="badge-sm badge-top-place">
+                                        <span class="icon icon-location"></span>
+                                        Top Places
+                                    </div>
+                                </div>
+                                <div
+                                    class="badge-icon hero__badge hero__badge-user"
+                                >
+                                    <span class="icon icon-add-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="triangle-pattern"></div>
+            </section>
+            <section>
+                <div class="container">
+                    <div class="partner-ribbon">
+                        <div class="partner-ribbon__partner-logo">
+                            <img
+                                src="/assets/images/partner-logos/logo-tripadvisor.png"
+                                alt="tripadvisor-logo"
+                            />
+                        </div>
+                        <div class="partner-ribbon__partner-logo">
+                            <img
+                                src="/assets/images/partner-logos/logo-expedia.png"
+                                alt="expedia-logo"
+                            />
+                        </div>
+                        <div class="partner-ribbon__partner-logo">
+                            <img
+                                src="/assets/images/partner-logos/logo-bookingdotcom.png"
+                                alt="booking.com-logo"
+                            />
+                        </div>
+                        <div class="partner-ribbon__partner-logo">
+                            <img
+                                src="/assets/images/partner-logos/logo-airbnb.png"
+                                alt="airbnb-logo"
+                            />
+                        </div>
+                        <div class="partner-ribbon__partner-logo">
+                            <img
+                                src="/assets/images/partner-logos/logo-orbitz.png"
+                                alt="orbitz-logo"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
         <footer></footer>
-        <div class="circle-bg"></div>
+        <div class="circular-bg"></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

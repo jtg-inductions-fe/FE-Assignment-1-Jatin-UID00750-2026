@@ -71,3 +71,79 @@
         $max-font-size
     );
 }
+
+/** Mixin for badge styles
+ * @param {Number} $padding-x - The inline padding of badge in rem
+ * @param {Number} $padding-y - The block padding of badge in rem
+ * @param {Number} $gap - The flex gap between icon and text of badge in rem
+ * @param {Number} $font-size - The font size of text in badge in rem
+ * @param {Number} $rounded - The border radius of badge in rem
+ * @param {color} $bg-color - The background color of badge
+ * @param {color} $text-color - The text color of badge
+ * @param {Number} $icon-size - The size of icon in the badge
+ * @param {color} $icon-color - The color of icon in the badge
+ * @param {box-shadow} $shadow - The box shadow of the badge
+ */
+
+@mixin badge-styles(
+    $padding-x,
+    $padding-y,
+    $gap,
+    $font-size,
+    $rounded,
+    $bg-color,
+    $text-color,
+    $icon-size,
+    $icon-color,
+    $shadow
+) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+    width: max-content;
+    padding-inline: $padding-x;
+    padding-block: $padding-y;
+    font-size: $font-size;
+    border-radius: $rounded;
+    background-color: $bg-color;
+    color: $text-color;
+    font-weight: bolder;
+    box-shadow: $shadow;
+
+    & > .icon {
+        font-size: $icon-size;
+        color: $icon-color;
+    }
+}
+
+/** Mixin for circular background element styles
+ * @param {Number} $top - The top position of badge in rem or percentage
+ * @param {Number} $left - The left position of badge in rem or percentage
+ * @param {Number} $bottom - The bottom position of badge in rem or percentage
+ * @param {Number} $top - The top position of badge in rem or percentage
+ * @param {Number} $size - The size of badge in rem or percentage
+ * @param {color} $bg-color - The background color of element
+ */
+
+@mixin circular-bg(
+    $top: auto,
+    $left: auto,
+    $bottom: auto,
+    $right: auto,
+    $size: 50%,
+    $bg-color: $color-orange
+) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    filter: blur(10rem);
+    z-index: -1;
+    opacity: 0.3;
+    width: $size;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: $bg-color;
+}

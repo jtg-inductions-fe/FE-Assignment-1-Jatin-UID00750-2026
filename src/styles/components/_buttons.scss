@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../abstract' as *;
 
 .btn,
@@ -7,4 +8,11 @@
 
 .btn-ghost {
     @include button-styles($color-background, $color-text);
+}
+
+.btn-outline {
+    @include button-styles($color-background, $color-text);
+    & {
+        border: 1px solid color.scale($color-text-muted, $lightness: 80%);
+    }
 }

@@ -1,7 +1,8 @@
+@use './functions' as *;
+
 /* 
 * Breakpoint variables
 */
-
 $breakpoints: (
     'xs': 430px,
     'sm': 640px,
@@ -57,21 +58,22 @@ $icon-work: '\e90f';
 * Spacing variables
 */
 
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 32px;
-$spacing-2xl: 48px;
+$spacing-xs: rem(4);
+$spacing-sm: rem(8);
+$spacing-md: rem(16);
+$spacing-lg: rem(24);
+$spacing-xl: rem(32);
+$spacing-2xl: rem(48);
+$spacing-3xl: rem(64);
 
 /*
 * Border radius variables
 */
 
-$border-radius-sm: 4px;
-$border-radius-md: 8px;
-$border-radius-lg: 16px;
-$border-radius-xl: 32px;
+$border-radius-sm: rem(4);
+$border-radius-md: rem(8);
+$border-radius-lg: rem(16);
+$border-radius-xl: rem(32);
 $border-radius-full: 50%;
 
 /*
@@ -80,3 +82,13 @@ $border-radius-full: 50%;
 
 $container-padding-default: 1rem;
 $container-padding-desktop: 2rem;
+
+/*
+* Box Shadows
+*/
+
+$shadow-sm:
+    0px 22.07px 13.35px 0px rgba(0, 0, 0, 0.05),
+    0px 39.53px 15.91px 0px rgba(0, 0, 0, 0.01),
+    0px 61.6px 17.45px 0px rgba(0, 0, 0, 0);
+$shadow-lg: 0px 19px 19px 0px rgba(0, 0, 0, 0.09);

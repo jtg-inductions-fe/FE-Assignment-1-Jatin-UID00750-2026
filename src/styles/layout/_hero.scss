@@ -1,0 +1,241 @@
+@use '../abstract/' as *;
+@use '../components/badge' as *;
+
+.hero {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: rem(64);
+    margin-top: 5vh;
+
+    @include respond-to('lg') {
+        flex-direction: row;
+        margin-top: 8vh;
+        justify-content: space-between;
+    }
+
+    &__badge {
+        @include respond-to('sm') {
+            scale: 1.6;
+        }
+    }
+
+    &__badge-user {
+        background-color: $color-orange;
+        position: absolute;
+        z-index: 99;
+        bottom: 0;
+        right: 30%;
+    }
+
+    &__badge-send {
+        position: absolute;
+        z-index: 99;
+        bottom: -10%;
+        left: -10%;
+
+        @include respond-to('sm') {
+            bottom: -5%;
+            left: -5%;
+        }
+    }
+
+    &__text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: $spacing-xl;
+
+        @include respond-to('sm') {
+            gap: $spacing-2xl;
+        }
+        @include respond-to('lg') {
+            text-align: left;
+            align-items: flex-start;
+            width: 40%;
+        }
+        @include respond-to('xl') {
+            width: 35%;
+        }
+    }
+
+    &__headline {
+        line-height: 120%;
+        text-wrap: wrap;
+        letter-spacing: 0.05rem;
+        @include fluid-type(rem(40), rem(72));
+    }
+
+    &__highlight {
+        color: $color-secondary;
+    }
+
+    &__sub-headline {
+        color: $color-text-muted;
+        max-width: rem(400);
+    }
+
+    &__cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: rem(24);
+        width: 100%;
+
+        @include respond-to('xs') {
+            flex-direction: row;
+        }
+
+        @include respond-to('lg') {
+            justify-content: flex-start;
+        }
+    }
+
+    &__cta-button {
+        width: 100%;
+        text-wrap: nowrap;
+        .icon {
+            color: $color-primary;
+        }
+        @include respond-to('xs') {
+            width: auto;
+        }
+
+        &:nth-child(1) {
+            box-shadow: $shadow-sm;
+        }
+    }
+
+    &__media-content {
+        padding: $spacing-2xl $spacing-2xl 0 $spacing-2xl;
+        background-image: url('/assets/images/travel.png');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: contain;
+        flex: 1;
+        @include respond-to('sm') {
+            padding: calc(1.2 * $spacing-3xl) $spacing-3xl 0 $spacing-3xl;
+        }
+        @include respond-to('md') {
+            padding: calc(1.4 * $spacing-3xl) $spacing-3xl 0 $spacing-3xl;
+        }
+        @include respond-to('lg') {
+            padding: $spacing-3xl calc(1.5 * $spacing-3xl) 0
+                calc(1.5 * $spacing-3xl);
+        }
+        @include respond-to('xl') {
+            padding: calc(1.5 * $spacing-3xl) calc(1.5 * $spacing-3xl) 0
+                calc(1.5 * $spacing-3xl);
+        }
+    }
+
+    &__collage {
+        display: grid;
+        grid-template: repeat(12, 1fr) / repeat(10, 1fr);
+        gap: 1rem;
+        aspect-ratio: 1/1;
+        position: relative;
+
+        div:nth-child(1) {
+            grid-column: 1 / span 5;
+            grid-row: 1 / span 6;
+            position: relative;
+        }
+        div:nth-child(2) {
+            grid-column: 1 / span 5;
+            grid-row: 7 / span 6;
+        }
+        div:nth-child(3) {
+            grid-column: 6 / span 5;
+            grid-row: 3 / span 8;
+            position: relative;
+        }
+
+        div img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: $border-radius-lg;
+        }
+
+        .badge-top-place {
+            position: absolute;
+            bottom: 10%;
+            right: -40%;
+            z-index: 99;
+            @include respond-to('md') {
+                right: -30%;
+            }
+            @include respond-to('lg') {
+                right: -25%;
+            }
+            @include respond-to('xl') {
+                right: -35%;
+            }
+            @include respond-to('2xl') {
+                right: -22%;
+            }
+        }
+
+        @include respond-to('sm') {
+            gap: 1.5rem;
+        }
+        @include respond-to('lg') {
+            gap: 1rem;
+        }
+        @include respond-to('xl') {
+            gap: 1.5rem;
+        }
+    }
+}
+
+#hero-section {
+    position: relative;
+}
+
+.triangle-pattern {
+    width: 4rem;
+    height: auto;
+    z-index: -1;
+    aspect-ratio: 1/2.6;
+    background-image: url('/assets/images/triangle-pattern.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+    position: absolute;
+    left: 2%;
+    bottom: -5%;
+    @include respond-to('sm') {
+        display: block;
+    }
+
+    @include respond-to('lg') {
+        left: 2%;
+        bottom: -25%;
+        width: 3.5rem;
+    }
+
+    @include respond-to('xl') {
+        bottom: -20%;
+    }
+
+    @include respond-to('2xl') {
+        bottom: -10%;
+    }
+}
+
+.circular-bg {
+    @include circular-bg($top: -5%, $left: -5%, $size: 70%);
+
+    @include respond-to('sm') {
+        width: 40%;
+    }
+
+    @include respond-to('lg') {
+        width: 35%;
+    }
+}
