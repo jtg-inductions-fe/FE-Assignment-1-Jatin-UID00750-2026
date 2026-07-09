@@ -44,9 +44,19 @@ reviews:
         DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
 
   tools:
-    cybersecurity:
+    eslint:
       enabled: true
-    linters:
+    stylelint:
+      enabled: true
+    htmlhint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    trufflehog:
+      enabled: true
+    osvScanner:
+      enabled: true
+    semgrep:
       enabled: true
 
   path_filters:
