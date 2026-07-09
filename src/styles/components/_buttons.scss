@@ -1,0 +1,47 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.btn {
+    @include flex-center;
+    gap: $spacing-sm;
+    background-color: $color-primary;
+    color: $color-background;
+    padding: $spacing-md $spacing-xl;
+    letter-spacing: $letter-sm;
+    font-weight: $weight-bold;
+    font-size: $text-sm;
+    border: none;
+    border-radius: $border-radius-2xl;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: color.scale($color-primary, $lightness: -10%);
+    }
+    & > .icon {
+        font-size: px-to-rem(20);
+        color: $color-background;
+    }
+
+    &--ghost {
+        background-color: $color-background;
+        color: $color-text;
+        &:hover {
+            background-color: color.scale($color-background, $lightness: -10%);
+        }
+        & > .icon {
+            color: $color-primary;
+        }
+    }
+
+    &--outline {
+        background-color: $color-background;
+        color: $color-text;
+        border: 1px solid color.scale($color-text-muted, $lightness: 80%);
+        &:hover {
+            background-color: color.scale($color-background, $lightness: -10%);
+        }
+        & > .icon {
+            color: $color-primary;
+        }
+    }
+}

@@ -1,1 +1,5 @@
-// TODO: Add styles as per the requirement
+@use './vendors' as *;
+@use './abstracts' as *;
+@use './base' as *;
+@use './components' as *;
+@use './layout' as *;

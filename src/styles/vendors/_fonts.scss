@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+/* Importing Inter and Roboto font */
+
+@include font-face(Inter, 'inter', 400);
+@include font-face(Roboto, 'roboto', 400);
