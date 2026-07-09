@@ -1,11 +1,35 @@
-@use '../abstract' as *;
+/*
+* Icon variables
+*/
+$icon-font-family: 'icomoon' !default;
+$icon-font-path: 'fonts' !default;
+$icon-add-user: '\e900';
+$icon-arrow-circle-down: '\e901';
+$icon-arrow-circle-up: '\e902';
+$icon-arrow-left: '\e903';
+$icon-arrow-right: '\e904';
+$icon-cross-circle: '\e905';
+$icon-facebook: '\e906';
+$icon-instagram: '\e907';
+$icon-location: '\e908';
+$icon-menu: '\e909';
+$icon-menu-close: '\e90a';
+$icon-play-circle: '\e90b';
+$icon-send: '\e90c';
+$icon-star: '\e90d';
+$icon-twitter: '\e90e';
+$icon-work: '\e90f';
+
 /* 
  * Icon font styles
  */
 
 @font-face {
-    font-family: '#{$icon-font-family}';
-    src: url('/assets/icons/#{$icon-font-family}.woff2') format('woff2');
+    font-family: 'icomoon';
+    src:
+        url('/src/assets/icons/icomoon.woff2') format('woff2'),
+        url('/src/assets/icons/icomoon.woff') format('woff'),
+        url('/src/assets/icons/icomoon.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -19,8 +43,8 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    font-size: 1.5rem;
-    /* Better Font Rendering =========== */
+
+    /* Better Font Rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

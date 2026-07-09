@@ -1,43 +1,92 @@
+@use '../abstracts' as *;
+
 /* Typography Styles */
-@use '../abstract' as *;
 
-/* Importing Inter font */
-
-@font-face {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/assets/fonts/inter.woff2') format('woff2');
-}
-
-/* Importing Roboto font */
-
-@font-face {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/assets/fonts/roboto.woff2') format('woff2');
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $weight-bold;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-sm;
 }
 
 .heading-1 {
-    font-weight: 700;
-    line-height: 3rem;
-    letter-spacing: -0.02em;
-    @include fluid-type(2.5rem, 4rem);
+    font-size: $text-3xl;
+
+    @include respond-to('sm') {
+        font-size: $text-h1-md;
+    }
+
+    @include respond-to('lg') {
+        font-size: $text-h1-lg;
+    }
+}
+
+.heading-2 {
+    font-size: $text-2xl;
 }
 
 .heading-3 {
-    font-weight: 700;
-    line-height: 3rem;
-    letter-spacing: -0.02em;
-    @include fluid-type(2rem, 3rem);
+    font-size: $text-2xl;
+
+    @include respond-to('sm') {
+        font-size: $text-3xl;
+    }
+
+    @include respond-to('lg') {
+        font-size: $text-h3-md;
+    }
 }
 
-.body-text {
-    font-weight: 400;
-    line-height: 1.5rem;
-    letter-spacing: -0.01em;
-    @include fluid-type(1rem, 1.25rem);
+.heading-4 {
+    font-size: $text-h4-md;
+}
+
+.heading-5 {
+    font-size: $text-h5-md;
+}
+
+.heading-6 {
+    font-size: $text-xl;
+}
+
+.para-1 {
+    font-weight: $weight-normal;
+    line-height: $line-height-lg;
+    font-size: $text-md;
+
+    @include respond-to('sm') {
+        font-size: $text-lg;
+    }
+}
+
+.para-2 {
+    font-weight: $weight-normal;
+    line-height: $line-height-lg;
+    font-size: $text-lg;
+}
+
+.para-3 {
+    font-weight: $weight-medium;
+    line-height: $line-height-lg;
+    font-size: $text-lg;
+
+    @include respond-to('sm') {
+        font-size: $text-xl;
+    }
+}
+
+.title {
+    font-weight: $weight-bold;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-lg;
+    text-transform: uppercase;
+    font-size: $text-md;
+
+    @include respond-to('sm') {
+        font-size: $text-xl;
+    }
 }

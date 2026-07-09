@@ -1,18 +1,24 @@
-@use '../abstract' as *;
+@use '../abstracts' as *;
+
 /* Container for layout */
 
 .container {
     width: 100%;
     margin-inline: auto;
-    padding-inline: $container-padding-default;
 
+    /* Mobile Baseline (Below 430px) */
+    padding-inline: map-get($container-paddings, 'sm');
+    max-width: map-get($breakpoints, 'sm');
+
+    /* Tablet Breakpoint */
     @include respond-to('md') {
-        padding-inline: $container-padding-desktop;
+        padding-inline: map-get($container-paddings, 'md');
+        max-width: map-get($breakpoints, 'md');
     }
 
-    @each $breakpoint, $value in $breakpoints {
-        @include respond-to($breakpoint) {
-            max-width: $value;
-        }
+    /* Desktop Breakpoint */
+    @include respond-to('lg') {
+        padding-inline: map-get($container-paddings, 'lg');
+        max-width: map-get($breakpoints, 'lg');
     }
 }

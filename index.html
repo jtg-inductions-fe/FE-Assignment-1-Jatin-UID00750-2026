@@ -21,41 +21,32 @@
             property="og:description"
             content="Travlog - Find Your Dream Destination & Travel The World"
         />
-        <meta property="og:image" content="/logo.svg" />
+        <meta property="og:image" content="/assets/logo.svg" />
         <meta property="og:image:alt" content="Travlog Logo" />
         <meta property="og:image:type" content="image/svg+xml" />
         <meta property="og:site_name" content="Travlog" />
-        <!-- <meta property="og:url" content="https://travlog.com" /> -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Travlog" />
         <meta
             name="twitter:description"
             content="Travlog - Find Your Dream Destination & Travel The World"
         />
-        <meta name="twitter:image" content="/logo.svg" />
+        <meta name="twitter:image" content="/assets/logo.svg" />
         <meta name="twitter:image:alt" content="Travlog Logo" />
         <!-- favicon   -->
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <link
-            rel="alternate icon"
+            rel="icon"
             type="image/x-icon"
             href="/favicon.ico"
             sizes="48x48"
         />
         <link
             rel="apple-touch-icon"
-            href="/apple-touch-icon.png"
+            href="/assets/apple-touch-icon.png"
             sizes="180x180"
         />
 
         <link rel="stylesheet" href="src/styles/main.scss" />
-        <link
-            href="/assets/icons/travlog-icons.woff2"
-            as="font"
-            rel="preload"
-            type="font/woff2"
-            crossorigin="anonymous"
-        />
     </head>
     <body>
         <header>
@@ -63,7 +54,7 @@
                 <nav class="navbar">
                     <div class="navbar__logo">
                         <a href="#" aria-label="Travlog Home">
-                            <img src="/logo.svg" alt="Travlog Logo" />
+                            <img src="/assets/logo.svg" alt="Travlog Logo" />
                         </a>
                     </div>
                     <div class="navbar__links">
@@ -77,19 +68,24 @@
                                 aria-label="Close menu"
                             ></button>
                         </div>
-                        <div class="navbar__menu">
-                            <a href="#" class="navbar__link">Home</a>
-                            <a href="#" class="navbar__link">Discover</a>
-                            <a href="#" class="navbar__link">Special Deals</a>
-                            <a href="#" class="navbar__link">Contact</a>
-                        </div>
+                        <ul class="navbar__menu">
+                            <li><a href="#" class="navbar__link">Home</a></li>
+                            <li>
+                                <a href="#" class="navbar__link">Discover</a>
+                            </li>
+                            <li>
+                                <a href="#" class="navbar__link"
+                                    >Special Deals</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="navbar__link">Contact</a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
         </header>
-        <main></main>
-        <footer></footer>
-        <div class="circle-bg"></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

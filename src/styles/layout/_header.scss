@@ -1,5 +1,5 @@
 @use '../components/buttons';
-@use '../abstract' as *;
+@use '../abstracts' as *;
 
 .navbar {
     display: flex;
@@ -7,14 +7,12 @@
     justify-content: space-between;
     padding-block: $spacing-md;
 
-    &__buttons {
-        display: flex;
-        gap: 1rem;
+    &__buttons-layout {
+        @include flex-center;
+        gap: $spacing-md;
         flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
         z-index: 99;
-        @include respond-to('sm') {
+        @include respond-to('md') {
             order: 2;
         }
         @include respond-to('lg') {
@@ -23,12 +21,11 @@
     }
 
     &__hamburger {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-center;
         background: none;
         border: none;
-        font-size: rem(48);
+        font-size: px-to-rem(48);
+
         @include respond-to('lg') {
             display: none;
         }
@@ -39,12 +36,10 @@
     }
 
     &__menu {
-        display: flex;
+        @include flex-center;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: $spacing-lg;
         position: absolute;
-        justify-content: center;
-        align-items: center;
         top: 102%;
         right: 0;
         scale: 0;
@@ -52,7 +47,7 @@
         width: max-content;
         background-color: $color-primary;
         color: $color-background;
-        padding: 1rem;
+        padding: $spacing-md;
         border-radius: $border-radius-md;
         transition: all 0.5s ease-in-out;
 
@@ -60,7 +55,7 @@
             scale: 1;
         }
 
-        @include respond-to('sm') {
+        @include respond-to('md') {
             left: 0;
             right: auto;
             transform-origin: top left;
@@ -70,10 +65,9 @@
             flex-direction: row;
             gap: clamp(2rem, 5vw, 4rem);
             justify-content: space-between;
-            font-size: rem(14);
+            font-size: $text-sm;
             position: static;
             background-color: transparent;
-            color: inherit;
             padding: 0;
             color: $color-text-muted;
             scale: 1;
@@ -81,10 +75,10 @@
     }
 
     &__logo {
-        width: rem(40);
+        width: px-to-rem(40);
         z-index: 99;
 
-        @include respond-to('sm') {
+        @include respond-to('md') {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -103,21 +97,14 @@
     .icon-menu,
     .icon-menu-close {
         color: $color-primary;
-        font-size: inherit;
-        cursor: pointer;
-    }
 
-    .icon-menu--hidden {
-        display: none;
-    }
-    .icon-menu-close--hidden {
-        display: none;
+        &--hidden {
+            display: none;
+        }
     }
 
     &__link {
-        text-decoration: none;
-        color: inherit;
-        font-size: rem(16);
+        font-size: $text-md;
         transition: color 0.3s ease;
 
         &:hover {
