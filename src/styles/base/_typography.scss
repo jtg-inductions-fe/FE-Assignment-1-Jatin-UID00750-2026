@@ -75,7 +75,6 @@ h6 {
     font-weight: $weight-medium;
     line-height: $line-height-lg;
     font-size: $text-lg;
-    font-family: $font-secondary;
 
     @include respond-to('md') {
         font-size: $text-xl;
