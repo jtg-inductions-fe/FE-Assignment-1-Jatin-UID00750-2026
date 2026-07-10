@@ -34,7 +34,7 @@
     }
 
     &--outline {
-        background-color: $color-background;
+        background-color: transparent;
         color: $color-text;
         border: 1px solid color.scale($color-text-muted, $lightness: 80%);
         &:hover {
