@@ -1,17 +1,17 @@
-@use '../abstract' as *;
+@use '../../abstracts' as *;
 
-.partner-ribbon {
+.partners-ribbon {
     @include flex-center;
     flex-wrap: wrap;
     column-gap: $spacing-lg;
     row-gap: $spacing-xl;
-    max-width: rem(580);
+    max-width: px-to-rem(580);
     margin-inline: auto;
     margin-top: $spacing-3xl;
 
     &__partner-logo {
         width: auto;
-        height: rem(20);
+        height: px-to-rem(20);
 
         img {
             width: 100%;
@@ -19,13 +19,13 @@
             object-fit: contain;
         }
 
-        @include respond-to('xs') {
-            height: rem(32);
+        @include respond-to('md') {
+            height: px-to-rem(32);
         }
     }
 
-    @include respond-to('xs') {
-        margin-top: calc(2 * $spacing-3xl);
+    @include respond-to('md') {
+        margin-top: calc(2 * #{$spacing-3xl});
     }
 
     @include respond-to('lg') {

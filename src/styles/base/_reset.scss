@@ -1,4 +1,4 @@
-@use '../abstract' as *;
+@use '../abstracts' as *;
 
 /* Box-sizing model */
 *,
@@ -60,14 +60,17 @@ h6 {
     overflow-wrap: break-word;
 }
 
-/* Balance headings wrapped across multiple lines */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-wrap: balance;
+/* Remove default text decoration for hyperlinks */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Remove default list style */
+
+ul {
+    list-style: none;
 }
 
 button {

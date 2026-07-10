@@ -9,8 +9,10 @@ const NAVBAR_LOGO = document.querySelector('.navbar__logo');
 const trapFocus = (e) => {
     if (e.key !== 'Tab') return;
     let lastElement = document.querySelector('.navbar__menu > *:last-child');
-    if (lastElement.classList.contains('navbar__buttons')) {
+    if (lastElement.classList.contains('navbar__buttons-layout')) {
         lastElement = lastElement.querySelectorAll('.btn')[1];
+    } else {
+        lastElement = lastElement.querySelector('.navbar__link');
     }
     // If Tab on the last element, wrap around to the first
     if (document.activeElement === lastElement) {
@@ -68,30 +70,32 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-const IS_MOBILE = window.matchMedia('(max-width: 640px)');
+/* constants for mobile and tablet screens */
+
+const IS_MOBILE = window.matchMedia('(max-width: 1023px)');
 const IS_TABLET = window.matchMedia(
-    '(min-width: 640px) and (max-width: 1024px)',
+    '(min-width: 1024px) and (max-width: 1440px)',
 );
-const IS_MOBILE_AND_TABLET = window.matchMedia('(max-width: 1024px)');
+const IS_MOBILE_AND_TABLET = window.matchMedia('(max-width: 1440px)');
 
 // function to handle navbar-buttons dynamic appearance in the navbar
 const handleScreenChangeForMobile = (e) => {
-    const EXISTING_BUTTONS = document.querySelector('.navbar__buttons');
+    const EXISTING_BUTTONS = document.querySelector('.navbar__buttons-layout');
     // Remove existing buttons if they exist
     if (EXISTING_BUTTONS) {
         EXISTING_BUTTONS.remove();
     }
 
     const NAVBAR_BUTTONS = document.createElement('div');
-    NAVBAR_BUTTONS.classList.add('navbar__buttons');
+    NAVBAR_BUTTONS.classList.add('navbar__buttons-layout');
     const authButtons = (tabIndex = 0) => {
-        return `<button class="btn btn-ghost" aria-label="login button" title="login button"
+        return `<button class="btn btn--ghost" aria-label="login button" title="login button"
                                     tabindex="${tabIndex}"
                                 >
                                     Login
                                 </button>
                                 <button
-                                    class="btn btn-primary"
+                                    class="btn"
                                     aria-label="sign up button"
                                     title="sign up button"
                                     tabindex="${tabIndex}"
@@ -101,11 +105,11 @@ const handleScreenChangeForMobile = (e) => {
     };
 
     if (e.matches) {
-        // Screen is 640px wide or less (Mobile)
+        // Screen is 430px wide or less (Mobile)
         NAVBAR_BUTTONS.innerHTML = authButtons(-1);
         NAVBAR_MENU.appendChild(NAVBAR_BUTTONS);
     } else {
-        // Screen is wider than 640px (Tablet and Desktop)
+        // Screen is wider than 430px (Tablet and Desktop)
         NAVBAR_BUTTONS.innerHTML = authButtons(0);
         NAVBAR.appendChild(NAVBAR_BUTTONS);
     }
@@ -151,3 +155,25 @@ IS_MOBILE_AND_TABLET.addEventListener(
 handleScreenChangeForMobile(IS_MOBILE);
 handleScreenChangeForTablet(IS_TABLET);
 handleScreenChangeForMobileAndTablet(IS_MOBILE_AND_TABLET);
+
+let animationFrameId = null;
+
+const resizeObserver = new ResizeObserver(() => {
+    // Immediately disable transitions on resize detection
+    NAVBAR_MENU.classList.add('no-transition');
+
+    // Cancel any pending frame requests
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
+
+    // Schedule the removal for the next idle render frame
+    animationFrameId = requestAnimationFrame(() => {
+        animationFrameId = requestAnimationFrame(() => {
+            NAVBAR_MENU.classList.remove('no-transition');
+        });
+    });
+});
+
+// Start observing the navbar-menu
+resizeObserver.observe(NAVBAR_MENU);

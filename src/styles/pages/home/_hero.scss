@@ -1,12 +1,12 @@
-@use '../abstract/' as *;
-@use '../components/badge' as *;
+@use '../../abstracts' as *;
+@use '../../components/badges' as *;
 
 .hero {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    gap: rem(64);
+    gap: px-to-rem(64);
     margin-top: 5vh;
 
     @include respond-to('lg') {
@@ -15,29 +15,58 @@
         justify-content: space-between;
     }
 
-    &__badge {
-        @include respond-to('sm') {
-            scale: 1.6;
+    &__badge-explore {
+        color: $color-secondary;
+    }
+
+    &__icon-badge {
+        scale: 0.8;
+        @include respond-to('md') {
+            scale: 1;
         }
     }
 
     &__badge-user {
         background-color: $color-orange;
+        color: $color-background;
         position: absolute;
         z-index: 99;
-        bottom: 0;
-        right: 30%;
+        bottom: -2%;
+        right: 20%;
+        @include respond-to('md') {
+            bottom: 0;
+        }
     }
 
     &__badge-send {
+        background-color: $color-secondary;
+        color: $color-background;
         position: absolute;
         z-index: 99;
-        bottom: -10%;
-        left: -10%;
+        bottom: -15%;
+        left: -15%;
 
-        @include respond-to('sm') {
+        @include respond-to('md') {
             bottom: -5%;
             left: -5%;
+        }
+    }
+
+    &__badge-top-place {
+        background-color: $color-background;
+        position: absolute;
+        bottom: 10%;
+        right: -45%;
+        z-index: 99;
+        @include respond-to('md') {
+            right: -25%;
+        }
+        @include respond-to('lg') {
+            right: -45%;
+        }
+
+        .icon {
+            color: $color-yellow;
         }
     }
 
@@ -48,25 +77,16 @@
         align-items: center;
         text-align: center;
         gap: $spacing-xl;
+        position: relative;
 
-        @include respond-to('sm') {
+        @include respond-to('md') {
             gap: $spacing-2xl;
         }
         @include respond-to('lg') {
             text-align: left;
             align-items: flex-start;
-            width: 40%;
-        }
-        @include respond-to('xl') {
             width: 35%;
         }
-    }
-
-    &__headline {
-        line-height: 120%;
-        text-wrap: wrap;
-        letter-spacing: 0.05rem;
-        @include fluid-type(rem(40), rem(72));
     }
 
     &__highlight {
@@ -75,18 +95,16 @@
 
     &__sub-headline {
         color: $color-text-muted;
-        max-width: rem(400);
+        max-width: px-to-rem(400);
     }
 
     &__cta {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-center;
         flex-direction: column;
-        gap: rem(24);
+        gap: $spacing-lg;
         width: 100%;
 
-        @include respond-to('xs') {
+        @include respond-to('md') {
             flex-direction: row;
         }
 
@@ -101,7 +119,7 @@
         .icon {
             color: $color-primary;
         }
-        @include respond-to('xs') {
+        @include respond-to('md') {
             width: auto;
         }
 
@@ -112,31 +130,27 @@
 
     &__media-content {
         padding: $spacing-2xl $spacing-2xl 0 $spacing-2xl;
-        background-image: url('/assets/images/travel.png');
+        background-image: url('/src/assets/images/travel.png');
         background-repeat: no-repeat;
         background-position: top;
         background-size: contain;
         flex: 1;
-        @include respond-to('sm') {
-            padding: calc(1.2 * $spacing-3xl) $spacing-3xl 0 $spacing-3xl;
-        }
+
         @include respond-to('md') {
-            padding: calc(1.4 * $spacing-3xl) $spacing-3xl 0 $spacing-3xl;
+            padding: calc(1.5 * #{$spacing-3xl}) calc(1.5 * #{$spacing-3xl}) 0
+                calc(1.5 * #{$spacing-3xl});
         }
+
         @include respond-to('lg') {
-            padding: $spacing-3xl calc(1.5 * $spacing-3xl) 0
-                calc(1.5 * $spacing-3xl);
-        }
-        @include respond-to('xl') {
-            padding: calc(1.5 * $spacing-3xl) calc(1.5 * $spacing-3xl) 0
-                calc(1.5 * $spacing-3xl);
+            padding: calc(1.3 * #{$spacing-3xl}) calc(1.5 * #{$spacing-3xl}) 0
+                calc(1.5 * #{$spacing-3xl});
         }
     }
 
     &__collage {
         display: grid;
         grid-template: repeat(12, 1fr) / repeat(10, 1fr);
-        gap: 1rem;
+        gap: $spacing-md;
         aspect-ratio: 1/1;
         position: relative;
 
@@ -162,80 +176,50 @@
             border-radius: $border-radius-lg;
         }
 
-        .badge-top-place {
-            position: absolute;
-            bottom: 10%;
-            right: -40%;
-            z-index: 99;
-            @include respond-to('md') {
-                right: -30%;
-            }
-            @include respond-to('lg') {
-                right: -25%;
-            }
-            @include respond-to('xl') {
-                right: -35%;
-            }
-            @include respond-to('2xl') {
-                right: -22%;
-            }
-        }
-
-        @include respond-to('sm') {
-            gap: 1.5rem;
-        }
-        @include respond-to('lg') {
-            gap: 1rem;
-        }
-        @include respond-to('xl') {
+        @include respond-to('md') {
             gap: 1.5rem;
         }
     }
-}
 
-#hero-section {
-    position: relative;
+    &__wrapper {
+        position: relative;
+
+        .circular-bg {
+            @include circular-bg($top: -25%, $left: -10%, $size: 60%);
+
+            @include respond-to('md') {
+                width: 40%;
+                top: -20%;
+            }
+
+            @include respond-to('lg') {
+                width: 40%;
+                top: -50%;
+                opacity: 0.3;
+            }
+        }
+    }
 }
 
 .triangle-pattern {
     width: 4rem;
     height: auto;
     z-index: -1;
-    aspect-ratio: 1/2.6;
-    background-image: url('/assets/images/triangle-pattern.svg');
+    aspect-ratio: 0.4;
+    background-image: url('/src/assets/images/triangle-pattern.svg');
     background-repeat: no-repeat;
     background-size: contain;
     display: none;
     position: absolute;
-    left: 2%;
-    bottom: -5%;
-    @include respond-to('sm') {
+    left: -5%;
+    bottom: -10%;
+    @include respond-to('md') {
         display: block;
     }
 
     @include respond-to('lg') {
-        left: 2%;
+        left: -25%;
         bottom: -25%;
         width: 3.5rem;
-    }
-
-    @include respond-to('xl') {
-        bottom: -20%;
-    }
-
-    @include respond-to('2xl') {
-        bottom: -10%;
-    }
-}
-
-.circular-bg {
-    @include circular-bg($top: -5%, $left: -5%, $size: 70%);
-
-    @include respond-to('sm') {
-        width: 40%;
-    }
-
-    @include respond-to('lg') {
-        width: 35%;
     }
 }
