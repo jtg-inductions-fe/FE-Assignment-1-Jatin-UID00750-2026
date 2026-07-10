@@ -16,7 +16,7 @@ h6 {
 .heading-1 {
     font-size: $text-3xl;
 
-    @include respond-to('sm') {
+    @include respond-to('md') {
         font-size: $text-h1-md;
     }
 
@@ -32,7 +32,7 @@ h6 {
 .heading-3 {
     font-size: $text-2xl;
 
-    @include respond-to('sm') {
+    @include respond-to('md') {
         font-size: $text-3xl;
     }
 
@@ -57,8 +57,9 @@ h6 {
     font-weight: $weight-normal;
     line-height: $line-height-lg;
     font-size: $text-md;
+    font-family: $font-secondary;
 
-    @include respond-to('sm') {
+    @include respond-to('md') {
         font-size: $text-lg;
     }
 }
@@ -67,6 +68,7 @@ h6 {
     font-weight: $weight-normal;
     line-height: $line-height-lg;
     font-size: $text-lg;
+    font-family: $font-secondary;
 }
 
 .para-3 {
@@ -74,7 +76,7 @@ h6 {
     line-height: $line-height-lg;
     font-size: $text-lg;
 
-    @include respond-to('sm') {
+    @include respond-to('md') {
         font-size: $text-xl;
     }
 }
@@ -86,7 +88,7 @@ h6 {
     text-transform: uppercase;
     font-size: $text-md;
 
-    @include respond-to('sm') {
+    @include respond-to('md') {
         font-size: $text-xl;
     }
 }

@@ -20,10 +20,18 @@
     &--sm {
         font-size: px-to-rem(10);
         gap: $spacing-sm;
-        padding: $spacing-md $spacing-lg;
+        padding: calc(2.5 * #{$spacing-xs}) $spacing-md;
 
         & > .icon {
             font-size: $text-xs;
+        }
+
+        @include respond-to('md') {
+            font-size: $text-sm;
+            padding: $spacing-md $spacing-xl;
+            & > .icon {
+                font-size: $text-xl;
+            }
         }
     }
 
@@ -33,7 +41,7 @@
         aspect-ratio: 1/1;
         font-size: $text-md;
 
-        @include respond-to('sm') {
+        @include respond-to('md') {
             font-size: $text-2xl;
             padding: $spacing-md;
         }
