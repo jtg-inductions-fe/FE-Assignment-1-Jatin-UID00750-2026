@@ -48,7 +48,7 @@
         <link
             rel="preload"
             as="image"
-            href="/assets/images/travel.png"
+            href="/src/assets/images/travel.png"
             fetchpriority="high"
         />
         <link rel="stylesheet" href="src/styles/main.scss" />
@@ -56,119 +56,109 @@
     <body>
         <!-- Header Section -->
         <header>
-            <div class="container header__wrapper">
-                <nav class="navbar">
-                    <div class="navbar__logo">
-                        <a href="#" aria-label="Travlog Home">
-                            <img src="/assets/logo.svg" alt="Travlog Logo" />
-                        </a>
+            <nav class="container navbar">
+                <div class="navbar__logo">
+                    <a href="#" aria-label="Travlog Home">
+                        <img src="/assets/logo.svg" alt="Travlog Logo" />
+                    </a>
+                </div>
+                <div class="navbar__links">
+                    <div class="navbar__hamburger">
+                        <button
+                            class="icon icon-menu"
+                            aria-label="Open menu"
+                        ></button>
+                        <button
+                            class="icon icon-menu-close icon-menu-close--hidden"
+                            aria-label="Close menu"
+                        ></button>
                     </div>
-                    <div class="navbar__links">
-                        <div class="navbar__hamburger">
-                            <button
-                                class="icon icon-menu"
-                                aria-label="Open menu"
-                            ></button>
-                            <button
-                                class="icon icon-menu-close icon-menu-close--hidden"
-                                aria-label="Close menu"
-                            ></button>
-                        </div>
-                        <ul class="navbar__menu">
-                            <li><a href="#" class="navbar__link">Home</a></li>
-                            <li>
-                                <a href="#" class="navbar__link">Discover</a>
-                            </li>
-                            <li>
-                                <a href="#" class="navbar__link"
-                                    >Special Deals</a
-                                >
-                            </li>
-                            <li>
-                                <a href="#" class="navbar__link">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+                    <ul class="navbar__menu">
+                        <li><a href="#" class="navbar__link">Home</a></li>
+                        <li>
+                            <a href="#" class="navbar__link">Discover</a>
+                        </li>
+                        <li>
+                            <a href="#" class="navbar__link">Special Deals</a>
+                        </li>
+                        <li>
+                            <a href="#" class="navbar__link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ellipse"></div>
+            </nav>
         </header>
         <main>
             <!-- Hero Section -->
-            <section id="hero-section">
-                <div class="container hero__wrapper">
-                    <div class="hero">
-                        <div class="hero__text-content">
-                            <div class="badge hero__badge-explore">
-                                Explore the world!
-                                <span class="icon icon-work"></span>
-                            </div>
-                            <h1 class="heading-1 hero__headline">
-                                Travel
-                                <span class="hero__highlight"
-                                    >top destination</span
-                                >
-                                of the world
-                            </h1>
-                            <p class="hero__sub-headline para-1">
-                                We always make our customer happy by providing
-                                as many choices as possible
-                            </p>
-                            <div class="hero__cta">
-                                <button class="btn hero__cta-button">
-                                    Get Started
-                                </button>
-                                <button
-                                    class="btn btn--outline hero__cta-button"
-                                >
-                                    <span class="icon icon-play-circle"></span>
-                                    Watch Demo
-                                </button>
-                            </div>
-                            <div class="triangle-pattern"></div>
+            <section>
+                <div class="container hero">
+                    <div class="hero__text-content">
+                        <div class="badge hero__badge-explore">
+                            Explore the world!
+                            <span class="icon icon-work"></span>
                         </div>
-                        <div class="hero__media-content">
-                            <div class="hero__collage">
-                                <div>
-                                    <img
-                                        src="/src/assets/images/travel-location-img01.webp"
-                                        alt="travel location one"
-                                        fetchpriority="high"
-                                    />
-                                    <div
-                                        class="badge badge--rounded hero__icon-badge hero__badge-send"
-                                    >
-                                        <span class="icon icon-send"></span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <img
-                                        src="/src/assets/images/travel-location-img02.webp"
-                                        alt="travel location two"
-                                        fetchpriority="high"
-                                    />
-                                </div>
-                                <div>
-                                    <img
-                                        src="/src/assets/images/travel-location-img03.webp"
-                                        alt="travel location three"
-                                        fetchpriority="high"
-                                    />
-                                    <div
-                                        class="badge badge--sm hero__badge-top-place"
-                                    >
-                                        <span class="icon icon-location"></span>
-                                        Top Places
-                                    </div>
-                                </div>
+                        <h1 class="heading-1 hero__headline">
+                            Travel
+                            <span class="hero__highlight">top destination</span>
+                            of the world
+                        </h1>
+                        <p class="hero__sub-headline para-1">
+                            We always make our customer happy by providing as
+                            many choices as possible
+                        </p>
+                        <div class="hero__cta">
+                            <button class="btn hero__cta-button">
+                                Get Started
+                            </button>
+                            <button class="btn btn--outline hero__cta-button">
+                                <span class="icon icon-play-circle"></span>
+                                Watch Demo
+                            </button>
+                        </div>
+                        <div class="hero__triangle-pattern"></div>
+                    </div>
+                    <div class="hero__media-content">
+                        <div class="hero__collage">
+                            <div>
+                                <img
+                                    src="/src/assets/images/travel-location-img01.webp"
+                                    alt="travel location one"
+                                    fetchpriority="high"
+                                />
                                 <div
-                                    class="badge badge--rounded hero__icon-badge hero__badge-user"
+                                    class="badge badge--rounded hero__icon-badge hero__badge-send"
                                 >
-                                    <span class="icon icon-add-user"></span>
+                                    <span class="icon icon-send"></span>
                                 </div>
+                            </div>
+                            <div>
+                                <img
+                                    src="/src/assets/images/travel-location-img02.webp"
+                                    alt="travel location two"
+                                    fetchpriority="high"
+                                />
+                            </div>
+                            <div>
+                                <img
+                                    src="/src/assets/images/travel-location-img03.webp"
+                                    alt="travel location three"
+                                    fetchpriority="high"
+                                />
+                                <div
+                                    class="badge badge--sm hero__badge-top-place"
+                                >
+                                    <span class="icon icon-location"></span>
+                                    Top Places
+                                </div>
+                            </div>
+                            <div
+                                class="badge badge--rounded hero__icon-badge hero__badge-user"
+                            >
+                                <span class="icon icon-add-user"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="circular-bg"></div>
                 </div>
             </section>
             <!-- Partners Section -->
@@ -205,6 +195,7 @@
                                 alt="orbitz-logo"
                             />
                         </div>
+                        <div class="ellipse ellipse--yellow"></div>
                     </div>
                 </div>
             </section>

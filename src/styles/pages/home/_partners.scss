@@ -8,6 +8,7 @@
     max-width: px-to-rem(580);
     margin-inline: auto;
     margin-top: $spacing-3xl;
+    position: relative;
 
     &__partner-logo {
         width: auto;

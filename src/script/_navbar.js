@@ -5,7 +5,7 @@ const NAVBAR_MENU = document.querySelector('.navbar__menu');
 const NAVBAR_LINKS = document.querySelectorAll('.navbar__link');
 const NAVBAR_LOGO = document.querySelector('.navbar__logo');
 
-// function to trap focus of elements in the menu dialog
+/* function to trap focus of elements in the menu dialog */
 const trapFocus = (e) => {
     if (e.key !== 'Tab') return;
     let lastElement = document.querySelector('.navbar__menu > *:last-child');
@@ -21,7 +21,7 @@ const trapFocus = (e) => {
     }
 };
 
-// function to open menu
+/* function to open menu */
 const openMenu = () => {
     NAVBAR_MENU.classList.add('navbar__menu--active');
     MENU_BTN.classList.add('icon-menu--hidden');
@@ -39,7 +39,7 @@ const openMenu = () => {
     document.addEventListener('keydown', trapFocus);
 };
 
-//function to close menu
+/* function to close menu */
 const closeMenu = () => {
     NAVBAR_MENU.classList.remove('navbar__menu--active');
     MENU_CLOSE_BTN.classList.add('icon-menu-close--hidden');
@@ -53,14 +53,14 @@ const closeMenu = () => {
         btn.setAttribute('tabindex', -1);
     });
 
-    // trap focus inside the menu dialog
+    /* trap focus inside the menu dialog */
     document.removeEventListener('keydown', trapFocus);
 };
 
 MENU_BTN.addEventListener('click', openMenu);
 MENU_CLOSE_BTN.addEventListener('click', closeMenu);
 
-// close the menu if esc key is pressed
+/* close the menu if esc key is pressed */
 document.addEventListener('keydown', (event) => {
     if (
         event.key === 'Escape' &&
@@ -78,10 +78,10 @@ const IS_TABLET = window.matchMedia(
 );
 const IS_MOBILE_AND_TABLET = window.matchMedia('(max-width: 1440px)');
 
-// function to handle navbar-buttons dynamic appearance in the navbar
+/* function to handle navbar-buttons dynamic appearance in the navbar */
 const handleScreenChangeForMobile = (e) => {
     const EXISTING_BUTTONS = document.querySelector('.navbar__buttons-layout');
-    // Remove existing buttons if they exist
+    /* Remove existing buttons if they exist */
     if (EXISTING_BUTTONS) {
         EXISTING_BUTTONS.remove();
     }
@@ -105,17 +105,17 @@ const handleScreenChangeForMobile = (e) => {
     };
 
     if (e.matches) {
-        // Screen is 430px wide or less (Mobile)
+        /* Screen is 430px wide or less (Mobile) */
         NAVBAR_BUTTONS.innerHTML = authButtons(-1);
         NAVBAR_MENU.appendChild(NAVBAR_BUTTONS);
     } else {
-        // Screen is wider than 430px (Tablet and Desktop)
+        /* Screen is wider than 430px (Tablet and Desktop) */
         NAVBAR_BUTTONS.innerHTML = authButtons(0);
         NAVBAR.appendChild(NAVBAR_BUTTONS);
     }
 };
 
-// function to handle dynamic tab focus on navlinks
+/* function to handle dynamic tab focus on navlinks */
 const handleScreenChangeForMobileAndTablet = (e) => {
     if (e.matches) {
         if (NAVBAR_MENU.classList.contains('navbar__menu--active')) {
@@ -134,7 +134,7 @@ const handleScreenChangeForMobileAndTablet = (e) => {
     }
 };
 
-// function to handle dynamic positions of elements in the navbar layout
+/* function to handle dynamic positions of elements in the navbar layout */
 const handleScreenChangeForTablet = (e) => {
     if (e.matches) {
         NAVBAR_LOGO.remove();
@@ -159,15 +159,15 @@ handleScreenChangeForMobileAndTablet(IS_MOBILE_AND_TABLET);
 let animationFrameId = null;
 
 const resizeObserver = new ResizeObserver(() => {
-    // Immediately disable transitions on resize detection
+    /* Immediately disable transitions on resize detection */
     NAVBAR_MENU.classList.add('no-transition');
 
-    // Cancel any pending frame requests
+    /* Cancel any pending frame requests */
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
     }
 
-    // Schedule the removal for the next idle render frame
+    /* Schedule the removal for the next idle render frame */
     animationFrameId = requestAnimationFrame(() => {
         animationFrameId = requestAnimationFrame(() => {
             NAVBAR_MENU.classList.remove('no-transition');
@@ -175,5 +175,5 @@ const resizeObserver = new ResizeObserver(() => {
     });
 });
 
-// Start observing the navbar-menu
+/* Start observing the navbar-menu */
 resizeObserver.observe(NAVBAR_MENU);

@@ -181,45 +181,26 @@
         }
     }
 
-    &__wrapper {
-        position: relative;
-
-        .circular-bg {
-            @include circular-bg($top: -25%, $left: -10%, $size: 60%);
-
-            @include respond-to('md') {
-                width: 40%;
-                top: -20%;
-            }
-
-            @include respond-to('lg') {
-                width: 40%;
-                top: -50%;
-                opacity: 0.3;
-            }
+    &__triangle-pattern {
+        width: 4rem;
+        height: auto;
+        z-index: -1;
+        aspect-ratio: 0.4;
+        background-image: url('/src/assets/images/triangle-pattern.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: none;
+        position: absolute;
+        left: -5%;
+        bottom: -10%;
+        @include respond-to('md') {
+            display: block;
         }
-    }
-}
 
-.triangle-pattern {
-    width: 4rem;
-    height: auto;
-    z-index: -1;
-    aspect-ratio: 0.4;
-    background-image: url('/src/assets/images/triangle-pattern.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: none;
-    position: absolute;
-    left: -5%;
-    bottom: -10%;
-    @include respond-to('md') {
-        display: block;
-    }
-
-    @include respond-to('lg') {
-        left: -25%;
-        bottom: -25%;
-        width: 3.5rem;
+        @include respond-to('lg') {
+            left: -25%;
+            bottom: -25%;
+            width: 3.5rem;
+        }
     }
 }
