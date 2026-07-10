@@ -1,0 +1,85 @@
+@use '../../abstracts' as *;
+@use '../../components/cards' as *;
+
+.travel-point {
+    @include flex-center;
+    flex-direction: column;
+    margin-block: $spacing-3xl;
+    padding-top: $spacing-3xl;
+    gap: $spacing-md;
+
+    @include respond-to('md') {
+        gap: $spacing-3xl;
+    }
+
+    @include respond-to('lg') {
+        gap: 0;
+        flex-direction: row;
+    }
+
+    &__content {
+        @include respond-to('lg') {
+            width: 45%;
+        }
+    }
+
+    &__media-content {
+        flex: 1;
+    }
+
+    &__traveller-image {
+        transform: translateX(-2%);
+        scale: 1.05;
+
+        @include respond-to('md') {
+            transform: translateX(-4%);
+            scale: 1.1;
+        }
+
+        @include respond-to('lg') {
+            transform: translateX(-10%);
+            scale: 1.2;
+        }
+    }
+
+    &__subheadline {
+        color: $color-text-muted;
+        padding-block: $spacing-md;
+    }
+
+    &__text-content {
+        @include flex-center;
+        flex-direction: column;
+        gap: $spacing-md;
+        text-align: center;
+        padding-block: $spacing-2xl;
+
+        @include respond-to('lg') {
+            text-align: start;
+            align-items: flex-start;
+        }
+    }
+
+    &__card-layout {
+        display: grid;
+        grid-template-columns: 1;
+        gap: $spacing-md;
+        position: relative;
+
+        @include respond-to('md') {
+            gap: $spacing-xl;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__ticket-image {
+        position: absolute;
+        top: -20%;
+        right: -30%;
+        display: none;
+
+        @include respond-to('lg') {
+            display: block;
+        }
+    }
+}
