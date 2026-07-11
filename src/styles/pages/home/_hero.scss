@@ -64,10 +64,10 @@
         @include respond-to('lg') {
             right: -45%;
         }
+    }
 
-        .icon {
-            color: $color-yellow;
-        }
+    &__badge-icon {
+        color: $color-yellow;
     }
 
     &__text-content {
@@ -116,9 +116,7 @@
     &__cta-button {
         width: 100%;
         text-wrap: nowrap;
-        .icon {
-            color: $color-primary;
-        }
+
         @include respond-to('md') {
             width: auto;
         }
@@ -126,6 +124,10 @@
         &:nth-child(1) {
             box-shadow: $shadow-sm;
         }
+    }
+
+    &__btn-icon {
+        color: $color-primary;
     }
 
     &__media-content {
@@ -152,31 +154,33 @@
         aspect-ratio: 1/1;
         position: relative;
 
-        div:nth-child(1) {
-            grid-column: 1 / span 5;
-            grid-row: 1 / span 6;
-            position: relative;
-        }
-        div:nth-child(2) {
-            grid-column: 1 / span 5;
-            grid-row: 7 / span 6;
-        }
-        div:nth-child(3) {
-            grid-column: 6 / span 5;
-            grid-row: 3 / span 8;
-            position: relative;
-        }
-
-        div img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: $border-radius-lg;
-        }
-
         @include respond-to('md') {
             gap: 1.5rem;
         }
+    }
+
+    &__image-container:nth-child(1) {
+        grid-column: 1 / span 5;
+        grid-row: 1 / span 6;
+        position: relative;
+    }
+
+    &__image-container:nth-child(2) {
+        grid-column: 1 / span 5;
+        grid-row: 7 / span 6;
+    }
+
+    &__image-container:nth-child(3) {
+        grid-column: 6 / span 5;
+        grid-row: 3 / span 8;
+        position: relative;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: $border-radius-lg;
     }
 
     &__triangle-pattern {
