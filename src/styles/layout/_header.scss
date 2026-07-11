@@ -79,6 +79,7 @@
     &__logo {
         width: px-to-rem(40);
         z-index: 99;
+        aspect-ratio: 1/1;
 
         @include respond-to('md') {
             position: absolute;
@@ -90,14 +91,9 @@
             position: static;
             transform: none;
         }
-        & > img {
-            width: 100%;
-            aspect-ratio: 1/1;
-        }
     }
 
-    .icon-menu,
-    .icon-menu-close {
+    &__icon {
         color: $color-primary;
 
         &--hidden {
@@ -117,8 +113,8 @@
             }
         }
     }
-}
 
-.no-transition {
-    transition: none;
+    &--no-transition {
+        transition: none;
+    }
 }
