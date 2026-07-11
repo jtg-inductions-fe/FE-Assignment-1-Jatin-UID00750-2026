@@ -26,8 +26,8 @@
 /** Mixin for font-face
  * @param {String} $name - The name of the font face
  * @param {String} $filename - The name of the font file
- * @param {Number | string} $weight - The font-weight
- * @param {string} $style - The font-style
+ * @param {Number | String} $weight - The font-weight
+ * @param {String} $style - The font-style
 */
 
 @mixin font-face($name, $filename, $weight: normal, $style: normal) {

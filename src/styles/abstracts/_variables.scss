@@ -40,23 +40,6 @@ $text-lg: px-to-rem(18);
 $text-xl: px-to-rem(24);
 $text-2xl: px-to-rem(32);
 $text-3xl: px-to-rem(40);
-$text-h1-md: px-to-rem(56);
-$text-h1-lg: px-to-rem(69);
-$text-h3-md: px-to-rem(44);
-$text-h4-md: px-to-rem(35);
-$text-h5-md: px-to-rem(28);
-
-/*
-* Spacing variables
-*/
-
-$spacing-xs: px-to-rem(4);
-$spacing-sm: px-to-rem(8);
-$spacing-md: px-to-rem(16);
-$spacing-lg: px-to-rem(24);
-$spacing-xl: px-to-rem(32);
-$spacing-2xl: px-to-rem(48);
-$spacing-3xl: px-to-rem(64);
 
 /*
 * Line height variables
@@ -91,16 +74,6 @@ $border-radius-lg: px-to-rem(16);
 $border-radius-xl: px-to-rem(32);
 $border-radius-2xl: px-to-rem(100);
 $border-radius-full: 50%;
-
-/*
-* container padding variables
-*/
-
-$container-paddings: (
-    'sm': 16px,
-    'md': 64px,
-    'lg': 128px,
-);
 
 /*
 * Box Shadows
