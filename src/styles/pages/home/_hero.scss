@@ -76,11 +76,11 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        gap: $spacing-xl;
+        gap: px-to-rem(32);
         position: relative;
 
         @include respond-to('md') {
-            gap: $spacing-2xl;
+            gap: px-to-rem(48);
         }
         @include respond-to('lg') {
             text-align: left;
@@ -101,7 +101,7 @@
     &__cta {
         @include flex-center;
         flex-direction: column;
-        gap: $spacing-lg;
+        gap: px-to-rem(24);
         width: 100%;
 
         @include respond-to('md') {
@@ -129,7 +129,7 @@
     }
 
     &__media-content {
-        padding: $spacing-2xl $spacing-2xl 0 $spacing-2xl;
+        padding: px-to-rem(48 48 0 48);
         background-image: url('/src/assets/images/travel.png');
         background-repeat: no-repeat;
         background-position: top;
@@ -137,20 +137,18 @@
         flex: 1;
 
         @include respond-to('md') {
-            padding: calc(1.5 * #{$spacing-3xl}) calc(1.5 * #{$spacing-3xl}) 0
-                calc(1.5 * #{$spacing-3xl});
+            padding: px-to-rem(96 96 0 96);
         }
 
         @include respond-to('lg') {
-            padding: calc(1.3 * #{$spacing-3xl}) calc(1.5 * #{$spacing-3xl}) 0
-                calc(1.5 * #{$spacing-3xl});
+            padding: px-to-rem(84 96 0 96);
         }
     }
 
     &__collage {
         display: grid;
         grid-template: repeat(12, 1fr) / repeat(10, 1fr);
-        gap: $spacing-md;
+        gap: px-to-rem(16);
         aspect-ratio: 1/1;
         position: relative;
 

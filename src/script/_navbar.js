@@ -24,8 +24,8 @@ const trapFocus = (e) => {
 /* function to open menu */
 const openMenu = () => {
     NAVBAR_MENU.classList.add('navbar__menu--active');
-    MENU_BTN.classList.add('icon-menu--hidden');
-    MENU_CLOSE_BTN.classList.remove('icon-menu-close--hidden');
+    MENU_BTN.classList.add('navbar__icon--hidden');
+    MENU_CLOSE_BTN.classList.remove('navbar__icon--hidden');
     NAVBAR_LINKS.forEach((link) => {
         link.setAttribute('tabindex', 0);
     });
@@ -42,8 +42,8 @@ const openMenu = () => {
 /* function to close menu */
 const closeMenu = () => {
     NAVBAR_MENU.classList.remove('navbar__menu--active');
-    MENU_CLOSE_BTN.classList.add('icon-menu-close--hidden');
-    MENU_BTN.classList.remove('icon-menu--hidden');
+    MENU_CLOSE_BTN.classList.add('navbar__icon--hidden');
+    MENU_BTN.classList.remove('navbar__icon--hidden');
     NAVBAR_LINKS.forEach((link) => {
         link.setAttribute('tabindex', -1);
     });
@@ -160,7 +160,7 @@ let animationFrameId = null;
 
 const resizeObserver = new ResizeObserver(() => {
     /* Immediately disable transitions on resize detection */
-    NAVBAR_MENU.classList.add('no-transition');
+    NAVBAR_MENU.classList.add('navbar--no-transition');
 
     /* Cancel any pending frame requests */
     if (animationFrameId) {

@@ -7,18 +7,18 @@
     margin-inline: auto;
 
     /* Mobile Baseline (Below 430px) */
-    padding-inline: map-get($container-paddings, 'sm');
+    padding-inline: px-to-rem(16);
     max-width: map-get($breakpoints, 'sm');
 
     /* Tablet Breakpoint */
     @include respond-to('md') {
-        padding-inline: map-get($container-paddings, 'md');
+        padding-inline: px-to-rem(64);
         max-width: map-get($breakpoints, 'md');
     }
 
     /* Desktop Breakpoint */
     @include respond-to('lg') {
-        padding-inline: map-get($container-paddings, 'lg');
+        padding-inline: px-to-rem(128);
         max-width: map-get($breakpoints, 'lg');
     }
 }
