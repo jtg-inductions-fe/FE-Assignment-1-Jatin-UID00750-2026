@@ -3,11 +3,11 @@
 .partners-ribbon {
     @include flex-center;
     flex-wrap: wrap;
-    column-gap: $spacing-lg;
-    row-gap: $spacing-xl;
+    column-gap: px-to-rem(24);
+    row-gap: px-to-rem(32);
     max-width: px-to-rem(580);
     margin-inline: auto;
-    margin-top: $spacing-3xl;
+    margin-top: px-to-rem(64);
     position: relative;
 
     &__partner-logo {
@@ -26,7 +26,7 @@
     }
 
     @include respond-to('md') {
-        margin-top: calc(2 * #{$spacing-3xl});
+        margin-top: px-to-rem(128);
     }
 
     @include respond-to('lg') {

@@ -26,8 +26,8 @@
 /** Mixin for font-face
  * @param {String} $name - The name of the font face
  * @param {String} $filename - The name of the font file
- * @param {Number | string} $weight - The font-weight
- * @param {string} $style - The font-style
+ * @param {Number | String} $weight - The font-weight
+ * @param {String} $style - The font-style
 */
 
 @mixin font-face($name, $filename, $weight: normal, $style: normal) {
@@ -41,35 +41,4 @@
             url('/src/assets/fonts/#{$filename}.woff2') format('woff2'),
             url('/src/assets/fonts/#{$filename}.ttf') format('ttf');
     }
-}
-
-/** Mixin for circular background element styles
- * @param {Number} $top - The top position of badge in rem or percentage
- * @param {Number} $left - The left position of badge in rem or percentage
- * @param {Number} $bottom - The bottom position of badge in rem or percentage
- * @param {Number} $top - The top position of badge in rem or percentage
- * @param {Number} $size - The size of badge in rem or percentage
- * @param {color} $bg-color - The background color of element
- */
-
-@mixin circular-bg(
-    $top: auto,
-    $left: auto,
-    $bottom: auto,
-    $right: auto,
-    $size: 50%,
-    $bg-color: $color-orange
-) {
-    position: absolute;
-    top: $top;
-    left: $left;
-    bottom: $bottom;
-    right: $right;
-    filter: blur(10rem);
-    z-index: -1;
-    opacity: 0.4;
-    width: $size;
-    aspect-ratio: 4/5;
-    border-radius: 50%;
-    background-color: $bg-color;
 }

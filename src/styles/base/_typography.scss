@@ -1,5 +1,13 @@
 @use '../abstracts' as *;
 
+/* Typography variables */
+
+$text-h1-md: px-to-rem(56);
+$text-h1-lg: px-to-rem(69);
+$text-h3-md: px-to-rem(44);
+$text-h4-md: px-to-rem(35);
+$text-h5-md: px-to-rem(28);
+
 /* Typography Styles */
 
 h1,
@@ -27,10 +35,6 @@ h6 {
 
 .heading-2 {
     font-size: $text-2xl;
-}
-
-.heading-3 {
-    font-size: $text-2xl;
 
     @include respond-to('md') {
         font-size: $text-3xl;
@@ -41,15 +45,15 @@ h6 {
     }
 }
 
-.heading-4 {
+.heading-3 {
     font-size: $text-h4-md;
 }
 
-.heading-5 {
+.heading-4 {
     font-size: $text-h5-md;
 }
 
-.heading-6 {
+.heading-5 {
     font-size: $text-xl;
 }
 

@@ -2,34 +2,34 @@
 
 .badge {
     @include flex-center;
-    gap: $spacing-md;
+    gap: px-to-rem(16);
     font-size: $text-sm;
     width: max-content;
-    padding: $spacing-md $spacing-xl;
+    padding: px-to-rem(16 32);
     letter-spacing: $letter-sm;
     font-weight: $weight-bold;
     border-radius: $border-radius-2xl;
-    background-color: transparent;
     color: $color-text;
     box-shadow: $shadow-sm;
 
-    & > .icon {
+    &__icon {
         font-size: $text-xl;
     }
 
     &--sm {
         font-size: px-to-rem(10);
-        gap: $spacing-sm;
-        padding: calc(2.5 * #{$spacing-xs}) $spacing-md;
+        gap: px-to-rem(8);
+        padding: px-to-rem(10 16);
 
-        & > .icon {
+        .badge__icon {
             font-size: $text-xs;
         }
 
         @include respond-to('md') {
             font-size: $text-sm;
-            padding: $spacing-md $spacing-xl;
-            & > .icon {
+            padding: px-to-rem(16 32);
+
+            .badge__icon {
                 font-size: $text-xl;
             }
         }
@@ -37,13 +37,13 @@
 
     &--rounded {
         border-radius: $border-radius-full;
-        padding: $spacing-sm;
+        padding: px-to-rem(8);
         aspect-ratio: 1/1;
         font-size: $text-md;
 
         @include respond-to('md') {
             font-size: $text-2xl;
-            padding: $spacing-md;
+            padding: px-to-rem(16);
         }
     }
 }
