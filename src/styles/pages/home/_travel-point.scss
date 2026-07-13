@@ -1,5 +1,4 @@
 @use '../../abstracts' as *;
-@use '../../components/cards' as *;
 
 .travel-point {
     @include flex-center;
@@ -19,7 +18,7 @@
 
     &__content {
         @include respond-to('lg') {
-            width: 45%;
+            max-width: 45%;
         }
     }
 
@@ -72,7 +71,7 @@
         }
     }
 
-    &__ticket-image {
+    &__reward-logo {
         position: absolute;
         top: -20%;
         right: -30%;
