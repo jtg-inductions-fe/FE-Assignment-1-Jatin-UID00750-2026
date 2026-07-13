@@ -44,7 +44,7 @@
         <link
             rel="preload"
             as="image"
-            href="/src/assets/images/travel.png"
+            href="/src/assets/images/hero/airplane-flight-paths-on-world-map.png"
             fetchpriority="high"
         />
         <link rel="stylesheet" href="src/styles/main.scss" />
@@ -101,7 +101,6 @@
                     </div>
                 </nav>
             </div>
-            <div class="ellipse"></div>
         </header>
         <main>
             <!-- Hero Section -->
@@ -132,14 +131,17 @@
                                 Watch Demo
                             </button>
                         </div>
-                        <div class="hero__triangle-pattern"></div>
+                        <div
+                            class="hero__triangle-pattern"
+                            role="presentation"
+                        ></div>
                     </div>
                     <div class="hero__media-content">
                         <div class="hero__collage">
                             <div class="hero__image-container">
                                 <img
-                                    src="/src/assets/images/travel-location-img01.webp"
-                                    alt="travel location one"
+                                    src="/src/assets/images/hero/santorini-greece-coastal-scenery.webp"
+                                    alt="santorini greece coastal scenery"
                                     class="hero__image"
                                     fetchpriority="high"
                                 />
@@ -153,16 +155,16 @@
                             </div>
                             <div class="hero__image-container">
                                 <img
-                                    src="/src/assets/images/travel-location-img02.webp"
-                                    alt="travel location two"
+                                    src="/src/assets/images/hero/woman-journaling-on-mountain-overlook.webp"
+                                    alt="woman journaling on mountain overlook"
                                     fetchpriority="high"
                                     class="hero__image"
                                 />
                             </div>
                             <div class="hero__image-container">
                                 <img
-                                    src="/src/assets/images/travel-location-img03.webp"
-                                    alt="travel location three"
+                                    src="/src/assets/images/hero/woman-taking-photo-of-city-buildings.webp"
+                                    alt="woman taking photo of city buildings"
                                     fetchpriority="high"
                                     class="hero__image"
                                 />
@@ -192,35 +194,43 @@
                     <div class="partners-ribbon">
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-tripadvisor.png"
-                                alt="tripadvisor-logo"
+                                src="/src/assets/images/partners/logo-tripadvisor.png"
+                                alt="tripadvisor logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-expedia.png"
-                                alt="expedia-logo"
+                                src="/src/assets/images/partners/logo-expedia.png"
+                                alt="expedia logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-bookingdotcom.png"
-                                alt="booking.com-logo"
+                                src="/src/assets/images/partners/logo-bookingdotcom.png"
+                                alt="booking.com logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-airbnb.png"
-                                alt="airbnb-logo"
+                                src="/src/assets/images/partners/logo-airbnb.png"
+                                alt="airbnb logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-orbitz.png"
-                                alt="orbitz-logo"
+                                src="/src/assets/images/partners/logo-orbitz.png"
+                                alt="orbitz logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
-                        <div class="ellipse ellipse--yellow"></div>
+                        <div
+                            class="ellipse ellipse--yellow"
+                            role="presentation"
+                        ></div>
                     </div>
                 </div>
             </section>
@@ -261,6 +271,7 @@
                 </div>
             </section>
         </main>
+        <div class="ellipse ellipse--orange"></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>
