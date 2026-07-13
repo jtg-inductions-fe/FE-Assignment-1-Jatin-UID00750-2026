@@ -1,17 +1,14 @@
 @use '../../abstracts' as *;
-@use '../../components/badges' as *;
 
 .hero {
-    display: flex;
+    @include flex-center;
     flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
     gap: px-to-rem(64);
-    margin-top: 5vh;
+    margin-top: px-to-rem(54);
 
     @include respond-to('lg') {
         flex-direction: row;
-        margin-top: 8vh;
+        margin-top: px-to-rem(62);
         justify-content: space-between;
     }
 
@@ -30,7 +27,6 @@
         background-color: $color-orange;
         color: $color-background;
         position: absolute;
-        z-index: 99;
         bottom: -2%;
         right: 20%;
         @include respond-to('md') {
@@ -42,7 +38,6 @@
         background-color: $color-secondary;
         color: $color-background;
         position: absolute;
-        z-index: 99;
         bottom: -15%;
         left: -15%;
 
@@ -57,7 +52,6 @@
         position: absolute;
         bottom: 10%;
         right: -45%;
-        z-index: 99;
         @include respond-to('md') {
             right: -25%;
         }
@@ -71,10 +65,8 @@
     }
 
     &__text-content {
-        display: flex;
+        @include flex-center;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         text-align: center;
         gap: px-to-rem(32);
         position: relative;
@@ -85,7 +77,7 @@
         @include respond-to('lg') {
             text-align: left;
             align-items: flex-start;
-            width: 35%;
+            max-width: 35%;
         }
     }
 
@@ -115,7 +107,6 @@
 
     &__cta-button {
         width: 100%;
-        text-wrap: nowrap;
 
         @include respond-to('md') {
             width: auto;
@@ -132,7 +123,7 @@
 
     &__media-content {
         padding: px-to-rem(48 48 0 48);
-        background-image: url('/src/assets/images/travel.png');
+        background-image: url('/src/assets/images/hero/airplane-flight-paths-on-world-map.png');
         background-repeat: no-repeat;
         background-position: top;
         background-size: contain;
@@ -155,7 +146,7 @@
         position: relative;
 
         @include respond-to('md') {
-            gap: 1.5rem;
+            gap: px-to-rem(24);
         }
     }
 
@@ -184,11 +175,11 @@
     }
 
     &__triangle-pattern {
-        width: 4rem;
+        width: px-to-rem(64);
         height: auto;
-        z-index: -1;
+        z-index: $z-below;
         aspect-ratio: 0.4;
-        background-image: url('/src/assets/images/triangle-pattern.svg');
+        background-image: url('/src/assets/images/hero/triangle-pattern.png');
         background-repeat: no-repeat;
         background-size: contain;
         display: none;
@@ -202,7 +193,7 @@
         @include respond-to('lg') {
             left: -25%;
             bottom: -25%;
-            width: 3.5rem;
+            width: px-to-rem(56);
         }
     }
 }

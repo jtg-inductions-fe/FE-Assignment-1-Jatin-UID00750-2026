@@ -44,46 +44,63 @@
         <link
             rel="preload"
             as="image"
-            href="/src/assets/images/travel.png"
+            href="/src/assets/images/hero/airplane-flight-paths-on-world-map.png"
             fetchpriority="high"
         />
         <link rel="stylesheet" href="src/styles/main.scss" />
     </head>
     <body>
         <!-- Header Section -->
-        <header>
-            <nav class="container navbar">
-                <div class="navbar__logo">
-                    <a href="#" aria-label="Travlog Home">
+        <header class="header">
+            <div class="container">
+                <nav class="header__nav">
+                    <a href="#" aria-label="Travlog Home" class="header__logo">
                         <img src="/assets/logo.png" alt="Travlog Logo" />
                     </a>
-                </div>
-                <div class="navbar__links">
-                    <div class="navbar__hamburger">
-                        <button
-                            class="icon icon-menu navbar__icon"
-                            aria-label="Open menu"
-                        ></button>
-                        <button
-                            class="icon icon-menu-close navbar__icon navbar__icon--hidden"
-                            aria-label="Close menu"
-                        ></button>
+                    <button
+                        class="icon icon-menu header__hamburger-icon"
+                        aria-label="Menu icon"
+                    ></button>
+                    <div class="header__menu">
+                        <ul class="header__links">
+                            <li>
+                                <a href="#" class="header__link">Home</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Discover</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link"
+                                    >Special Deals</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Contact</a>
+                            </li>
+                        </ul>
+                        <ul class="header__buttons">
+                            <li>
+                                <a
+                                    href="#"
+                                    class="btn btn--ghost header__button"
+                                    aria-label="login button"
+                                >
+                                    Login
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="btn header__button"
+                                    aria-label="sign up button"
+                                >
+                                    Sign Up
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="navbar__menu">
-                        <li><a href="#" class="navbar__link">Home</a></li>
-                        <li>
-                            <a href="#" class="navbar__link">Discover</a>
-                        </li>
-                        <li>
-                            <a href="#" class="navbar__link">Special Deals</a>
-                        </li>
-                        <li>
-                            <a href="#" class="navbar__link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="ellipse"></div>
-            </nav>
+                </nav>
+            </div>
         </header>
         <main>
             <!-- Hero Section -->
@@ -114,14 +131,17 @@
                                 Watch Demo
                             </button>
                         </div>
-                        <div class="hero__triangle-pattern"></div>
+                        <div
+                            class="hero__triangle-pattern"
+                            role="presentation"
+                        ></div>
                     </div>
                     <div class="hero__media-content">
                         <div class="hero__collage">
                             <div class="hero__image-container">
                                 <img
-                                    src="/src/assets/images/travel-location-img01.webp"
-                                    alt="travel location one"
+                                    src="/src/assets/images/hero/santorini-greece-coastal-scenery.webp"
+                                    alt="santorini greece coastal scenery"
                                     class="hero__image"
                                     fetchpriority="high"
                                 />
@@ -135,16 +155,16 @@
                             </div>
                             <div class="hero__image-container">
                                 <img
-                                    src="/src/assets/images/travel-location-img02.webp"
-                                    alt="travel location two"
+                                    src="/src/assets/images/hero/woman-journaling-on-mountain-overlook.webp"
+                                    alt="woman journaling on mountain overlook"
                                     fetchpriority="high"
                                     class="hero__image"
                                 />
                             </div>
                             <div class="hero__image-container">
                                 <img
-                                    src="/src/assets/images/travel-location-img03.webp"
-                                    alt="travel location three"
+                                    src="/src/assets/images/hero/woman-taking-photo-of-city-buildings.webp"
+                                    alt="woman taking photo of city buildings"
                                     fetchpriority="high"
                                     class="hero__image"
                                 />
@@ -174,35 +194,43 @@
                     <div class="partners-ribbon">
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-tripadvisor.png"
-                                alt="tripadvisor-logo"
+                                src="/src/assets/images/partners/logo-tripadvisor.png"
+                                alt="tripadvisor logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-expedia.png"
-                                alt="expedia-logo"
+                                src="/src/assets/images/partners/logo-expedia.png"
+                                alt="expedia logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-bookingdotcom.png"
-                                alt="booking.com-logo"
+                                src="/src/assets/images/partners/logo-bookingdotcom.png"
+                                alt="booking.com logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-airbnb.png"
-                                alt="airbnb-logo"
+                                src="/src/assets/images/partners/logo-airbnb.png"
+                                alt="airbnb logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
                         <div class="partners-ribbon__partner-logo">
                             <img
-                                src="/src/assets/images/partner-logos/logo-orbitz.png"
-                                alt="orbitz-logo"
+                                src="/src/assets/images/partners/logo-orbitz.png"
+                                alt="orbitz logo"
+                                class="partners-ribbon__image"
                             />
                         </div>
-                        <div class="ellipse ellipse--yellow"></div>
+                        <div
+                            class="ellipse ellipse--yellow"
+                            role="presentation"
+                        ></div>
                     </div>
                 </div>
             </section>
@@ -212,8 +240,8 @@
                     <div class="travel-point__media-content">
                         <div class="travel-point__traveller-image">
                             <img
-                                src="/src/assets/images/traveller-image.webp"
-                                alt="Traveller Image"
+                                src="/src/assets/images/travel-point/happy-female-traveler-with-backpack.webp"
+                                alt="happy female traveler with backpack"
                             />
                         </div>
                     </div>
@@ -232,10 +260,10 @@
                             </p>
                         </div>
                         <div class="travel-point__card-layout">
-                            <div class="travel-point__ticket-image">
+                            <div class="travel-point__reward-logo">
                                 <img
-                                    src="/src/assets/images/ticket-image.png"
-                                    alt="Ticket Image"
+                                    src="/src/assets/images/travel-point/rewards-recognition-logo-yellow.png"
+                                    alt="yellow colored rewards recognition logo"
                                 />
                             </div>
                         </div>
@@ -277,7 +305,7 @@
 
                         <div class="testimonials__abstract-bg">
                             <img
-                                src="/src/assets/images/abstract-bgg.svg"
+                                src="/src/assets/images/testimonials/abstract-purple-pink-shape.svg"
                                 alt="abstract background image"
                             />
                         </div>
@@ -285,6 +313,7 @@
                 </div>
             </section>
         </main>
+        <div class="ellipse ellipse--orange"></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>
