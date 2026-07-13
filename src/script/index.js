@@ -1,1 +1,1 @@
-import './_navbar.js';
+import './navbar.js';

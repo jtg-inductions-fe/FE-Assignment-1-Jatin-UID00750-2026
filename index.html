@@ -51,39 +51,57 @@
     </head>
     <body>
         <!-- Header Section -->
-        <header>
-            <nav class="container navbar">
-                <div class="navbar__logo">
-                    <a href="#" aria-label="Travlog Home">
+        <header class="header">
+            <div class="container">
+                <nav class="header__nav">
+                    <a href="#" aria-label="Travlog Home" class="header__logo">
                         <img src="/assets/logo.png" alt="Travlog Logo" />
                     </a>
-                </div>
-                <div class="navbar__links">
-                    <div class="navbar__hamburger">
-                        <button
-                            class="icon icon-menu navbar__icon"
-                            aria-label="Open menu"
-                        ></button>
-                        <button
-                            class="icon icon-menu-close navbar__icon navbar__icon--hidden"
-                            aria-label="Close menu"
-                        ></button>
+                    <button
+                        class="icon icon-menu header__hamburger-icon"
+                        aria-label="Menu icon"
+                    ></button>
+                    <div class="header__menu">
+                        <ul class="header__links">
+                            <li>
+                                <a href="#" class="header__link">Home</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Discover</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link"
+                                    >Special Deals</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Contact</a>
+                            </li>
+                        </ul>
+                        <ul class="header__buttons">
+                            <li>
+                                <a
+                                    href="#"
+                                    class="btn btn--ghost header__button"
+                                    aria-label="login button"
+                                >
+                                    Login
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="btn header__button"
+                                    aria-label="sign up button"
+                                >
+                                    Sign Up
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="navbar__menu">
-                        <li><a href="#" class="navbar__link">Home</a></li>
-                        <li>
-                            <a href="#" class="navbar__link">Discover</a>
-                        </li>
-                        <li>
-                            <a href="#" class="navbar__link">Special Deals</a>
-                        </li>
-                        <li>
-                            <a href="#" class="navbar__link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="ellipse"></div>
-            </nav>
+                </nav>
+            </div>
+            <div class="ellipse"></div>
         </header>
         <main>
             <!-- Hero Section -->

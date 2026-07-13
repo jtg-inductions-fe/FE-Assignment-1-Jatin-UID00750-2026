@@ -49,7 +49,7 @@ $line-height-sm: 120%;
 $line-height-lg: 160%;
 
 /*
-* Leter Spacing variables
+* Letter Spacing variables
 */
 
 $letter-sm: 5%;
@@ -84,3 +84,13 @@ $shadow-sm:
     0px 39.53px 15.91px 0px rgba(0, 0, 0, 0.01),
     0px 61.6px 17.45px 0px rgba(0, 0, 0, 0);
 $shadow-lg: 0px 19px 19px 0px rgba(0, 0, 0, 0.09);
+
+/*
+* z-index variables
+*/
+
+$z-below: -1;
+$z-base: 0;
+$z-layer-1: 10;
+$z-layer-2: 20;
+$z-max: 999;
