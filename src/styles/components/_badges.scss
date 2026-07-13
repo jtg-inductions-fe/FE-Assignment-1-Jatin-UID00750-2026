@@ -14,6 +14,14 @@
 
     &__icon {
         font-size: $text-xl;
+
+        &--sm {
+            font-size: $text-xs;
+
+            @include respond-to('md') {
+                font-size: $text-xl;
+            }
+        }
     }
 
     &--sm {
@@ -21,17 +29,9 @@
         gap: px-to-rem(8);
         padding: px-to-rem(10 16);
 
-        .badge__icon {
-            font-size: $text-xs;
-        }
-
         @include respond-to('md') {
             font-size: $text-sm;
             padding: px-to-rem(16 32);
-
-            .badge__icon {
-                font-size: $text-xl;
-            }
         }
     }
 

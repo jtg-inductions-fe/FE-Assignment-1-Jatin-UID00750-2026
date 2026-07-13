@@ -22,6 +22,10 @@
     &__icon {
         font-size: px-to-rem(20);
         color: $color-background;
+
+        &--primary {
+            color: $color-primary;
+        }
     }
 
     &--ghost {
@@ -30,10 +34,6 @@
 
         &:hover {
             background-color: color.scale($color-background, $lightness: -10%);
-        }
-
-        .btn__icon {
-            color: $color-primary;
         }
     }
 
@@ -44,10 +44,6 @@
 
         &:hover {
             background-color: color.scale($color-background, $lightness: -10%);
-        }
-
-        .btn__icon {
-            color: $color-primary;
         }
     }
 }
