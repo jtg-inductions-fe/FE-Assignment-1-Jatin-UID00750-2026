@@ -1,0 +1,44 @@
+@use 'sass:color';
+@use './variables' as *;
+
+/** Mixin for flexbox centering
+*/
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/** Mixin for responsive media queries
+ * @param {String} $size - The breakpoint size (e.g., 'sm', 'md', 'lg')
+*/
+@mixin respond-to($size) {
+    @if map-has-key($breakpoints, $size) {
+        @media (min-width: map-get($breakpoints, $size)) {
+            @content;
+        }
+    } @else {
+        @warn "No value found for breakpoint: #{$size}";
+    }
+}
+
+/** Mixin for font-face
+ * @param {String} $name - The name of the font face
+ * @param {String} $filename - The name of the font file
+ * @param {Number | String} $weight - The font-weight
+ * @param {String} $style - The font-style
+*/
+
+@mixin font-face($name, $filename, $weight: normal, $style: normal) {
+    @font-face {
+        font-family: '#{$name}';
+        font-style: $style;
+        font-weight: $weight;
+        font-display: swap;
+
+        src:
+            url('/src/assets/fonts/#{$filename}.woff2') format('woff2'),
+            url('/src/assets/fonts/#{$filename}.ttf') format('ttf');
+    }
+}

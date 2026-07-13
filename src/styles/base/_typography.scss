@@ -1,0 +1,98 @@
+@use '../abstracts' as *;
+
+/* Typography variables */
+
+$text-h1-md: px-to-rem(56);
+$text-h1-lg: px-to-rem(69);
+$text-h3-md: px-to-rem(44);
+$text-h4-md: px-to-rem(35);
+$text-h5-md: px-to-rem(28);
+
+/* Typography Styles */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $weight-bold;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-sm;
+}
+
+.heading-1 {
+    font-size: $text-3xl;
+
+    @include respond-to('md') {
+        font-size: $text-h1-md;
+    }
+
+    @include respond-to('lg') {
+        font-size: $text-h1-lg;
+    }
+}
+
+.heading-2 {
+    font-size: $text-2xl;
+
+    @include respond-to('md') {
+        font-size: $text-3xl;
+    }
+
+    @include respond-to('lg') {
+        font-size: $text-h3-md;
+    }
+}
+
+.heading-3 {
+    font-size: $text-h4-md;
+}
+
+.heading-4 {
+    font-size: $text-h5-md;
+}
+
+.heading-5 {
+    font-size: $text-xl;
+}
+
+.para-1 {
+    font-weight: $weight-normal;
+    line-height: $line-height-lg;
+    font-size: $text-md;
+    font-family: $font-secondary;
+
+    @include respond-to('md') {
+        font-size: $text-lg;
+    }
+}
+
+.para-2 {
+    font-weight: $weight-normal;
+    line-height: $line-height-lg;
+    font-size: $text-lg;
+    font-family: $font-secondary;
+}
+
+.para-3 {
+    font-weight: $weight-medium;
+    line-height: $line-height-lg;
+    font-size: $text-lg;
+
+    @include respond-to('md') {
+        font-size: $text-xl;
+    }
+}
+
+.title {
+    font-weight: $weight-bold;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-lg;
+    text-transform: uppercase;
+    font-size: $text-md;
+
+    @include respond-to('md') {
+        font-size: $text-xl;
+    }
+}

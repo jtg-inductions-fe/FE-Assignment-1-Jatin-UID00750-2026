@@ -1,0 +1,86 @@
+@use './functions' as *;
+/* 
+* Breakpoint variables
+*/
+
+$breakpoints: (
+    'sm': 430px,
+    'md': 1024px,
+    'lg': 1440px,
+);
+
+/*
+* color variables
+*/
+
+$color-primary: hsla(253, 50%, 54%, 1);
+$color-secondary: hsla(338, 92%, 66%, 1);
+$color-orange: hsla(9, 100%, 56%, 1);
+$color-yellow: hsla(47, 95%, 63%, 1);
+$color-background: hsla(0, 0%, 100%, 1);
+$color-text: hsla(0, 0%, 0%, 1);
+$color-text-muted: hsla(245, 21%, 12%, 0.75);
+$color-gray: hsla(208, 7%, 46%, 1);
+
+/*
+* font variables
+*/
+
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+
+/*
+* typography variables
+*/
+
+$text-xs: px-to-rem(12);
+$text-sm: px-to-rem(14);
+$text-md: px-to-rem(16);
+$text-lg: px-to-rem(18);
+$text-xl: px-to-rem(24);
+$text-2xl: px-to-rem(32);
+$text-3xl: px-to-rem(40);
+
+/*
+* Line height variables
+*/
+
+$line-height-sm: 120%;
+$line-height-lg: 160%;
+
+/*
+* Letter Spacing variables
+*/
+
+$letter-sm: 5%;
+$letter-lg: 20%;
+
+/*
+* Font Weight variables
+*/
+
+$weight-normal: 400;
+$weight-medium: 500;
+$weight-bold: 700;
+$weight-black: 900;
+
+/*
+* Border radius variables
+*/
+
+$border-radius-sm: px-to-rem(4);
+$border-radius-md: px-to-rem(8);
+$border-radius-lg: px-to-rem(16);
+$border-radius-xl: px-to-rem(32);
+$border-radius-2xl: px-to-rem(100);
+$border-radius-full: 50%;
+
+/*
+* Box Shadows
+*/
+
+$shadow-sm:
+    0px 22.07px 13.35px 0px rgba(0, 0, 0, 0.05),
+    0px 39.53px 15.91px 0px rgba(0, 0, 0, 0.01),
+    0px 61.6px 17.45px 0px rgba(0, 0, 0, 0);
+$shadow-lg: 0px 19px 19px 0px rgba(0, 0, 0, 0.09);

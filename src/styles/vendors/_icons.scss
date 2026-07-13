@@ -1,0 +1,81 @@
+/*
+* Icon variables
+*/
+$icon-font-family: 'icomoon' !default;
+$icon-font-path: 'fonts' !default;
+$icon-add-user: '\e900';
+$icon-arrow-circle-down: '\e901';
+$icon-arrow-circle-up: '\e902';
+$icon-arrow-left: '\e903';
+$icon-arrow-right: '\e904';
+$icon-cross-circle: '\e905';
+$icon-facebook: '\e906';
+$icon-instagram: '\e907';
+$icon-location: '\e908';
+$icon-menu: '\e909';
+$icon-menu-close: '\e90a';
+$icon-play-circle: '\e90b';
+$icon-send: '\e90c';
+$icon-star: '\e90d';
+$icon-twitter: '\e90e';
+$icon-work: '\e90f';
+
+/* 
+ * Icon font styles
+ */
+
+@font-face {
+    font-family: 'icomoon';
+    src:
+        url('/src/assets/icons/icomoon.woff2') format('woff2'),
+        url('/src/assets/icons/icomoon.woff') format('woff'),
+        url('/src/assets/icons/icomoon.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.icon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: '#{$icon-font-family}' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Icon classes */
+
+$icons: (
+    'add-user': $icon-add-user,
+    'arrow-circle-down': $icon-arrow-circle-down,
+    'arrow-circle-up': $icon-arrow-circle-up,
+    'arrow-left': $icon-arrow-left,
+    'arrow-right': $icon-arrow-right,
+    'cross-circle': $icon-cross-circle,
+    'facebook': $icon-facebook,
+    'instagram': $icon-instagram,
+    'location': $icon-location,
+    'menu': $icon-menu,
+    'menu-close': $icon-menu-close,
+    'play-circle': $icon-play-circle,
+    'send': $icon-send,
+    'star': $icon-star,
+    'twitter': $icon-twitter,
+    'work': $icon-work,
+);
+
+/* Generate icon classes dynamically */
+
+@each $name, $glyph in $icons {
+    .icon-#{$name} {
+        &:before {
+            content: $glyph;
+        }
+    }
+}
