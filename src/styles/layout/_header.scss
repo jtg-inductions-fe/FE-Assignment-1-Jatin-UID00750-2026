@@ -2,7 +2,8 @@
 
 .header {
     padding-block: px-to-rem(32);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: $z-layer-2;
 
     &__logo {
