@@ -5,6 +5,7 @@
     position: sticky;
     top: 0;
     z-index: $z-layer-2;
+    backdrop-filter: blur(px-to-rem(10));
 
     &__logo {
         width: px-to-rem(40);
