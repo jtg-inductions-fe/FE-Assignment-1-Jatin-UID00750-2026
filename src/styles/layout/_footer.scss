@@ -78,6 +78,10 @@
         height: auto;
     }
 
+    &__accordian[open] &__accordian-icon {
+        transform: rotate(180deg);
+    }
+
     &__accordian-title {
         @include flex-center;
         justify-content: space-between;
@@ -91,6 +95,7 @@
     }
 
     &__accordian-icon {
+        transition: transform 0.3s ease;
         @include respond-to('md') {
             display: none;
         }
