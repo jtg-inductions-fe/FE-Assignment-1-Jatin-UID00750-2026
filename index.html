@@ -70,7 +70,10 @@
                                 <a href="#" class="header__link">Discover</a>
                             </li>
                             <li>
-                                <a href="#" class="header__link"
+                                <a
+                                    href="#"
+                                    class="header__link"
+                                    id="special-deals-btn"
                                     >Special Deals</a
                                 >
                             </li>
@@ -418,6 +421,76 @@
             </div>
         </footer>
         <div class="ellipse ellipse--orange"></div>
+
+        <!-- Special Deals Modal -->
+
+        <dialog class="modal">
+            <button class="icon icon-cross modal__close-btn"></button>
+            <!-- Panel for Spinning Wheel -->
+            <div id="panel-1" class="modal__panel modal__panel--active">
+                <div class="modal__header">
+                    <h4 class="modal__label title-sm">
+                        <span class="icon icon-gift modal__label-icon"></span>
+                        <span>Special Deal</span>
+                    </h4>
+                    <h3 class="modal__title">Spin & Win!</h3>
+                    <p id="panel1-description" class="modal__description">
+                        Tap the center of the wheel to spin
+                    </p>
+                </div>
+                <div class="modal__body">
+                    <div class="wheel">
+                        <div class="wheel__pointer"></div>
+                        <canvas
+                            id="wheelCanvas"
+                            class="wheel__canvas"
+                            width="500"
+                            height="500"
+                        ></canvas>
+                        <button id="spinBtn" class="wheel__spin-button">
+                            Spin
+                        </button>
+                    </div>
+                    <div id="winning-deal" class="modal__coupon-wrapper"></div>
+                </div>
+                <div class="modal__footer">
+                    <button
+                        id="view-all-btn"
+                        class="btn btn--outline modal__button"
+                    >
+                        View All Unlocked Deals
+                        <span class="modal__counter">0</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Panel for unlocked deals -->
+            <div id="panel-2" class="modal__panel">
+                <div class="modal__header">
+                    <h4 class="modal__label title-sm">
+                        <span class="icon icon-gift modal__label-icon"></span>
+                        <span>Special Deal</span>
+                    </h4>
+                    <h3 class="modal__title">Unlocked Deals</h3>
+                    <p class="modal__description">
+                        All the deals you’ve unlocked yet!
+                    </p>
+                </div>
+                <div class="modal__body">
+                    <div
+                        id="unlocked-deals"
+                        class="modal__coupon-wrapper"
+                    ></div>
+                </div>
+                <div class="modal__footer">
+                    <button
+                        id="back-btn"
+                        class="btn btn--outline modal__button"
+                    >
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        </dialog>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

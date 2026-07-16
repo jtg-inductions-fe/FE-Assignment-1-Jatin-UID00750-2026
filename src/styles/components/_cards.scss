@@ -1,15 +1,85 @@
 @use 'sass:color';
 @use '../abstracts' as *;
 
-.stats-card {
+.card {
     @include flex-center;
-    flex-direction: column;
-    gap: px-to-rem(16);
-    padding: px-to-rem(24);
-    border-radius: $border-radius-xl;
+    padding: px-to-rem(16);
+    border-radius: $border-radius-lg;
     border: 1px solid color.scale($color-text-muted, $lightness: 80%);
 
     &__value {
         color: $color-orange;
+    }
+
+    &__title {
+        font-size: $text-sm;
+        padding-bottom: px-to-rem(4);
+    }
+
+    &__warning {
+        font-size: $text-xs;
+        color: $color-violet;
+
+        &--disabled {
+            color: $color-gray;
+        }
+    }
+
+    &__code-wrapper {
+        @include flex-center;
+        gap: px-to-rem(8);
+    }
+
+    &__code {
+        background-color: $color-background;
+        border: 1px solid color.scale($color-gray, $alpha: -50%);
+        border-radius: $border-radius-md;
+        padding: px-to-rem(4 10);
+        align-self: flex-start;
+        text-wrap: nowrap;
+    }
+
+    &__copy-btn {
+        font-size: $text-lg;
+        color: $color-salmon;
+
+        &:hover {
+            filter: drop-shadow(
+                0px 0px 8px color.scale($color-salmon, $alpha: -50%)
+            );
+        }
+
+        &--disabled {
+            color: $color-gray;
+            cursor: not-allowed;
+            &:hover {
+                filter: none;
+            }
+        }
+    }
+
+    &--primary {
+        flex-direction: column;
+        gap: px-to-rem(16);
+        padding: px-to-rem(24);
+        border-radius: $border-radius-xl;
+    }
+
+    &--secondary {
+        justify-content: space-between;
+        align-items: flex-start;
+        width: px-to-rem(312);
+        gap: px-to-rem(8);
+        border: 2px solid color.scale($color-salmon, $lightness: 80%);
+        background: linear-gradient(
+            90deg,
+            color.scale($color-salmon, $alpha: -95%) 0%,
+            color.scale($color-violet, $alpha: -95%) 100%
+        );
+    }
+
+    &--disabled {
+        border: 2px solid color.scale($color-gray, $alpha: -50%);
+        background: color.scale($color-gray, $alpha: -90%);
     }
 }

@@ -21,6 +21,10 @@ $color-background: hsla(0, 0%, 100%, 1);
 $color-text: hsla(0, 0%, 0%, 1);
 $color-text-muted: hsla(245, 21%, 12%, 0.75);
 $color-gray: hsla(208, 7%, 46%, 1);
+$color-violet: hsla(262.123, 83.256%, 57.843%, 1);
+$color-amber: hsla(43.256, 96.413%, 56.275%, 1);
+$color-cyan: hsl(188.738, 94.495%, 42.745%, 1);
+$color-salmon: hsla(346.102, 88.945%, 60.98%, 1);
 
 /*
 * font variables
@@ -28,6 +32,8 @@ $color-gray: hsla(208, 7%, 46%, 1);
 
 $font-primary: 'Roboto', sans-serif;
 $font-secondary: 'Inter', sans-serif;
+$font-mono: 'Roboto Mono', monospace;
+$font-tertiary: 'Figtree', sans-serif;
 
 /*
 * typography variables
@@ -45,6 +51,7 @@ $text-3xl: px-to-rem(40);
 * Line height variables
 */
 
+$line-height-xs: 100%;
 $line-height-sm: 120%;
 $line-height-lg: 160%;
 
@@ -53,6 +60,7 @@ $line-height-lg: 160%;
 */
 
 $letter-sm: 5%;
+$letter-md: 10%;
 $letter-lg: 20%;
 
 /*
@@ -83,6 +91,7 @@ $shadow-sm:
     0px 22.07px 13.35px 0px rgba(0, 0, 0, 0.05),
     0px 39.53px 15.91px 0px rgba(0, 0, 0, 0.01),
     0px 61.6px 17.45px 0px rgba(0, 0, 0, 0);
+$shadow-md: 0px 0px 50px rgba(0, 0, 0, 0.25);
 $shadow-lg: 0px 19px 19px 0px rgba(0, 0, 0, 0.09);
 
 /*

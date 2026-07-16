@@ -1,12 +1,14 @@
 import { trapFocus } from './utils';
+import { handlePromotions } from './modal';
 
 const NAVBAR = document.querySelector('.header__nav');
 const NAVBAR_MENU = document.querySelector('.header__menu');
 const NAVBAR_LINKS_MENU = document.querySelector('.header__links');
 const NAVBAR_LINKS = document.querySelectorAll('.header__link');
 const NAVBAR_BUTTONS = document.querySelectorAll('.header__button');
-// const NAVBAR_LOGO = document.querySelector('.header__logo');
 const HAMBURGER_ICON = document.querySelector('.header__hamburger-icon');
+const SPECIAL_DEALS_BTN = document.querySelector('#special-deals-btn');
+const MODAL = document.querySelector('.modal');
 
 // Device-specific handlers for handling keyboard focus traps
 
@@ -73,6 +75,14 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+/* open spinning wheel modal */
+
+SPECIAL_DEALS_BTN.addEventListener('click', (e) => {
+    e.preventDefault();
+    MODAL.showModal();
+    handlePromotions();
+});
+
 /* constants for mobile and tablet screens */
 
 const IS_MOBILE = window.matchMedia('(max-width: 1023px)');
@@ -111,6 +121,7 @@ const handleScreenChangeForTablet = (e) => {
         }
     }
 };
+
 IS_MOBILE.addEventListener('change', handleScreenChangeForMobile);
 IS_TABLET.addEventListener('change', handleScreenChangeForTablet);
 

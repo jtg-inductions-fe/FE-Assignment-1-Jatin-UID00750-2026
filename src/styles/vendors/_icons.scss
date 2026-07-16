@@ -19,6 +19,9 @@ $icon-send: '\e90c';
 $icon-star: '\e90d';
 $icon-twitter: '\e90e';
 $icon-work: '\e90f';
+$icon-copy: '\e910';
+$icon-cross: '\e911';
+$icon-gift: '\e912';
 
 /* 
  * Icon font styles
@@ -68,6 +71,9 @@ $icons: (
     'star': $icon-star,
     'twitter': $icon-twitter,
     'work': $icon-work,
+    'copy': $icon-copy,
+    'cross': $icon-cross,
+    'gift': $icon-gift,
 );
 
 /* Generate icon classes dynamically */
