@@ -48,11 +48,7 @@ let wheelSectors = [];
  */
 
 const getBasePromotions = async () => {
-    const localPromos = localStorage.getItem('promotions');
-
-    if (localPromos) {
-        return JSON.parse(localPromos);
-    }
+    if (promotions.length > 0) return promotions;
 
     try {
         const response = await fetch(PROMOTIONS_API);
@@ -60,20 +56,7 @@ const getBasePromotions = async () => {
 
         const rawData = await response.json();
 
-        const processedPromos = rawData.map((item) => {
-            const daysToAdd = item.validFor !== null ? item.validFor : 7;
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + daysToAdd);
-
-            return {
-                label: item.label,
-                promoCode: item.promoCode,
-                validTill: targetDate.toISOString(),
-            };
-        });
-
-        localStorage.setItem('promotions', JSON.stringify(processedPromos));
-        return processedPromos;
+        return rawData;
     } catch (err) {
         panelDescription.style.color = 'red';
         panelDescription.style.color = 'red';
@@ -444,13 +427,20 @@ function calculateWinner() {
 
     const winningIndex = Math.floor(normalizedAngle / arcSize);
     const winnerData = wheelSectors[winningIndex];
-    const filterPromo = ({ label, promoCode, validTill }) => ({
-        label,
-        promoCode,
-        validTill,
-    });
 
-    unlockedCouponsData.push(filterPromo(winnerData));
+    const filterPromo = ({ label, promoCode, validFor }) => {
+        const daysToAdd = validFor !== null ? validFor : 7;
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + daysToAdd);
+        return {
+            label,
+            promoCode,
+            validTill: targetDate.toISOString(),
+        };
+    };
+    const processedPromo = filterPromo(winnerData);
+
+    unlockedCouponsData.push(processedPromo);
 
     // Sync the updated array to Local Storage immediately
     saveUnlockedCoupons(unlockedCouponsData);
@@ -460,7 +450,7 @@ function calculateWinner() {
     WIN_TEXT.textContent = 'You won!';
     winningCouponContainer.appendChild(WIN_TEXT);
 
-    createCouponCard(winnerData, winningCouponContainer);
+    createCouponCard(processedPromo, winningCouponContainer);
     couponsCounter.textContent = unlockedCouponsData.length;
 }
 
