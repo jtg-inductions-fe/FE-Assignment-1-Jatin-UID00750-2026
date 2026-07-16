@@ -115,8 +115,10 @@ export const handlePromotions = async () => {
         promotions = await getBasePromotions();
         unlockedCouponsData = getUnlockedPromotions();
         if (promotions.length > 0) {
-            initializeWheel(promotions);
-            spinBtn.style.display = 'block';
+            if (initializeWheel(promotions)) {
+                spinBtn.style.display = 'block';
+            }
+            couponsCounter.textContent = unlockedCouponsData.length;
         }
     } catch (err) {
         panelDescription.style.color = 'red';
@@ -150,24 +152,25 @@ function initializeWheel(apiData) {
         .sort(() => 0.5 - Math.random());
 
     if (shuffled.length < 4) {
-        alert('no more spins left!');
+        spinBtn.style.display = 'none';
         spinBtn.disabled = true;
-        return;
+        drawNoSpins();
+        return false;
     }
 
-    // Take the top 4 items
+    // Pick the top 4 items
     const selectedItems = shuffled.slice(0, 4);
 
     // Pair dynamic data items up with structural layout designs
     wheelSectors = selectedItems.map((item, index) => {
-        // Split label strings in half automatically to add line spacing
+        // Split label strings in half to add line spacing
         const words = item.label.split(' ');
         const midPoint = Math.ceil(words.length / 2);
         const line1 = words.slice(0, midPoint).join(' ');
         const line2 = words.slice(midPoint).join(' ');
 
         return {
-            ...item, // Keeps promoCode and validFor metadata intact inside the sector object
+            ...item,
             textLines: [line1, line2],
             color: designTemplate[index].color,
             textColor: designTemplate[index].textColor,
@@ -176,6 +179,7 @@ function initializeWheel(apiData) {
 
     arcSize = (2 * Math.PI) / wheelSectors.length;
     drawWheel();
+    return true;
 }
 
 /**
@@ -257,8 +261,40 @@ function drawLoading() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 24px roboto';
+    ctx.font = 'bold 32px roboto';
     ctx.fillText('Loading...', centerX, centerY);
+}
+
+/**
+ * Draws the "No more spins left" message on the canvas.
+ * Clears the canvas and renders a centered "No more spins left" text inside a circular frame.
+ *
+ * @function drawLoading
+ * @returns {void}
+ */
+
+function drawNoSpins() {
+    // Clear the canvas completely
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the outer light-gray circle/ring
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius + 8, 0, 2 * Math.PI);
+    ctx.fillStyle = '#E5E7EB';
+    ctx.fill();
+
+    // Draw the inner white base circle
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = '#dcdcdc';
+    ctx.fill();
+
+    // Draw the centered "No more spins left." text
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#DC2626';
+    ctx.font = 'bold 32px roboto';
+    ctx.fillText('No more spins left.', centerX, centerY);
 }
 
 /**
@@ -304,6 +340,13 @@ function spin() {
     updateAnimation();
 }
 
+/**
+ * Creates and appends a coupon card element to the DOM.
+ * @param {Object} couponData - The structural data for the coupon.
+ * @param {HTMLElement} couponContainer - The DOM container to append the card to.
+ * @returns {HTMLDivElement} The generated outer coupon card element.
+ */
+
 function createCouponCard(couponData, couponContainer) {
     const expiryDate = new Date(couponData.validTill); // Expects ISO string (like "2026-07-20T12:00:00Z")
     const currentDate = new Date();
@@ -317,34 +360,60 @@ function createCouponCard(couponData, couponContainer) {
         Math.ceil(timeDiff / (1000 * 60 * 60 * 24)),
     );
     const isExpired = daysRemaining <= 0;
+
+    // Create the top-level outer wrapper
     const couponCard = document.createElement('div');
     couponCard.className = isExpired
         ? 'card card--secondary card--disabled'
         : 'card card--secondary';
 
-    couponCard.innerHTML = `
-        <div class="card__details">
-            <h3 class="card__title">${couponData.label}</h3>
-            <p class="card__warning ${isExpired ? 'card__warning--disabled' : ''}">
-                ${isExpired ? 'Deal Expired' : `Expires in ${daysRemaining}d`}
-            </p>
-        </div>
-        <div class="card__code-wrapper">
-            <span class="card__code mono-code">${couponData.promoCode}</span>
-            <button class="card__copy-btn ${isExpired ? 'card__copy-btn--disabled' : ''}" ${isExpired ? 'disabled' : ''}>
-                <span class="icon icon-copy"></span>
-            </button>
-        </div>
-    `;
+    // Create the Details section
+    const detailsDiv = document.createElement('div');
+    detailsDiv.className = 'card__details';
 
+    const cardTitle = document.createElement('h3');
+    cardTitle.className = 'card__title';
+    cardTitle.textContent = couponData.label;
+
+    const cardWarning = document.createElement('p');
+    cardWarning.className =
+        `card__warning ${isExpired ? 'card__warning--disabled' : ''}`.trim();
+    cardWarning.textContent = isExpired
+        ? 'Deal Expired'
+        : `Expires in ${daysRemaining}d`;
+
+    detailsDiv.append(cardTitle, cardWarning);
+
+    // Create the Code Wrapper section
+    const codeWrapperDiv = document.createElement('div');
+    codeWrapperDiv.className = 'card__code-wrapper';
+
+    const couponCode = document.createElement('span');
+    couponCode.className = 'card__code mono-code';
+    couponCode.textContent = couponData.promoCode;
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className =
+        `card__copy-btn ${isExpired ? 'card__copy-btn--disabled' : ''}`.trim();
+
+    if (isExpired) {
+        copyBtn.disabled = true;
+    } else {
+        // Copy feature binding on click event
+        copyBtn.addEventListener('click', async () => {
+            await navigator.clipboard.writeText(couponCode.textContent);
+        });
+    }
+
+    const copyIcon = document.createElement('span');
+    copyIcon.className = 'icon icon-copy';
+    copyBtn.append(copyIcon);
+
+    codeWrapperDiv.append(couponCode, copyBtn);
+
+    // Assemble the whole card and add it to the DOM
+    couponCard.append(detailsDiv, codeWrapperDiv);
     couponContainer.appendChild(couponCard);
-
-    const copyBtn = couponCard.querySelector('.card__copy-btn');
-    const couponCode = couponCard.querySelector('.card__code');
-
-    copyBtn.addEventListener('click', async () => {
-        await navigator.clipboard.writeText(couponCode.textContent);
-    });
 
     return couponCard;
 }
@@ -403,8 +472,9 @@ function calculateWinner() {
  */
 
 spinBtn.addEventListener('click', () => {
-    initializeWheel(promotions);
-    spin();
+    if (initializeWheel(promotions)) {
+        spin();
+    }
 });
 
 /**
