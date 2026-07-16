@@ -1,0 +1,15 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.stats-card {
+    @include flex-center;
+    flex-direction: column;
+    gap: px-to-rem(16);
+    padding: px-to-rem(24);
+    border-radius: $border-radius-xl;
+    border: 1px solid color.scale($color-text-muted, $lightness: 80%);
+
+    &__value {
+        color: $color-orange;
+    }
+}

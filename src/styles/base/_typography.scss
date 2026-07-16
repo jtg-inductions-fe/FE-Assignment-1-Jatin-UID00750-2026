@@ -91,6 +91,7 @@ h6 {
     letter-spacing: $letter-lg;
     text-transform: uppercase;
     font-size: $text-md;
+    color: $color-secondary;
 
     @include respond-to('md') {
         font-size: $text-xl;
