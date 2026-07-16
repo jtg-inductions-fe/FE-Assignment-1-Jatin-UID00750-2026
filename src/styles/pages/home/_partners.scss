@@ -1,0 +1,36 @@
+@use '../../abstracts' as *;
+
+.partners-ribbon {
+    @include flex-center;
+    flex-wrap: wrap;
+    column-gap: px-to-rem(24);
+    row-gap: px-to-rem(32);
+    max-width: px-to-rem(580);
+    margin-inline: auto;
+    margin-top: px-to-rem(64);
+    position: relative;
+
+    &__partner-logo {
+        width: auto;
+        height: px-to-rem(20);
+
+        @include respond-to('md') {
+            height: px-to-rem(32);
+        }
+    }
+
+    @include respond-to('md') {
+        margin-top: px-to-rem(128);
+    }
+
+    @include respond-to('lg') {
+        justify-content: space-between;
+        max-width: none;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}

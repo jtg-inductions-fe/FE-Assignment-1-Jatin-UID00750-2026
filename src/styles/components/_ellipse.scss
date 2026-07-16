@@ -1,29 +1,54 @@
 @use '../abstracts' as *;
 
 .ellipse {
-    background-color: $color-orange;
     opacity: 0.5;
     filter: blur(12rem);
     position: absolute;
-    width: 70%;
     height: auto;
-    aspect-ratio: 3/4;
-    top: 0;
-    left: -15%;
+    aspect-ratio: 1/1;
     z-index: $z-below;
 
     @include respond-to('md') {
-        width: 50%;
-        aspect-ratio: 1/1;
         filter: blur(16rem);
-        top: -20%;
-        left: -20%;
     }
 
     @include respond-to('lg') {
-        width: 40%;
         filter: blur(18rem);
+    }
+
+    &--orange {
+        background-color: $color-orange;
+        width: 70%;
         top: 0;
         left: -15%;
+
+        @include respond-to('md') {
+            width: 50%;
+            top: -20%;
+            left: -20%;
+        }
+
+        @include respond-to('lg') {
+            width: 40%;
+            top: px-to-rem(-200);
+            left: -15%;
+        }
+    }
+
+    &--yellow {
+        background-color: $color-yellow;
+        top: 10%;
+        left: auto;
+        right: -80%;
+        display: none;
+        width: 50%;
+
+        @include respond-to('md') {
+            display: block;
+        }
+
+        @include respond-to('lg') {
+            right: -60%;
+        }
     }
 }

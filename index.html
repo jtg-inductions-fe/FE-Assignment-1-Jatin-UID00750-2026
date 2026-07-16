@@ -41,7 +41,12 @@
             sizes="48x48"
         />
         <link rel="apple-touch-icon" href="/assets/logo.png" sizes="180x180" />
-
+        <link
+            rel="preload"
+            as="image"
+            href="/src/assets/images/hero/airplane-flight-paths-on-world-map.png"
+            fetchpriority="high"
+        />
         <link rel="stylesheet" href="src/styles/main.scss" />
     </head>
     <body>
@@ -97,7 +102,140 @@
                 </nav>
             </div>
         </header>
-        <div class="ellipse"></div>
+        <main>
+            <!-- Hero Section -->
+            <section>
+                <div class="container hero">
+                    <div class="hero__text-content">
+                        <div class="badge hero__badge-explore">
+                            Explore the world!
+                            <span class="icon icon-work badge__icon"></span>
+                        </div>
+                        <h1 class="heading-1 hero__headline">
+                            Travel
+                            <span class="hero__highlight">top destination</span>
+                            of the world
+                        </h1>
+                        <p class="hero__sub-headline para-1">
+                            We always make our customer happy by providing as
+                            many choices as possible
+                        </p>
+                        <div class="hero__cta">
+                            <button class="btn hero__cta-button">
+                                Get Started
+                            </button>
+                            <button class="btn btn--outline hero__cta-button">
+                                <span
+                                    class="icon icon-play-circle btn__icon hero__btn-icon"
+                                ></span>
+                                Watch Demo
+                            </button>
+                        </div>
+                        <div
+                            class="hero__triangle-pattern"
+                            role="presentation"
+                        ></div>
+                    </div>
+                    <div class="hero__media-content">
+                        <div class="hero__collage">
+                            <div class="hero__image-container">
+                                <img
+                                    src="/src/assets/images/hero/santorini-greece-coastal-scenery.webp"
+                                    alt="santorini greece coastal scenery"
+                                    class="hero__image"
+                                    fetchpriority="high"
+                                />
+                                <div
+                                    class="badge badge--rounded hero__icon-badge hero__badge-send"
+                                >
+                                    <span
+                                        class="icon icon-send badge__icon"
+                                    ></span>
+                                </div>
+                            </div>
+                            <div class="hero__image-container">
+                                <img
+                                    src="/src/assets/images/hero/woman-journaling-on-mountain-overlook.webp"
+                                    alt="woman journaling on mountain overlook"
+                                    fetchpriority="high"
+                                    class="hero__image"
+                                />
+                            </div>
+                            <div class="hero__image-container">
+                                <img
+                                    src="/src/assets/images/hero/woman-taking-photo-of-city-buildings.webp"
+                                    alt="woman taking photo of city buildings"
+                                    fetchpriority="high"
+                                    class="hero__image"
+                                />
+                                <div
+                                    class="badge badge--sm hero__badge-top-place"
+                                >
+                                    <span
+                                        class="icon icon-location badge__icon hero__badge-icon"
+                                    ></span>
+                                    Top Places
+                                </div>
+                            </div>
+                            <div
+                                class="badge badge--rounded hero__icon-badge hero__badge-user"
+                            >
+                                <span
+                                    class="icon icon-add-user badge__icon"
+                                ></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Partners Section -->
+            <section>
+                <div class="container">
+                    <div class="partners-ribbon">
+                        <div class="partners-ribbon__partner-logo">
+                            <img
+                                src="/src/assets/images/partners/logo-tripadvisor.png"
+                                alt="tripadvisor logo"
+                                class="partners-ribbon__image"
+                            />
+                        </div>
+                        <div class="partners-ribbon__partner-logo">
+                            <img
+                                src="/src/assets/images/partners/logo-expedia.png"
+                                alt="expedia logo"
+                                class="partners-ribbon__image"
+                            />
+                        </div>
+                        <div class="partners-ribbon__partner-logo">
+                            <img
+                                src="/src/assets/images/partners/logo-bookingdotcom.png"
+                                alt="booking.com logo"
+                                class="partners-ribbon__image"
+                            />
+                        </div>
+                        <div class="partners-ribbon__partner-logo">
+                            <img
+                                src="/src/assets/images/partners/logo-airbnb.png"
+                                alt="airbnb logo"
+                                class="partners-ribbon__image"
+                            />
+                        </div>
+                        <div class="partners-ribbon__partner-logo">
+                            <img
+                                src="/src/assets/images/partners/logo-orbitz.png"
+                                alt="orbitz logo"
+                                class="partners-ribbon__image"
+                            />
+                        </div>
+                        <div
+                            class="ellipse ellipse--yellow"
+                            role="presentation"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div class="ellipse ellipse--orange"></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>
