@@ -1,0 +1,151 @@
+@use '../abstracts' as *;
+
+.header {
+    padding-block: px-to-rem(32);
+    position: sticky;
+    top: 0;
+    z-index: $z-layer-2;
+    backdrop-filter: blur(px-to-rem(10));
+
+    &__logo {
+        width: px-to-rem(40);
+        display: block;
+        aspect-ratio: 1/1;
+
+        @include respond-to('md') {
+            grid-column: 2;
+            justify-self: center;
+        }
+
+        @include respond-to('lg') {
+            grid-column: 1;
+            justify-self: start;
+        }
+    }
+
+    &__nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        reading-flow: grid-columns;
+        position: relative;
+
+        @include respond-to('md') {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include respond-to('lg') {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    &__buttons {
+        @include flex-center;
+        gap: px-to-rem(16);
+        flex-wrap: wrap;
+        @include respond-to('md') {
+            justify-content: end;
+        }
+        @include respond-to('lg') {
+        }
+    }
+
+    &__hamburger-icon {
+        font-size: px-to-rem(48);
+        color: $color-primary;
+        transition: all 0.3s ease;
+        justify-self: end;
+
+        @include respond-to('md') {
+            justify-self: start;
+            grid-column: 1;
+            grid-row: 1;
+            order: 1;
+        }
+
+        @include respond-to('lg') {
+            display: none;
+        }
+    }
+
+    &__menu {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(24);
+        position: absolute;
+        top: 102%;
+        right: 0;
+        scale: 0;
+        transform-origin: top right;
+        width: max-content;
+        background-color: $color-primary;
+        color: $color-background;
+        padding: px-to-rem(16);
+        border-radius: $border-radius-md;
+        transition: all 0.5s ease-in-out;
+
+        &--active {
+            scale: 1;
+        }
+
+        @include respond-to('md') {
+            position: static;
+            scale: 1;
+            background-color: transparent;
+            justify-self: end;
+            padding: px-to-rem(0);
+            display: contents;
+        }
+    }
+
+    &__links {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(24);
+
+        @include respond-to('md') {
+            position: absolute;
+            left: 0;
+            top: 102%;
+            scale: 0;
+            transform-origin: top left;
+            background-color: $color-primary;
+            padding: px-to-rem(16);
+            border-radius: $border-radius-md;
+            transition: all 0.5s ease-in-out;
+        }
+
+        @include respond-to('lg') {
+            position: static;
+            flex-direction: row;
+            background-color: transparent;
+            color: $color-gray;
+            grid-column: 2 / 5;
+            gap: px-to-rem(64);
+            scale: 1;
+            justify-self: start;
+        }
+
+        &--active {
+            scale: 1;
+        }
+    }
+
+    &__link {
+        font-size: $text-md;
+        font-weight: $weight-bold;
+        letter-spacing: $letter-sm;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $color-secondary;
+            @include respond-to('lg') {
+                color: $color-text;
+            }
+        }
+    }
+
+    &--no-transition {
+        transition: none;
+    }
+}
