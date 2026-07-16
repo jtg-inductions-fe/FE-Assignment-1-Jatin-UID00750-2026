@@ -2,8 +2,10 @@
 @use '../../abstracts' as *;
 
 .testimonials {
-    padding-block: px-to-rem(64);
-    position: relative;
+    &__wrapper {
+        padding-block: px-to-rem(64);
+        position: relative;
+    }
 
     &__header {
         @include flex-center;

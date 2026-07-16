@@ -39,6 +39,6 @@
 
         src:
             url('/src/assets/fonts/#{$filename}.woff2') format('woff2'),
-            url('/src/assets/fonts/#{$filename}.ttf') format('ttf');
+            url('/src/assets/fonts/#{$filename}.ttf') format('truetype');
     }
 }
