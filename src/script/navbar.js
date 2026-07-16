@@ -18,6 +18,24 @@ const handleKeyDownForTablet = (e) => {
     trapFocus(e, NAVBAR_LINKS_MENU, HAMBURGER_ICON);
 };
 
+// Explicitly close the menu and reset all states on viewport change
+const closeMenu = () => {
+    // Reset hamburger icon to default open state
+    HAMBURGER_ICON.classList.remove('icon-menu-close');
+    HAMBURGER_ICON.classList.add('icon-menu');
+
+    // Remove active layout classes
+    NAVBAR_LINKS_MENU.classList.remove('header__links--active');
+    NAVBAR_MENU.classList.remove('header__menu--active');
+
+    // Reset layout styles
+    NAVBAR.style.readingFlow = 'grid-columns';
+
+    // Remove global keyboard trap listeners
+    document.removeEventListener('keydown', handleKeyDownForTablet);
+    document.removeEventListener('keydown', handleKeyDownForMobile);
+};
+
 /**
  * Toggles visibility, keyboard accessibility, and focus trapping rules
  * depending on whether the user is on a mobile or tablet viewport.
@@ -70,6 +88,7 @@ document.addEventListener('keydown', (event) => {
             NAVBAR_LINKS_MENU.classList.contains('header__links--active'))
     ) {
         handleMenu();
+        HAMBURGER_ICON.focus();
     }
 });
 
@@ -81,6 +100,7 @@ const IS_TABLET = window.matchMedia(
 );
 
 const handleScreenChangeForMobile = (e) => {
+    closeMenu();
     if (e.matches) {
         NAVBAR_LINKS.forEach((link) => {
             link.setAttribute('tabindex', -1);
@@ -99,6 +119,7 @@ const handleScreenChangeForMobile = (e) => {
 };
 
 const handleScreenChangeForTablet = (e) => {
+    closeMenu();
     if (e.matches) {
         NAVBAR_LINKS.forEach((link) => {
             link.setAttribute('tabindex', -1);

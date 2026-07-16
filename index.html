@@ -23,7 +23,7 @@
         />
         <meta property="og:image" content="/assets/logo.png" />
         <meta property="og:image:alt" content="Travlog Logo" />
-        <meta property="og:image:type" content="image/svg+xml" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:site_name" content="Travlog" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Travlog" />
@@ -104,8 +104,8 @@
         </header>
         <main>
             <!-- Hero Section -->
-            <section>
-                <div class="container hero">
+            <section class="hero">
+                <div class="container hero__wrapper">
                     <div class="hero__text-content">
                         <div class="badge hero__badge-explore">
                             Explore the world!
@@ -189,9 +189,9 @@
                 </div>
             </section>
             <!-- Partners Section -->
-            <section>
+            <section class="partners-ribbon">
                 <div class="container">
-                    <div class="partners-ribbon">
+                    <div class="partners-ribbon__wrapper">
                         <div class="partners-ribbon__partner-logo">
                             <img
                                 src="/src/assets/images/partners/logo-tripadvisor.png"
@@ -235,8 +235,8 @@
                 </div>
             </section>
             <!-- Travel Point Section -->
-            <section>
-                <div class="container travel-point">
+            <section class="travel-point">
+                <div class="container travel-point__wrapper">
                     <div class="travel-point__media-content">
                         <div class="travel-point__traveller-image">
                             <img
@@ -271,44 +271,42 @@
                 </div>
             </section>
             <!-- Testimonials Section -->
-            <section>
-                <div class="">
-                    <div class="container testimonials">
-                        <div class="testimonials__header">
-                            <div class="title">TESTIMONIALS</div>
-                            <h3 class="heading-2 testimonials__headline">
-                                Trust our clients
-                            </h3>
+            <section class="testimonials">
+                <div class="container testimonials__wrapper">
+                    <div class="testimonials__header">
+                        <div class="title">TESTIMONIALS</div>
+                        <h3 class="heading-2 testimonials__headline">
+                            Trust our clients
+                        </h3>
+                    </div>
+
+                    <div
+                        class="splide testimonials__carousel-container"
+                        aria-label="Testimonials Carousel"
+                    >
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <!-- Testimonials card slides -->
+                            </ul>
                         </div>
 
                         <div
-                            class="splide testimonials__carousel-container"
-                            aria-label="Testimonials Carousel"
+                            class="splide__arrows testimonials__navigation-buttons"
                         >
-                            <div class="splide__track">
-                                <ul class="splide__list">
-                                    <!-- Testimonials card slides -->
-                                </ul>
-                            </div>
-
-                            <div
-                                class="splide__arrows testimonials__navigation-buttons"
-                            >
-                                <button
-                                    class="splide__arrow splide__arrow--prev icon icon-arrow-left testimonials__navigation-button"
-                                ></button>
-                                <button
-                                    class="splide__arrow splide__arrow--next icon icon-arrow-right testimonials__navigation-button"
-                                ></button>
-                            </div>
+                            <button
+                                class="splide__arrow splide__arrow--prev icon icon-arrow-left testimonials__navigation-button"
+                            ></button>
+                            <button
+                                class="splide__arrow splide__arrow--next icon icon-arrow-right testimonials__navigation-button"
+                            ></button>
                         </div>
+                    </div>
 
-                        <div class="testimonials__abstract-bg">
-                            <img
-                                src="/src/assets/images/testimonials/abstract-purple-pink-shape.svg"
-                                alt="abstract background image"
-                            />
-                        </div>
+                    <div class="testimonials__abstract-bg">
+                        <img
+                            src="/src/assets/images/testimonials/abstract-purple-pink-shape.svg"
+                            alt="abstract background image"
+                        />
                     </div>
                 </div>
             </section>
