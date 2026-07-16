@@ -6,39 +6,67 @@ const TESTIMONIALS_DATA = data.data;
 
 /* Select testimonials list */
 
-const TESTIMONIALS_LIST = document.querySelector('.splide__list');
+const testimonialsList = document.querySelector('.splide__list');
 
 /* Append testimonial for each testimonials data */
 
 TESTIMONIALS_DATA.forEach((testimonial) => {
-    const ratingStars = Array.from(
-        { length: testimonial.rating },
-        () => `
-    <span class="icon icon-star testimonials__rating-star"></span>
-`,
-    ).join('');
+    // Create the main list item container
     const NEW_TESTIMONIAL = document.createElement('li');
     NEW_TESTIMONIAL.className = 'splide__slide testimonials__card';
-    NEW_TESTIMONIAL.innerHTML = `<div class="testimonials__avatar"> <img
-                                                src="${testimonial.avatar}"
-                                                alt="${testimonial.alt}"
-                                            />
-                                        </div>
-                                        <div
-                                            class="testimonials__info-rating-layout"
-                                        >
-                                            <div class="testimonials__info">
-                                                <h4 class="testimonials__name heading-4"
-                                                >
-                                                    ${testimonial.name}
-                                                </h4> <h5 class="testimonials__role heading-5"
-                                                >
-                                                    / ${testimonial.role}
-                                                </h5> </div> <div class="testimonials__rating">
-                                                ${ratingStars}
-                                            </div> </div> <div class="testimonials__text para-3">${testimonial.testimonial}</div>`;
 
-    TESTIMONIALS_LIST.appendChild(NEW_TESTIMONIAL);
+    // Create Avatar section
+    const avatarDiv = document.createElement('div');
+    avatarDiv.className = 'testimonials__avatar';
+
+    const avatarImg = document.createElement('img');
+    avatarImg.src = testimonial.avatar;
+    avatarImg.alt = testimonial.alt;
+
+    avatarDiv.append(avatarImg);
+
+    // Create Info & Rating Layout section
+    const layoutDiv = document.createElement('div');
+    layoutDiv.className = 'testimonials__info-rating-layout';
+
+    // Create Name and Role block
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'testimonials__info';
+
+    const nameH4 = document.createElement('h4');
+    nameH4.className = 'testimonials__name heading-4';
+    nameH4.textContent = testimonial.name;
+
+    const roleH5 = document.createElement('h5');
+    roleH5.className = 'testimonials__role heading-5';
+    roleH5.textContent = `/ ${testimonial.role}`;
+
+    infoDiv.append(nameH4, roleH5);
+
+    // Create Rating Stars block
+    const ratingDiv = document.createElement('div');
+    ratingDiv.className = 'testimonials__rating';
+
+    // Generate stars using a loop and append them directly
+    for (let i = 0; i < testimonial.rating; i++) {
+        const starSpan = document.createElement('span');
+        starSpan.className = 'icon icon-star testimonials__rating-star';
+        ratingDiv.append(starSpan);
+    }
+
+    // Assemble the layout section
+    layoutDiv.append(infoDiv, ratingDiv);
+
+    // Create Testimonial Text section
+    const textDiv = document.createElement('div');
+    textDiv.className = 'testimonials__text para-3';
+    textDiv.textContent = testimonial.testimonial;
+
+    // Append all main sections to the list item
+    NEW_TESTIMONIAL.append(avatarDiv, layoutDiv, textDiv);
+
+    // Append the complete list item to the main list container
+    testimonialsList.appendChild(NEW_TESTIMONIAL);
 });
 
 /* Apply testimonials carousel slider */

@@ -1,15 +1,17 @@
 @use '../../abstracts' as *;
 
 .hero {
-    @include flex-center;
-    flex-direction: column-reverse;
-    gap: px-to-rem(64);
-    margin-top: px-to-rem(54);
+    &__wrapper {
+        @include flex-center;
+        flex-direction: column-reverse;
+        gap: px-to-rem(64);
+        margin-top: px-to-rem(54);
 
-    @include respond-to('lg') {
-        flex-direction: row;
-        margin-top: px-to-rem(62);
-        justify-content: space-between;
+        @include respond-to('lg') {
+            flex-direction: row;
+            margin-top: px-to-rem(62);
+            justify-content: space-between;
+        }
     }
 
     &__badge-explore {
