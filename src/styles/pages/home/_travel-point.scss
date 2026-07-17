@@ -45,7 +45,9 @@
 
     &__subheadline {
         color: $color-text-muted;
-        padding-block: px-to-rem(16);
+        padding-top: px-to-rem(16);
+        max-width: px-to-rem(530);
+        @include line-clamp(2);
     }
 
     &__text-content {

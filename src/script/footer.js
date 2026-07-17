@@ -1,9 +1,16 @@
-const ACCORDIAN = document.querySelectorAll('.footer__accordian');
+const accordian = document.querySelectorAll('.footer__accordian');
 
-const LARGE_SCREEN = window.matchMedia('(min-width: 1024px)');
+const IS_TABLET_OR_LARGER = window.matchMedia('(min-width: 1024px)');
 
-function handleLargeScreenChange(e) {
-    ACCORDIAN.forEach((accordion) => {
+/**
+ * Toggles accordion open states and grouping attributes based on tablet and desktop screen matching.
+ *
+ * @param {MediaQueryListEvent} e - The media query list change event object.
+ * @returns {void}
+ */
+
+const handleLargeScreenChange = (e) => {
+    accordian.forEach((accordion) => {
         if (e.matches) {
             // Add the open attribute on desktop screens
             accordion.setAttribute('open', '');
@@ -14,10 +21,10 @@ function handleLargeScreenChange(e) {
             accordion.setAttribute('name', 'footer-links');
         }
     });
-}
+};
 
 // Register the listener to detect screen size changes
-LARGE_SCREEN.addEventListener('change', handleLargeScreenChange);
+IS_TABLET_OR_LARGER.addEventListener('change', handleLargeScreenChange);
 
 // Run the function once on initial page load
-handleLargeScreenChange(LARGE_SCREEN);
+handleLargeScreenChange(IS_TABLET_OR_LARGER);
