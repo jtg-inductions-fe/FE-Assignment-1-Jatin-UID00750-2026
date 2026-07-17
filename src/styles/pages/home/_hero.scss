@@ -90,6 +90,7 @@
     &__sub-headline {
         color: $color-text-muted;
         max-width: px-to-rem(400);
+        @include line-clamp(2);
     }
 
     &__cta {
@@ -174,6 +175,10 @@
         height: 100%;
         object-fit: cover;
         border-radius: $border-radius-lg;
+
+        @include respond-to('md') {
+            border-radius: $border-radius-xl;
+        }
     }
 
     &__triangle-pattern {

@@ -69,6 +69,7 @@
         text-align: center;
         color: $color-gray;
         max-width: px-to-rem(750);
+        @include line-clamp(2);
     }
 
     &__navigation-dots {

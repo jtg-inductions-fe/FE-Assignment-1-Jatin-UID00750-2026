@@ -12,8 +12,8 @@ const testimonialsList = document.querySelector('.splide__list');
 
 TESTIMONIALS_DATA.forEach((testimonial) => {
     // Create the main list item container
-    const NEW_TESTIMONIAL = document.createElement('li');
-    NEW_TESTIMONIAL.className = 'splide__slide testimonials__card';
+    const newTestimonial = document.createElement('li');
+    newTestimonial.className = 'splide__slide testimonials__card';
 
     // Create Avatar section
     const avatarDiv = document.createElement('div');
@@ -63,14 +63,13 @@ TESTIMONIALS_DATA.forEach((testimonial) => {
     textDiv.textContent = testimonial.testimonial;
 
     // Append all main sections to the list item
-    NEW_TESTIMONIAL.append(avatarDiv, layoutDiv, textDiv);
+    newTestimonial.append(avatarDiv, layoutDiv, textDiv);
 
     // Append the complete list item to the main list container
-    testimonialsList.appendChild(NEW_TESTIMONIAL);
+    testimonialsList.appendChild(newTestimonial);
 });
 
 /* Apply testimonials carousel slider */
-
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialsSplide = new Splide('.testimonials__carousel-container', {
         type: 'loop',
