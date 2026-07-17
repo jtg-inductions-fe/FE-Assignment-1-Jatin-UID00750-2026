@@ -25,6 +25,7 @@
 
     &__text {
         color: $color-gray;
+        @include line-clamp(3);
     }
 
     &__logo-horizontal {
