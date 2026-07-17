@@ -123,7 +123,7 @@ export const handlePromotions = async () => {
  * @returns {void}
  */
 
-function initializeWheel(apiData) {
+const initializeWheel = (apiData) => {
     // Filter and Shuffle original API array
     const shuffled = [...apiData]
         .filter(
@@ -163,7 +163,7 @@ function initializeWheel(apiData) {
     arcSize = (2 * Math.PI) / wheelSectors.length;
     drawWheel();
     return true;
-}
+};
 
 /**
  * Draws the spinning wheel and its animated text sectors on the canvas.
@@ -173,7 +173,7 @@ function initializeWheel(apiData) {
  * @returns {void}
  */
 
-function drawWheel() {
+const drawWheel = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.beginPath();
@@ -214,7 +214,7 @@ function drawWheel() {
 
         ctx.restore();
     });
-}
+};
 
 /**
  * Draws a placeholder loading screen on the canvas.
@@ -224,7 +224,7 @@ function drawWheel() {
  * @returns {void}
  */
 
-function drawLoading() {
+const drawLoading = () => {
     // Clear the canvas completely
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -246,7 +246,7 @@ function drawLoading() {
     ctx.fillStyle = '#000000';
     ctx.font = 'bold 32px roboto';
     ctx.fillText('Loading...', centerX, centerY);
-}
+};
 
 /**
  * Draws the "No more spins left" message on the canvas.
@@ -256,7 +256,7 @@ function drawLoading() {
  * @returns {void}
  */
 
-function drawNoSpins() {
+const drawNoSpins = () => {
     // Clear the canvas completely
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -278,7 +278,7 @@ function drawNoSpins() {
     ctx.fillStyle = '#DC2626';
     ctx.font = 'bold 32px roboto';
     ctx.fillText('No more spins left.', centerX, centerY);
-}
+};
 
 /**
  * Updates the wheel rotation physics and handles the animation frame loop.
@@ -288,7 +288,7 @@ function drawNoSpins() {
  * @returns {void}
  */
 
-function updateAnimation() {
+const updateAnimation = () => {
     if (!isSpinning) return;
 
     velocity *= friction;
@@ -304,7 +304,7 @@ function updateAnimation() {
 
     drawWheel();
     requestAnimationFrame(updateAnimation);
-}
+};
 
 /**
  * Initiates the wheel spin sequence if the wheel is not already active.
@@ -314,14 +314,14 @@ function updateAnimation() {
  * @returns {void}
  */
 
-function spin() {
+const spin = () => {
     if (isSpinning) return;
     winningCouponContainer.textContent = '';
     spinBtn.disabled = true;
     velocity = Math.random() * 0.4 + 0.3;
     isSpinning = true;
     updateAnimation();
-}
+};
 
 /**
  * Creates and appends a coupon card element to the DOM.
@@ -330,7 +330,7 @@ function spin() {
  * @returns {HTMLDivElement} The generated outer coupon card element.
  */
 
-function createCouponCard(couponData, couponContainer) {
+const createCouponCard = (couponData, couponContainer) => {
     const expiryDate = new Date(couponData.validTill); // Expects ISO string (like "2026-07-20T12:00:00Z")
     const currentDate = new Date();
 
@@ -399,7 +399,7 @@ function createCouponCard(couponData, couponContainer) {
     couponContainer.appendChild(couponCard);
 
     return couponCard;
-}
+};
 
 /**
  * Persists the array of unlocked coupons to browser local storage.
@@ -421,7 +421,7 @@ const saveUnlockedCoupons = (coupons) => {
  * @returns {void}
  */
 
-function calculateWinner() {
+const calculateWinner = () => {
     let normalizedAngle = (1.5 * Math.PI - currentAngle) % (2 * Math.PI);
     if (normalizedAngle < 0) normalizedAngle += 2 * Math.PI;
 
@@ -452,28 +452,13 @@ function calculateWinner() {
 
     createCouponCard(processedPromo, winningCouponContainer);
     couponsCounter.textContent = unlockedCouponsData.length;
-}
-
-/**
- * Event listener for the spin button click event.
- * Initializes the wheel with the latest promotions and triggers the spin sequence.
- *
- * @listens Theater/UI~click
- */
+};
 
 spinBtn.addEventListener('click', () => {
     if (initializeWheel(promotions)) {
         spin();
     }
 });
-
-/**
- * Event listener for the 'View All' button click event.
- * Switches to the secondary panel, clears previous lists, and renders unlocked
- * coupons sorted by validity status (active first, soonest to expire first).
- *
- * @listens Theater/UI~click
- */
 
 viewAllBtn.addEventListener('click', () => {
     panel1.classList.remove('modal__panel--active');
@@ -502,25 +487,11 @@ viewAllBtn.addEventListener('click', () => {
         });
 });
 
-/**
- * Event listener for the back button click event.
- * Returns the user to the primary wheel panel and updates the counter display.
- *
- * @listens Theater/UI~click
- */
-
 goBackBtn.addEventListener('click', () => {
     panel2.classList.remove('modal__panel--active');
     panel1.classList.add('modal__panel--active');
     couponsCounter.textContent = unlockedCouponsData.length;
 });
-
-/**
- * Event listener for the modal close button click event.
- * Closes the modal component and resets panels back to their initial state.
- *
- * @listens Theater/UI~click
- */
 
 modalCloseBtn.addEventListener('click', () => {
     modal.close();
