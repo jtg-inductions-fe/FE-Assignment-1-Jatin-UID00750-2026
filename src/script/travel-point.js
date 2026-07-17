@@ -4,14 +4,14 @@ const STATS_CARDS_DATA = data.data;
 
 /* Select card-layout container */
 
-const CARD_LAYOUT = document.querySelector('.travel-point__card-layout');
+const cardLayout = document.querySelector('.travel-point__card-layout');
 
 /* Append card for each stats card data */
 
 STATS_CARDS_DATA.forEach((card) => {
     // Create the main card container
-    const NEW_CARD = document.createElement('div');
-    NEW_CARD.className = 'card card--primary';
+    const newCard = document.createElement('div');
+    newCard.className = 'card card--primary';
 
     // Create the value heading element
     const valueH4 = document.createElement('h4');
@@ -24,8 +24,8 @@ STATS_CARDS_DATA.forEach((card) => {
     nameDiv.textContent = card.name;
 
     // Append both children directly into the new card element
-    NEW_CARD.append(valueH4, nameDiv);
+    newCard.append(valueH4, nameDiv);
 
     // Append the completed card into parent container layout
-    CARD_LAYOUT.appendChild(NEW_CARD);
+    cardLayout.appendChild(newCard);
 });

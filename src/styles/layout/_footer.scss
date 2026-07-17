@@ -115,10 +115,7 @@
     &__link {
         color: $color-gray;
         transition: color 0.3s ease;
-
-        @include respond-to('md') {
-            margin-left: px-to-rem(4);
-        }
+        margin-left: px-to-rem(4);
 
         &:hover {
             color: $color-text;

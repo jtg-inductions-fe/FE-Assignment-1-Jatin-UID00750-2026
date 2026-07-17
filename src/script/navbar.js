@@ -1,160 +1,221 @@
 import { trapFocus } from './utils';
 import { handlePromotions } from './modal';
 
-const NAVBAR = document.querySelector('.header__nav');
-const NAVBAR_MENU = document.querySelector('.header__menu');
-const NAVBAR_LINKS_MENU = document.querySelector('.header__links');
-const NAVBAR_LINKS = document.querySelectorAll('.header__link');
-const NAVBAR_BUTTONS = document.querySelectorAll('.header__button');
-const HAMBURGER_ICON = document.querySelector('.header__hamburger-icon');
-const SPECIAL_DEALS_BTN = document.querySelector('#special-deals-btn');
-const MODAL = document.querySelector('.modal');
+const navbar = document.querySelector('.header__nav');
+const navbarMenu = document.querySelector('.header__menu');
+const navbarLinksMenu = document.querySelector('.header__links');
+const navbarLinks = document.querySelectorAll('.header__link');
+const navbarButtons = document.querySelectorAll('.header__button');
+const headerBackdrop = document.querySelector('#header-backdrop');
+const hamburgerIcon = document.querySelector('.header__hamburger-icon');
+const specialDealsButton = document.querySelector('#special-deals-btn');
+const modal = document.querySelector('.modal');
 
-// Device-specific handlers for handling keyboard focus traps
+/**
+ * Traps keyboard focus within the mobile navigation menu structure.
+ *
+ * @param {KeyboardEvent} e - The native keyboard event object.
+ * @returns {void}
+ */
 
 const handleKeyDownForMobile = (e) => {
-    trapFocus(e, NAVBAR_MENU, HAMBURGER_ICON);
+    trapFocus(e, navbarMenu, hamburgerIcon);
 };
+
+/**
+ * Traps keyboard focus within the tablet navigation links structure.
+ *
+ * @param {KeyboardEvent} e - The native keyboard event object.
+ * @returns {void}
+ */
 
 const handleKeyDownForTablet = (e) => {
-    trapFocus(e, NAVBAR_LINKS_MENU, HAMBURGER_ICON);
+    trapFocus(e, navbarLinksMenu, hamburgerIcon);
 };
 
-// Explicitly close the menu and reset all states on viewport change
+/**
+ * Closes the navigation menu and resets layout and keyboard states.
+ *
+ * @returns {void}
+ */
+
 const closeMenu = () => {
     // Reset hamburger icon to default open state
-    HAMBURGER_ICON.classList.remove('icon-menu-close');
-    HAMBURGER_ICON.classList.add('icon-menu');
+    hamburgerIcon.classList.remove('icon-menu-close');
+    hamburgerIcon.classList.add('icon-menu');
 
-    // Remove active layout classes
-    NAVBAR_LINKS_MENU.classList.remove('header__links--active');
-    NAVBAR_MENU.classList.remove('header__menu--active');
-
-    // Reset layout styles
-    NAVBAR.style.readingFlow = 'grid-columns';
+    // Remove active layout classes and backdrop
+    navbarLinksMenu.classList.remove('header__links--active');
+    navbarMenu.classList.remove('header__menu--active');
+    document.body.style.overflowY = 'auto';
+    headerBackdrop.classList.remove('header__backdrop');
 
     // Remove global keyboard trap listeners
     document.removeEventListener('keydown', handleKeyDownForTablet);
     document.removeEventListener('keydown', handleKeyDownForMobile);
 };
 
+document.addEventListener('click', (event) => {
+    const isClickInside = navbar.contains(event.target);
+
+    if (!isClickInside) {
+        closeMenu();
+    }
+});
+
+navbarLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+        closeMenu();
+    });
+});
+
+navbarButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        closeMenu();
+    });
+});
+
 /**
- * Toggles visibility, keyboard accessibility, and focus trapping rules
- * depending on whether the user is on a mobile or tablet viewport.
+ * Toggles the navigation menu state, updating accessibility attributes and focus traps based on screen width.
+ *
+ * @returns {void}
  */
+
 const handleMenu = () => {
-    HAMBURGER_ICON.classList.toggle('icon-menu-close');
-    HAMBURGER_ICON.classList.toggle('icon-menu');
-    if (window.innerWidth > 1024) {
-        if (!NAVBAR_LINKS_MENU.classList.toggle('header__links--active')) {
-            NAVBAR.style.readingFlow = 'grid-columns';
-            NAVBAR_LINKS.forEach((link) => {
+    hamburgerIcon.classList.toggle('icon-menu-close');
+    hamburgerIcon.classList.toggle('icon-menu');
+    headerBackdrop.classList.toggle('header__backdrop');
+
+    if (window.innerWidth >= 1024) {
+        if (!navbarLinksMenu.classList.toggle('header__links--active')) {
+            document.body.style.overflowY = 'auto';
+            navbar.style.readingFlow = 'grid-columns';
+            navbarLinks.forEach((link) => {
                 link.setAttribute('tabindex', -1);
             });
             document.removeEventListener('keydown', handleKeyDownForTablet);
         } else {
-            NAVBAR.style.readingFlow = 'normal';
-            NAVBAR_LINKS.forEach((link) => {
+            navbar.style.readingFlow = 'normal';
+            document.body.style.overflowY = 'hidden';
+            navbarLinks.forEach((link) => {
                 link.setAttribute('tabindex', 0);
             });
             document.addEventListener('keydown', handleKeyDownForTablet);
         }
     } else {
-        if (!NAVBAR_MENU.classList.toggle('header__menu--active')) {
-            NAVBAR_LINKS.forEach((link) => {
+        if (!navbarMenu.classList.toggle('header__menu--active')) {
+            document.body.style.overflowY = 'auto';
+            navbarLinks.forEach((link) => {
                 link.setAttribute('tabindex', -1);
             });
-            NAVBAR_BUTTONS.forEach((btn) => {
+            navbarButtons.forEach((btn) => {
                 btn.setAttribute('tabindex', -1);
             });
             document.removeEventListener('keydown', handleKeyDownForMobile);
         } else {
-            NAVBAR_LINKS.forEach((link) => {
+            document.body.style.overflowY = 'hidden';
+            navbarLinks.forEach((link) => {
                 link.setAttribute('tabindex', 0);
             });
-            NAVBAR_BUTTONS.forEach((btn) => {
+            navbarButtons.forEach((btn) => {
                 btn.setAttribute('tabindex', 0);
             });
             document.addEventListener('keydown', handleKeyDownForMobile);
         }
     }
+    event.stopPropagation();
 };
 
-HAMBURGER_ICON.addEventListener('click', handleMenu);
+hamburgerIcon.addEventListener('click', handleMenu);
 
 /* close the menu if esc key is pressed */
 document.addEventListener('keydown', (event) => {
     if (
         event.key === 'Escape' &&
-        (NAVBAR_MENU.classList.contains('header__menu--active') ||
-            NAVBAR_LINKS_MENU.classList.contains('header__links--active'))
+        (navbarMenu.classList.contains('header__menu--active') ||
+            navbarLinksMenu.classList.contains('header__links--active'))
     ) {
         handleMenu();
-        HAMBURGER_ICON.focus();
+        hamburgerIcon.focus();
     }
 });
 
 /* open spinning wheel modal */
 
-SPECIAL_DEALS_BTN.addEventListener('click', (e) => {
+specialDealsButton.addEventListener('click', (e) => {
     e.preventDefault();
-    MODAL.showModal();
+    modal.showModal();
     handlePromotions();
 });
 
-/* constants for mobile and tablet screens */
-
-const IS_MOBILE = window.matchMedia('(max-width: 1023px)');
-const IS_TABLET = window.matchMedia(
-    '(min-width: 1024px) and (max-width: 1440px)',
-);
-
-const handleScreenChangeForMobile = (e) => {
-    closeMenu();
-    if (e.matches) {
-        NAVBAR_LINKS.forEach((link) => {
-            link.setAttribute('tabindex', -1);
-        });
-        NAVBAR_BUTTONS.forEach((btn) => {
-            btn.setAttribute('tabindex', -1);
-        });
-    } else {
-        NAVBAR_LINKS.forEach((link) => {
-            link.setAttribute('tabindex', 0);
-        });
-        NAVBAR_BUTTONS.forEach((btn) => {
-            btn.setAttribute('tabindex', 0);
-        });
-    }
+// CSS-matching breakpoints
+const queries = {
+    mobile: window.matchMedia('(max-width: 1023px)'),
+    tablet: window.matchMedia('(min-width: 1024px) and (max-width: 1439px)'),
+    desktop: window.matchMedia('(min-width: 1440px)'),
 };
 
-const handleScreenChangeForTablet = (e) => {
+/**
+ * Automatically resets the navigation menu and updates element focusability when the screen size changes.
+ *
+ * @returns {void}
+ */
+
+const handleScreenChange = () => {
     closeMenu();
-    if (e.matches) {
-        NAVBAR_LINKS.forEach((link) => {
-            link.setAttribute('tabindex', -1);
-        });
-    } else {
-        if (!IS_MOBILE.matches) {
-            NAVBAR_LINKS.forEach((link) => {
+    // Determine current device type dynamically
+    const currentDevice = Object.keys(queries).find(
+        (key) => queries[key].matches,
+    );
+
+    // Execute specific logic based on the device type
+    const deviceActions = {
+        mobile: () => {
+            navbarLinks.forEach((link) => {
+                link.setAttribute('tabindex', -1);
+            });
+            navbarButtons.forEach((btn) => {
+                btn.setAttribute('tabindex', -1);
+            });
+        },
+        tablet: () => {
+            navbarLinks.forEach((link) => {
+                link.setAttribute('tabindex', -1);
+            });
+            navbarButtons.forEach((btn) => {
+                btn.setAttribute('tabindex', 0);
+            });
+        },
+        desktop: () => {
+            navbarLinks.forEach((link) => {
                 link.setAttribute('tabindex', 0);
             });
-        }
+            navbarButtons.forEach((btn) => {
+                btn.setAttribute('tabindex', 0);
+            });
+        },
+    };
+
+    // Run the device specific action safely
+    if (deviceActions[currentDevice]) {
+        deviceActions[currentDevice]();
     }
 };
 
-IS_MOBILE.addEventListener('change', handleScreenChangeForMobile);
-IS_TABLET.addEventListener('change', handleScreenChangeForTablet);
+// Bind the function with media query change events
+Object.values(queries).forEach((mediaQuery) => {
+    mediaQuery.addEventListener('change', handleScreenChange);
+});
 
-handleScreenChangeForMobile(IS_MOBILE);
-handleScreenChangeForTablet(IS_TABLET);
+// Run once immediately to handle the screen state on initial page load
+handleScreenChange();
 
 let animationFrameId = null;
 
 const resizeObserver = new ResizeObserver(() => {
     /* Immediately disable transitions on resize detection */
-    NAVBAR_MENU.classList.add('header--no-transition');
-    NAVBAR_LINKS_MENU.classList.add('header--no-transition');
+    navbarMenu.classList.add('header--no-transition');
+    navbarLinksMenu.classList.add('header--no-transition');
 
     /* Cancel any pending frame requests */
     if (animationFrameId) {
@@ -164,12 +225,12 @@ const resizeObserver = new ResizeObserver(() => {
     /* Schedule the removal for the next idle render frame */
     animationFrameId = requestAnimationFrame(() => {
         animationFrameId = requestAnimationFrame(() => {
-            NAVBAR_MENU.classList.remove('header--no-transition');
-            NAVBAR_LINKS_MENU.classList.remove('header--no-transition');
+            navbarMenu.classList.remove('header--no-transition');
+            navbarLinksMenu.classList.remove('header--no-transition');
         });
     });
 });
 
 /* Start observing the navbar-menu */
-resizeObserver.observe(NAVBAR_MENU);
-resizeObserver.observe(NAVBAR_LINKS_MENU);
+resizeObserver.observe(navbarMenu);
+resizeObserver.observe(navbarLinksMenu);
