@@ -1,6 +1,6 @@
 const accordian = document.querySelectorAll('.footer__accordian');
 
-const IS_TABLET_OR_LARGER = window.matchMedia('(min-width: 1024px)');
+const isTabletOrLarger = window.matchMedia('(min-width: 1024px)');
 
 /**
  * Toggles accordion open states and grouping attributes based on tablet and desktop screen matching.
@@ -24,7 +24,7 @@ const handleLargeScreenChange = (e) => {
 };
 
 // Register the listener to detect screen size changes
-IS_TABLET_OR_LARGER.addEventListener('change', handleLargeScreenChange);
+isTabletOrLarger.addEventListener('change', handleLargeScreenChange);
 
 // Run the function once on initial page load
-handleLargeScreenChange(IS_TABLET_OR_LARGER);
+handleLargeScreenChange(isTabletOrLarger);
