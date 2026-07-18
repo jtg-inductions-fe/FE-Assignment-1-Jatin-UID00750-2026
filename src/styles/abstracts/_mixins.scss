@@ -39,6 +39,25 @@
 
         src:
             url('/src/assets/fonts/#{$filename}.woff2') format('woff2'),
-            url('/src/assets/fonts/#{$filename}.ttf') format('ttf');
+            url('/src/assets/fonts/#{$filename}.ttf') format('truetype');
+    }
+}
+
+/*
+* Truncates text after a specified number of lines and appends an ellipsis (...)
+* @param {Number} $lines [1] - The maximum number of text lines to display before truncation
+*/
+
+@mixin line-clamp($lines: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @if $lines == 1 {
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        line-clamp: $lines;
     }
 }

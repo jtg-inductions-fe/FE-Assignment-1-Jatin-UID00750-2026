@@ -43,10 +43,12 @@
         @include flex-center;
         gap: px-to-rem(16);
         flex-wrap: wrap;
+        text-wrap: nowrap;
         @include respond-to('md') {
             justify-content: end;
         }
         @include respond-to('lg') {
+            flex-wrap: nowrap;
         }
     }
 
@@ -60,7 +62,6 @@
             justify-self: start;
             grid-column: 1;
             grid-row: 1;
-            order: 1;
         }
 
         @include respond-to('lg') {
@@ -147,5 +148,15 @@
 
     &--no-transition {
         transition: none;
+    }
+
+    &__backdrop {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: $z-layer-1;
+        backdrop-filter: blur(px-to-rem(10));
     }
 }

@@ -1,15 +1,17 @@
 @use '../../abstracts' as *;
 
 .hero {
-    @include flex-center;
-    flex-direction: column-reverse;
-    gap: px-to-rem(64);
-    margin-top: px-to-rem(54);
+    &__wrapper {
+        @include flex-center;
+        flex-direction: column-reverse;
+        gap: px-to-rem(64);
+        margin-top: px-to-rem(54);
 
-    @include respond-to('lg') {
-        flex-direction: row;
-        margin-top: px-to-rem(62);
-        justify-content: space-between;
+        @include respond-to('lg') {
+            flex-direction: row;
+            margin-top: px-to-rem(62);
+            justify-content: space-between;
+        }
     }
 
     &__badge-explore {
@@ -88,6 +90,7 @@
     &__sub-headline {
         color: $color-text-muted;
         max-width: px-to-rem(400);
+        @include line-clamp(2);
     }
 
     &__cta {
@@ -172,6 +175,10 @@
         height: 100%;
         object-fit: cover;
         border-radius: $border-radius-lg;
+
+        @include respond-to('md') {
+            border-radius: $border-radius-xl;
+        }
     }
 
     &__triangle-pattern {
