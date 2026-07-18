@@ -491,12 +491,18 @@
         <!-- Special Deals Modal -->
 
         <dialog class="modal">
-            <button class="icon icon-cross modal__close-btn"></button>
+            <button
+                class="icon icon-cross modal__close-btn"
+                aria-label="Close modal"
+            ></button>
             <!-- Panel for Spinning Wheel -->
             <div id="panel-1" class="modal__panel modal__panel--active">
                 <div class="modal__header">
-                    <h4 class="modal__label title-sm">
-                        <span class="icon icon-gift modal__label-icon"></span>
+                    <h4 class="modal__label title title--sm">
+                        <span
+                            class="icon icon-gift modal__label-icon"
+                            aria-hidden="true"
+                        ></span>
                         <span>Special Deal</span>
                     </h4>
                     <h3 class="modal__title">Spin & Win!</h3>
@@ -512,6 +518,7 @@
                             class="wheel__canvas"
                             width="500"
                             height="500"
+                            aria-label="Prize wheel with multiple reward segments"
                         ></canvas>
                         <button id="spinBtn" class="wheel__spin-button">
                             Spin
@@ -532,8 +539,11 @@
             <!-- Panel for unlocked deals -->
             <div id="panel-2" class="modal__panel">
                 <div class="modal__header">
-                    <h4 class="modal__label title-sm">
-                        <span class="icon icon-gift modal__label-icon"></span>
+                    <h4 class="modal__label title title--sm">
+                        <span
+                            class="icon icon-gift modal__label-icon"
+                            aria-hidden="true"
+                        ></span>
                         <span>Special Deal</span>
                     </h4>
                     <h3 class="modal__title">Unlocked Deals</h3>

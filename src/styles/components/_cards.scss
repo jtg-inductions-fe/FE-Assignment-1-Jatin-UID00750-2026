@@ -37,6 +37,11 @@
         padding: px-to-rem(4 10);
         align-self: flex-start;
         text-wrap: nowrap;
+        font-family: $font-mono;
+        font-weight: $weight-bold;
+        font-size: $text-xs;
+        line-height: $line-height-xs;
+        letter-spacing: $letter-sm;
     }
 
     &__copy-btn {

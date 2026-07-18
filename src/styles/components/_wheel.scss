@@ -17,7 +17,7 @@
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
         border-top: 16px solid $color-salmon;
-        z-index: 10;
+        z-index: $z-layer-1;
     }
 
     &__canvas {

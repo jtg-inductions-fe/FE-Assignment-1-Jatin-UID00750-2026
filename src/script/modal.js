@@ -13,23 +13,40 @@ const modalCloseBtn = document.querySelector('.modal__close-btn');
 const panelDescription = document.querySelector('#panel1-description');
 
 // Setup Canvas Configuration
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
-const radius = 230;
+const CENTER_X = canvas.width / 2;
+const CENTER_Y = canvas.height / 2;
+const RADIUS = 230;
 let arcSize = 0;
 
 let currentAngle = -Math.PI / 2;
 let velocity = 0;
 let isSpinning = false;
-const friction = 0.985;
+const FRICTION = 0.985;
+const VELOCITY_THRESHOLD = 0.001;
+const BASE_SPIN_VELOCITY = 0.3;
+const RANDOM_VELOCITY_RANGE = 0.4;
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
+const DEFAULT_VALID_DAYS = 7;
+const SHUFFLE_PIVOT = 0.5;
+const TEXT_PLACEMENT_RATIO = 0.55;
+const LINE_HEIGHT = 26;
+const SECTOR_COUNT = 4;
 
 // Visual configurations mapped to wheel slots
-const designTemplate = [
+const DESIGN_TEMPLATE = [
     { color: '#7B3AF2', textColor: '#FFFFFF' },
     { color: '#FBBF24', textColor: '#000000' },
     { color: '#06B6D4', textColor: '#FFFFFF' },
     { color: '#F43F5E', textColor: '#FFFFFF' },
 ];
+
+const WHEEL_THEME = {
+    base: '#FFFFFF',
+    placeholderBgOuter: '#E5E7EB',
+    placeholderBgInner: '#DCDCDC',
+    textSystem: '#000000',
+    textError: '#DC2626',
+};
 
 const PROMOTIONS_API =
     'https://gist.githubusercontent.com/ameer-wajid-ali/1f29ebee4295cede36f8d74b45e576df/raw/122966c9a123861249f173911d8d93a76dc06d7a/';
@@ -59,7 +76,7 @@ const getBasePromotions = async () => {
         return rawData;
     } catch (err) {
         panelDescription.style.color = 'red';
-        panelDescription.style.color = 'red';
+
         if (err instanceof Error) {
             panelDescription.textContent = `Error: ${err.message}`;
         } else {
@@ -132,9 +149,9 @@ const initializeWheel = (apiData) => {
                     (coupon) => coupon.promoCode === data.promoCode,
                 ),
         )
-        .sort(() => 0.5 - Math.random());
+        .sort(() => SHUFFLE_PIVOT - Math.random());
 
-    if (shuffled.length < 4) {
+    if (shuffled.length < SECTOR_COUNT) {
         spinBtn.style.display = 'none';
         spinBtn.disabled = true;
         drawNoSpins();
@@ -142,7 +159,7 @@ const initializeWheel = (apiData) => {
     }
 
     // Pick the top 4 items
-    const selectedItems = shuffled.slice(0, 4);
+    const selectedItems = shuffled.slice(0, SECTOR_COUNT);
 
     // Pair dynamic data items up with structural layout designs
     wheelSectors = selectedItems.map((item, index) => {
@@ -155,8 +172,8 @@ const initializeWheel = (apiData) => {
         return {
             ...item,
             textLines: [line1, line2],
-            color: designTemplate[index].color,
-            textColor: designTemplate[index].textColor,
+            color: DESIGN_TEMPLATE[index].color,
+            textColor: DESIGN_TEMPLATE[index].textColor,
         };
     });
 
@@ -177,8 +194,8 @@ const drawWheel = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius + 8, 0, 2 * Math.PI);
-    ctx.fillStyle = '#FFFFFF';
+    ctx.arc(CENTER_X, CENTER_Y, RADIUS + 8, 0, 2 * Math.PI);
+    ctx.fillStyle = WHEEL_THEME.base;
     ctx.fill();
 
     wheelSectors.forEach((sector, i) => {
@@ -187,17 +204,17 @@ const drawWheel = () => {
 
         ctx.beginPath();
         ctx.fillStyle = sector.color;
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
-        ctx.lineTo(centerX, centerY);
+        ctx.moveTo(CENTER_X, CENTER_Y);
+        ctx.arc(CENTER_X, CENTER_Y, RADIUS, angleStart, angleEnd);
+        ctx.lineTo(CENTER_X, CENTER_Y);
         ctx.fill();
 
         ctx.lineWidth = 10;
-        ctx.strokeStyle = '#FFFFFF';
+        ctx.strokeStyle = WHEEL_THEME.base;
         ctx.stroke();
 
         ctx.save();
-        ctx.translate(centerX, centerY);
+        ctx.translate(CENTER_X, CENTER_Y);
         ctx.rotate(angleStart + arcSize / 2);
         ctx.rotate(Math.PI / 2);
 
@@ -206,8 +223,8 @@ const drawWheel = () => {
         ctx.fillStyle = sector.textColor;
         ctx.font = 'bold 22px roboto';
 
-        const radiusPlacement = -radius * 0.55;
-        const lineHeight = 26;
+        const radiusPlacement = -RADIUS * TEXT_PLACEMENT_RATIO;
+        const lineHeight = LINE_HEIGHT;
 
         ctx.fillText(sector.textLines[0], 0, radiusPlacement - lineHeight / 2);
         ctx.fillText(sector.textLines[1], 0, radiusPlacement + lineHeight / 2);
@@ -230,22 +247,22 @@ const drawLoading = () => {
 
     // Draw the outer light-gray circle/ring
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius + 8, 0, 2 * Math.PI);
-    ctx.fillStyle = '#E5E7EB';
+    ctx.arc(CENTER_X, CENTER_Y, RADIUS + 8, 0, 2 * Math.PI);
+    ctx.fillStyle = WHEEL_THEME.placeholderBgOuter;
     ctx.fill();
 
     // Draw the inner white base circle (matching your drawWheel layout)
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-    ctx.fillStyle = '#dcdcdc';
+    ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
+    ctx.fillStyle = WHEEL_THEME.placeholderBgInner;
     ctx.fill();
 
     // Draw the centered "Loading..." text
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = WHEEL_THEME.textSystem;
     ctx.font = 'bold 32px roboto';
-    ctx.fillText('Loading...', centerX, centerY);
+    ctx.fillText('Loading...', CENTER_X, CENTER_Y);
 };
 
 /**
@@ -262,14 +279,14 @@ const drawNoSpins = () => {
 
     // Draw the outer light-gray circle/ring
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius + 8, 0, 2 * Math.PI);
-    ctx.fillStyle = '#E5E7EB';
+    ctx.arc(CENTER_X, CENTER_Y, RADIUS + 8, 0, 2 * Math.PI);
+    ctx.fillStyle = WHEEL_THEME.placeholderBgOuter;
     ctx.fill();
 
     // Draw the inner white base circle
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-    ctx.fillStyle = '#dcdcdc';
+    ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
+    ctx.fillStyle = WHEEL_THEME.placeholderBgInner;
     ctx.fill();
 
     // Draw the centered "No more spins left." text
@@ -277,7 +294,7 @@ const drawNoSpins = () => {
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#DC2626';
     ctx.font = 'bold 32px roboto';
-    ctx.fillText('No more spins left.', centerX, centerY);
+    ctx.fillText('No more spins left.', CENTER_X, CENTER_Y);
 };
 
 /**
@@ -291,10 +308,10 @@ const drawNoSpins = () => {
 const updateAnimation = () => {
     if (!isSpinning) return;
 
-    velocity *= friction;
+    velocity *= FRICTION;
     currentAngle += velocity;
 
-    if (velocity < 0.001) {
+    if (velocity < VELOCITY_THRESHOLD) {
         isSpinning = false;
         velocity = 0;
         spinBtn.disabled = false;
@@ -318,7 +335,7 @@ const spin = () => {
     if (isSpinning) return;
     winningCouponContainer.textContent = '';
     spinBtn.disabled = true;
-    velocity = Math.random() * 0.4 + 0.3;
+    velocity = Math.random() * RANDOM_VELOCITY_RANGE + BASE_SPIN_VELOCITY;
     isSpinning = true;
     updateAnimation();
 };
@@ -338,10 +355,7 @@ const createCouponCard = (couponData, couponContainer) => {
     const timeDiff = expiryDate.getTime() - currentDate.getTime();
 
     // Convert to remaining days (rounded up to nearest whole day)
-    const daysRemaining = Math.max(
-        0,
-        Math.ceil(timeDiff / (1000 * 60 * 60 * 24)),
-    );
+    const daysRemaining = Math.max(0, Math.ceil(timeDiff / MS_PER_DAY));
     const isExpired = daysRemaining <= 0;
 
     // Create the top-level outer wrapper
@@ -372,7 +386,7 @@ const createCouponCard = (couponData, couponContainer) => {
     codeWrapperDiv.className = 'card__code-wrapper';
 
     const couponCode = document.createElement('span');
-    couponCode.className = 'card__code mono-code';
+    couponCode.className = 'card__code';
     couponCode.textContent = couponData.promoCode;
 
     const copyBtn = document.createElement('button');
@@ -429,7 +443,7 @@ const calculateWinner = () => {
     const winnerData = wheelSectors[winningIndex];
 
     const filterPromo = ({ label, promoCode, validFor }) => {
-        const daysToAdd = validFor !== null ? validFor : 7;
+        const daysToAdd = validFor !== null ? validFor : DEFAULT_VALID_DAYS;
         const targetDate = new Date();
         targetDate.setDate(targetDate.getDate() + daysToAdd);
         return {
@@ -445,10 +459,10 @@ const calculateWinner = () => {
     // Sync the updated array to Local Storage immediately
     saveUnlockedCoupons(unlockedCouponsData);
 
-    const WIN_TEXT = document.createElement('div');
-    WIN_TEXT.className = 'modal__alert';
-    WIN_TEXT.textContent = 'You won!';
-    winningCouponContainer.appendChild(WIN_TEXT);
+    const winText = document.createElement('div');
+    winText.className = 'modal__alert';
+    winText.textContent = 'You won!';
+    winningCouponContainer.appendChild(winText);
 
     createCouponCard(processedPromo, winningCouponContainer);
     couponsCounter.textContent = unlockedCouponsData.length;
@@ -479,7 +493,7 @@ viewAllBtn.addEventListener('click', () => {
                 return aExpired - bExpired;
             }
 
-            // ort active coupons by soonest to expire
+            // sort active coupons by soonest to expire
             return new Date(a.validTill) - new Date(b.validTill);
         })
         .forEach((coupon) => {

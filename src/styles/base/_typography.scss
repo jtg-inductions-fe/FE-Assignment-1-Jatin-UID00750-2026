@@ -96,28 +96,11 @@ h6 {
     @include respond-to('md') {
         font-size: $text-xl;
     }
-}
 
-.title-sm {
-    font-family: $font-secondary;
-    line-height: $line-height-xs;
-    letter-spacing: $letter-md;
-    font-size: $text-xs;
-    font-weight: $weight-bold;
-    text-transform: uppercase;
-}
-
-.mono-code {
-    font-family: $font-mono;
-    font-weight: $weight-bold;
-    font-size: $text-xs;
-    line-height: $line-height-xs;
-    letter-spacing: $letter-sm;
-}
-
-.text-wheel {
-    font-family: $font-secondary;
-    font-weight: $weight-bold;
-    font-size: $text-xs;
-    line-height: $line-height-xs;
+    &--sm {
+        font-family: $font-secondary;
+        line-height: $line-height-xs;
+        letter-spacing: $letter-md;
+        font-size: $text-xs;
+    }
 }
