@@ -53,13 +53,17 @@
         <!-- Header Section -->
         <header class="header">
             <div class="container">
-                <nav class="header__nav">
+                <nav class="header__nav" aria-label="Main Navigation">
                     <a href="/" aria-label="Travlog Home" class="header__logo">
-                        <img src="/assets/logo.png" alt="Travlog Logo" />
+                        <img
+                            src="/assets/logo.png"
+                            alt="Travlog Logo"
+                            aria-hidden="true"
+                        />
                     </a>
                     <button
                         class="icon icon-menu header__hamburger-icon"
-                        aria-label="Menu icon"
+                        aria-label="Menu Button"
                     ></button>
                     <div class="header__menu">
                         <ul class="header__links">
@@ -102,7 +106,7 @@
                 </nav>
             </div>
         </header>
-        <div id="header-backdrop" role="presentation"></div>
+        <div id="header-backdrop" role="presentation" aria-hidden="true"></div>
         <main>
             <!-- Hero Section -->
             <section class="hero">
@@ -111,7 +115,11 @@
                         <div class="hero__text-content">
                             <div class="badge hero__badge-explore">
                                 Explore the world!
-                                <span class="icon icon-work badge__icon"></span>
+                                <span
+                                    class="icon icon-work badge__icon"
+                                    role="presentation"
+                                    aria-hidden="true"
+                                ></span>
                             </div>
                             <h1 class="heading-1 hero__headline">
                                 Travel
@@ -133,6 +141,8 @@
                                 >
                                     <span
                                         class="icon icon-play-circle btn__icon hero__btn-icon"
+                                        role="presentation"
+                                        aria-hidden="true"
                                     ></span>
                                     Watch Demo
                                 </button>
@@ -140,6 +150,7 @@
                             <div
                                 class="hero__triangle-pattern"
                                 role="presentation"
+                                aria-hidden="true"
                             ></div>
                         </div>
                         <div class="hero__media-content">
@@ -153,6 +164,7 @@
                                     />
                                     <div
                                         class="badge badge--rounded hero__icon-badge hero__badge-send"
+                                        aria-hidden="true"
                                     >
                                         <span
                                             class="icon icon-send badge__icon"
@@ -179,12 +191,14 @@
                                     >
                                         <span
                                             class="icon icon-location badge__icon hero__badge-icon"
+                                            aria-hidden="true"
                                         ></span>
                                         Top Places
                                     </div>
                                 </div>
                                 <div
                                     class="badge badge--rounded hero__icon-badge hero__badge-user"
+                                    aria-hidden="true"
                                 >
                                     <span
                                         class="icon icon-add-user badge__icon"
@@ -237,6 +251,7 @@
                         <div
                             class="ellipse ellipse--yellow"
                             role="presentation"
+                            aria-hidden="true"
                         ></div>
                     </div>
                 </div>
@@ -313,7 +328,11 @@
                             </div>
                         </div>
 
-                        <div class="testimonials__abstract-bg">
+                        <div
+                            class="testimonials__abstract-bg"
+                            role="presentation"
+                            aria-hidden="true"
+                        >
                             <img
                                 src="/src/assets/images/testimonials/abstract-purple-pink-shape.svg"
                                 alt="abstract background image"
@@ -323,7 +342,153 @@
                 </div>
             </section>
         </main>
-        <div class="ellipse ellipse--orange" role="presentation"></div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="container footer__wrapper">
+                <div class="footer__about">
+                    <a
+                        href="/"
+                        class="footer__logo-horizontal"
+                        aria-label="Travlog Home"
+                    >
+                        <span class="footer__logo"
+                            ><img
+                                src="/assets/logo.png"
+                                alt="Travlog Logo"
+                                aria-hidden="true" /></span
+                        ><span class="footer__logo-text">Travlog</span>
+                    </a>
+                    <p class="footer__text para-3">
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has roots in a piece of classical Latin
+                        literature from 45 BC.
+                    </p>
+                    <div
+                        class="footer__socials"
+                        aria-label="Social Media Links"
+                    >
+                        <a
+                            href="https://www.facebook.com/"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="Follow us on Facebook"
+                            class="icon icon-facebook"
+                        ></a>
+                        <a
+                            href="https://x.com/"
+                            class="icon icon-twitter"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="Follow us on Twitter"
+                        ></a>
+                        <a
+                            href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="Follow us on Instagram"
+                            class="icon icon-instagram"
+                        ></a>
+                    </div>
+                    <div
+                        class="footer__dot-traingle-pattern"
+                        role="presentation"
+                        aria-hidden="true"
+                    ></div>
+                </div>
+                <div class="footer__navigations" aria-label="Footer Navigation">
+                    <details class="footer__accordian" name="footer-links">
+                        <summary class="heading-5 footer__accordian-title">
+                            Company
+                            <span
+                                class="icon icon-arrow-circle-down footer__accordian-icon"
+                                role="presentation"
+                                aria-hidden="true"
+                            ></span>
+                        </summary>
+                        <ul class="footer__accordian-content">
+                            <li class="para-2">
+                                <a href="#" class="footer__link">About</a>
+                            </li>
+                            <li class="para-2">
+                                <a href="#" class="footer__link">Career</a>
+                            </li>
+                            <li class="para-2">
+                                <a href="#" class="footer__link">Mobile</a>
+                            </li>
+                        </ul>
+                    </details>
+                    <details class="footer__accordian" name="footer-links">
+                        <summary class="heading-5 footer__accordian-title">
+                            Contact
+                            <span
+                                class="icon icon-arrow-circle-down footer__accordian-icon"
+                                role="presentation"
+                                aria-hidden="true"
+                            ></span>
+                        </summary>
+                        <ul class="footer__accordian-content">
+                            <li class="para-2">
+                                <a href="#" class="footer__link"
+                                    >Why Travlog?</a
+                                >
+                            </li>
+                            <li class="para-2">
+                                <a href="#" class="footer__link"
+                                    >Partner with us</a
+                                >
+                            </li>
+                            <li class="para-2">
+                                <a href="#" class="footer__link">FAQ’s</a>
+                            </li>
+                            <li class="para-2">
+                                <a href="#" class="footer__link">Blog</a>
+                            </li>
+                        </ul>
+                    </details>
+                    <details class="footer__accordian" name="footer-links">
+                        <summary class="heading-5 footer__accordian-title">
+                            Meet Us
+                            <span
+                                class="icon icon-arrow-circle-down footer__accordian-icon"
+                                role="presentation"
+                                aria-hidden="true"
+                            ></span>
+                        </summary>
+                        <ul class="footer__accordian-content">
+                            <li class="para-2">
+                                <a
+                                    href="tel:+0092123456789"
+                                    class="footer__link"
+                                    >+00 92 1234 56789</a
+                                >
+                            </li>
+                            <li class="para-2">
+                                <a
+                                    href="mailto:info@travlog.com"
+                                    class="footer__link"
+                                    >info@travlog.com</a
+                                >
+                            </li>
+                            <li class="para-2">
+                                <a href="#" class="footer__link"
+                                    >205. R Street, New York BD23200</a
+                                >
+                            </li>
+                        </ul>
+                    </details>
+                    <div
+                        class="footer__ripple-pattern"
+                        role="presentation"
+                        aria-hidden="true"
+                    ></div>
+                </div>
+            </div>
+        </footer>
+        <div
+            class="ellipse ellipse--orange"
+            role="presentation"
+            aria-hidden="true"
+        ></div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

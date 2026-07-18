@@ -1,0 +1,166 @@
+@use '../abstracts' as *;
+
+.footer {
+    padding-block: px-to-rem(32);
+
+    &__wrapper {
+        @include flex-center;
+        gap: px-to-rem(64);
+        flex-direction: column;
+
+        @include respond-to('lg') {
+            flex-direction: row;
+            padding-block: px-to-rem(32);
+        }
+    }
+
+    &__about {
+        @include flex-center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: px-to-rem(32);
+        width: 100%;
+        position: relative;
+    }
+
+    &__text {
+        color: $color-gray;
+        @include line-clamp(3);
+    }
+
+    &__logo-horizontal {
+        @include flex-center;
+        font-size: $text-xl;
+        font-weight: $weight-black;
+        letter-spacing: $letter-sm;
+        gap: px-to-rem(16);
+    }
+
+    &__logo {
+        width: px-to-rem(40);
+        aspect-ratio: 1/1;
+    }
+
+    &__socials {
+        @include flex-center;
+        justify-content: flex-start;
+        font-size: px-to-rem(32);
+        color: $color-primary;
+        gap: px-to-rem(32);
+    }
+
+    &__navigations {
+        @include flex-center;
+        flex-direction: column;
+        width: 100%;
+        gap: px-to-rem(32);
+        position: relative;
+
+        @include respond-to('md') {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+    }
+
+    &__accordian {
+        width: 100%;
+    }
+
+    &__accordian::details-content {
+        overflow: hidden;
+        height: 0;
+        transition:
+            height 0.3s,
+            content-visibility 0.3s;
+        transition-behavior: allow-discrete;
+    }
+
+    &__accordian[open]::details-content {
+        height: auto;
+    }
+
+    &__accordian[open] &__accordian-icon {
+        transform: rotate(180deg);
+    }
+
+    &__accordian-title {
+        @include flex-center;
+        justify-content: space-between;
+        list-style: none;
+        padding-bottom: px-to-rem(32);
+        cursor: pointer;
+
+        @include respond-to('md') {
+            pointer-events: none;
+        }
+    }
+
+    &__accordian-icon {
+        transition: transform 0.3s ease;
+        @include respond-to('md') {
+            display: none;
+        }
+    }
+
+    &__accordian-title::-webkit-details-marker {
+        display: none;
+    }
+
+    &__accordian-content {
+        @include flex-center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: px-to-rem(32);
+    }
+
+    &__link {
+        color: $color-gray;
+        transition: color 0.3s ease;
+        margin-left: px-to-rem(4);
+
+        &:hover {
+            color: $color-text;
+        }
+    }
+
+    &__ripple-pattern {
+        position: absolute;
+        width: px-to-rem(300);
+        aspect-ratio: 1/1;
+        background-image: url('/src/assets/images/footer/wavy-ripple-pattern.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        top: -10%;
+        right: -30%;
+        display: none;
+        z-index: $z-below;
+
+        @include respond-to('md') {
+            display: block;
+        }
+
+        @include respond-to('lg') {
+            right: -60%;
+        }
+    }
+
+    &__dot-traingle-pattern {
+        position: absolute;
+        width: px-to-rem(160);
+        aspect-ratio: 1/1;
+        background-image: url('/src/assets/images/footer/orange-dot-triangle-pattern.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        left: -5%;
+        top: -50%;
+        z-index: $z-below;
+        display: none;
+        opacity: 0.1;
+
+        @include respond-to('lg') {
+            display: block;
+        }
+    }
+}
