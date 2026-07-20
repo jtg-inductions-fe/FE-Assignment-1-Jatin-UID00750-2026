@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 /*
 * Icon variables
 */
@@ -27,16 +29,12 @@ $icon-gift: '\e912';
  * Icon font styles
  */
 
-@font-face {
-    font-family: 'icomoon';
-    src:
-        url('/src/assets/icons/icomoon.woff2') format('woff2'),
-        url('/src/assets/icons/icomoon.woff') format('woff'),
-        url('/src/assets/icons/icomoon.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
+@include font-face(
+    'icomoon',
+    '/src/assets/icons/icomoon',
+    woff2 woff ttf,
+    $display: block
+);
 
 .icon {
     /* use !important to prevent issues with browser extensions that change fonts */

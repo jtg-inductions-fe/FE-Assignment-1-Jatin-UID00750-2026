@@ -3,7 +3,12 @@
 .partners-ribbon {
     &__container {
         overflow-x: clip;
+
+        @include respond-to('lg') {
+            overflow-x: visible;
+        }
     }
+
     &__wrapper {
         @include flex-center;
         flex-wrap: wrap;

@@ -20,7 +20,7 @@ STATS_CARDS_DATA.forEach((card) => {
 
     // Create the card name description element
     const nameDiv = document.createElement('div');
-    nameDiv.className = 'card__name para-2';
+    nameDiv.className = 'card__name paragraph-2';
     nameDiv.textContent = card.name;
 
     // Append both children directly into the new card element

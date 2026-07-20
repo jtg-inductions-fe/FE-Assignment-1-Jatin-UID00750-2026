@@ -2,7 +2,7 @@
 
 /* Importing Inter, Roboto, Roboto Mono and Figtree font */
 
-@include font-face(Inter, 'inter', 400);
-@include font-face(Roboto, 'roboto', 400);
-@include font-face(Roboto Mono, 'roboto-mono', 400);
-@include font-face(Figtree, 'figtree', 400);
+@include font-face(Inter, '/src/assets/fonts/inter', woff2 ttf);
+@include font-face(Roboto, '/src/assets/fonts/roboto', woff2 ttf);
+@include font-face(Roboto Mono, '/src/assets/fonts/roboto-mono', woff2 ttf);
+@include font-face(Figtree, '/src/assets/fonts/figtree', woff2 ttf);
