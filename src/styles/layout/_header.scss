@@ -3,7 +3,7 @@
 .header {
     padding-block: px-to-rem(32);
     position: sticky;
-    top: 0;
+    top: 2rem;
     z-index: $z-layer-2;
     backdrop-filter: blur(px-to-rem(10));
 

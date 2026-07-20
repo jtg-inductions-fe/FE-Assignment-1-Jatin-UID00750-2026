@@ -9,7 +9,7 @@
 
         @include respond-to('lg') {
             flex-direction: row;
-            margin-top: px-to-rem(62);
+            margin-top: px-to-rem(80);
             justify-content: space-between;
         }
     }
