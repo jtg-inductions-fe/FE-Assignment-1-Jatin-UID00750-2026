@@ -3,6 +3,10 @@
 .footer {
     padding-block: px-to-rem(32);
 
+    &__container {
+        overflow-x: clip;
+    }
+
     &__wrapper {
         @include flex-center;
         gap: px-to-rem(64);

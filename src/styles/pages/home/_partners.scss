@@ -1,6 +1,9 @@
 @use '../../abstracts' as *;
 
 .partners-ribbon {
+    &__container {
+        overflow-x: clip;
+    }
     &__wrapper {
         @include flex-center;
         flex-wrap: wrap;
