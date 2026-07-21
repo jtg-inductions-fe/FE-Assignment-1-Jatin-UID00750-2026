@@ -24,22 +24,47 @@
 }
 
 /** Mixin for font-face
- * @param {String} $name - The name of the font face
- * @param {String} $filename - The name of the font file
- * @param {Number | String} $weight - The font-weight
- * @param {String} $style - The font-style
+ * @param {String} $name - Font-family name.
+ * @param {String} $path - Base file path (without extension).
+ * @param {List} $formats - List of formats (e.g., woff2 woff ttf).
+ * @param {Number|String} $weight [normal] - Font weight.
+ * @param {String} $style [normal] - Font style.
+ * @param {String} $display [swap] - font-display value
 */
 
-@mixin font-face($name, $filename, $weight: normal, $style: normal) {
+@mixin font-face(
+    $name,
+    $path,
+    $formats,
+    $weight: normal,
+    $style: normal,
+    $display: swap
+) {
     @font-face {
         font-family: '#{$name}';
-        font-style: $style;
-        font-weight: $weight;
-        font-display: swap;
 
-        src:
-            url('/src/assets/fonts/#{$filename}.woff2') format('woff2'),
-            url('/src/assets/fonts/#{$filename}.ttf') format('truetype');
+        $src-list: ();
+
+        @each $format in $formats {
+            $format-string: $format;
+            @if $format == 'ttf' {
+                $format-string: 'truetype';
+            }
+            @if $format == 'eot' {
+                $format-string: 'embedded-opentype';
+            }
+
+            $src-list: append(
+                $src-list,
+                url('#{$path}.#{$format}') format('#{$format-string}'),
+                comma
+            );
+        }
+
+        src: $src-list;
+        font-weight: $weight;
+        font-style: $style;
+        font-display: $display;
     }
 }
 

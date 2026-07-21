@@ -1,4 +1,5 @@
 const accordian = document.querySelectorAll('.footer__accordian');
+const accordianTitle = document.querySelectorAll('.footer__accordian-title');
 
 const isTabletOrLarger = window.matchMedia('(min-width: 1024px)');
 
@@ -15,10 +16,16 @@ const handleLargeScreenChange = (e) => {
             // Add the open attribute on desktop screens
             accordion.setAttribute('open', '');
             accordion.removeAttribute('name');
+            accordianTitle.forEach((title) =>
+                title.setAttribute('tabindex', -1),
+            );
         } else {
             // Remove the open attribute on mobile screens
             accordion.removeAttribute('open');
             accordion.setAttribute('name', 'footer-links');
+            accordianTitle.forEach((title) =>
+                title.setAttribute('tabindex', 0),
+            );
         }
     });
 };

@@ -10,17 +10,6 @@ $text-h5-md: px-to-rem(28);
 
 /* Typography Styles */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: $weight-bold;
-    line-height: $line-height-sm;
-    letter-spacing: $letter-sm;
-}
-
 .heading-1 {
     font-size: $text-3xl;
 
@@ -57,7 +46,7 @@ h6 {
     font-size: $text-xl;
 }
 
-.para-1 {
+.paragraph-1 {
     font-weight: $weight-normal;
     line-height: $line-height-lg;
     font-size: $text-md;
@@ -68,14 +57,14 @@ h6 {
     }
 }
 
-.para-2 {
+.paragraph-2 {
     font-weight: $weight-normal;
     line-height: $line-height-lg;
     font-size: $text-lg;
     font-family: $font-secondary;
 }
 
-.para-3 {
+.paragraph-3 {
     font-weight: $weight-medium;
     line-height: $line-height-lg;
     font-size: $text-lg;
@@ -95,5 +84,12 @@ h6 {
 
     @include respond-to('md') {
         font-size: $text-xl;
+    }
+
+    &--sm {
+        font-family: $font-secondary;
+        line-height: $line-height-xs;
+        letter-spacing: $letter-md;
+        font-size: $text-xs;
     }
 }

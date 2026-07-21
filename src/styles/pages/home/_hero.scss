@@ -6,10 +6,11 @@
         flex-direction: column-reverse;
         gap: px-to-rem(64);
         margin-top: px-to-rem(54);
+        position: relative;
 
         @include respond-to('lg') {
             flex-direction: row;
-            margin-top: px-to-rem(62);
+            margin-top: px-to-rem(80);
             justify-content: space-between;
         }
     }

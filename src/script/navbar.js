@@ -1,4 +1,5 @@
 import { trapFocus } from './utils';
+import { handlePromotions } from './modal';
 
 const navbar = document.querySelector('.header__nav');
 const navbarMenu = document.querySelector('.header__menu');
@@ -7,6 +8,8 @@ const navbarLinks = document.querySelectorAll('.header__link');
 const navbarButtons = document.querySelectorAll('.header__button');
 const headerBackdrop = document.querySelector('#header-backdrop');
 const hamburgerIcon = document.querySelector('.header__hamburger-icon');
+const specialDealsButton = document.querySelector('#special-deals-btn');
+const modal = document.querySelector('.modal');
 
 /**
  * Traps keyboard focus within the mobile navigation menu structure.
@@ -135,6 +138,14 @@ document.addEventListener('keydown', (event) => {
         handleMenu();
         hamburgerIcon.focus();
     }
+});
+
+/* open spinning wheel modal */
+
+specialDealsButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.showModal();
+    handlePromotions();
 });
 
 // CSS-matching breakpoints

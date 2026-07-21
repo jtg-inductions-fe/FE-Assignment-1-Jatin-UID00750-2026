@@ -7,6 +7,10 @@
     z-index: $z-layer-2;
     backdrop-filter: blur(px-to-rem(10));
 
+    @include respond-to('lg') {
+        top: px-to-rem(32);
+    }
+
     &__logo {
         width: px-to-rem(40);
         display: block;

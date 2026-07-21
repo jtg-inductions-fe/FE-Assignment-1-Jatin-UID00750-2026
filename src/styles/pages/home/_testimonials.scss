@@ -2,6 +2,10 @@
 @use '../../abstracts' as *;
 
 .testimonials {
+    &__container {
+        overflow-x: clip;
+    }
+
     &__wrapper {
         padding-block: px-to-rem(64);
         position: relative;

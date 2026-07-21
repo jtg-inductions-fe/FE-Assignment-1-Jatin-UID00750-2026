@@ -1,3 +1,7 @@
+# Travlog
+
+Find Your Dream Destination & Travel The World. This project is a modern landing page for a travel platform designed to convert visitors into travelers.
+
 ## Getting Started
 
 ### Prerequisites

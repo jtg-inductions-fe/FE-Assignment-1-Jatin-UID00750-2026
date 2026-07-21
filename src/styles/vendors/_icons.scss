@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 /*
 * Icon variables
 */
@@ -19,21 +21,20 @@ $icon-send: '\e90c';
 $icon-star: '\e90d';
 $icon-twitter: '\e90e';
 $icon-work: '\e90f';
+$icon-copy: '\e910';
+$icon-cross: '\e911';
+$icon-gift: '\e912';
 
 /* 
  * Icon font styles
  */
 
-@font-face {
-    font-family: 'icomoon';
-    src:
-        url('/src/assets/icons/icomoon.woff2') format('woff2'),
-        url('/src/assets/icons/icomoon.woff') format('woff'),
-        url('/src/assets/icons/icomoon.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
+@include font-face(
+    'icomoon',
+    '/src/assets/icons/icomoon',
+    woff2 woff ttf,
+    $display: block
+);
 
 .icon {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -68,6 +69,9 @@ $icons: (
     'star': $icon-star,
     'twitter': $icon-twitter,
     'work': $icon-work,
+    'copy': $icon-copy,
+    'cross': $icon-cross,
+    'gift': $icon-gift,
 );
 
 /* Generate icon classes dynamically */

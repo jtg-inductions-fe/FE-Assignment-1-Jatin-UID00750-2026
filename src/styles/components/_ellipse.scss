@@ -2,7 +2,7 @@
 
 .ellipse {
     opacity: 0.5;
-    filter: blur(12rem);
+    filter: blur(10rem);
     position: absolute;
     height: auto;
     aspect-ratio: 1/1;
@@ -19,7 +19,7 @@
     &--orange {
         background-color: $color-orange;
         width: 70%;
-        top: 0;
+        top: -15%;
         left: -15%;
 
         @include respond-to('md') {
@@ -30,8 +30,8 @@
 
         @include respond-to('lg') {
             width: 40%;
-            top: px-to-rem(-200);
-            left: -15%;
+            top: -45%;
+            left: -30%;
         }
     }
 

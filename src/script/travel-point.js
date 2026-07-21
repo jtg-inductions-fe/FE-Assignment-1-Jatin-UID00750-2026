@@ -11,16 +11,16 @@ const cardLayout = document.querySelector('.travel-point__card-layout');
 STATS_CARDS_DATA.forEach((card) => {
     // Create the main card container
     const newCard = document.createElement('div');
-    newCard.className = 'stats-card';
+    newCard.className = 'card card--primary';
 
     // Create the value heading element
     const valueH4 = document.createElement('h4');
-    valueH4.className = 'stats-card__value heading-4';
+    valueH4.className = 'card__value heading-4';
     valueH4.textContent = card.value;
 
     // Create the card name description element
     const nameDiv = document.createElement('div');
-    nameDiv.className = 'stats-card__name para-2';
+    nameDiv.className = 'card__name paragraph-2';
     nameDiv.textContent = card.name;
 
     // Append both children directly into the new card element

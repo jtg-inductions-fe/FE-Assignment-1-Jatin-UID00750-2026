@@ -59,7 +59,7 @@ TESTIMONIALS_DATA.forEach((testimonial) => {
 
     // Create Testimonial Text section
     const textDiv = document.createElement('div');
-    textDiv.className = 'testimonials__text para-3';
+    textDiv.className = 'testimonials__text paragraph-3';
     textDiv.textContent = testimonial.testimonial;
 
     // Append all main sections to the list item
