@@ -1,0 +1,155 @@
+@use 'sass:color';
+@use '../../abstracts' as *;
+
+.testimonials {
+    &__container {
+        overflow-x: clip;
+    }
+
+    &__wrapper {
+        padding-block: px-to-rem(64);
+        position: relative;
+    }
+
+    &__header {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(16);
+    }
+
+    &__carousel-container {
+        padding-block: px-to-rem(64);
+        position: relative;
+    }
+
+    &__card {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(64);
+
+        @include respond-to('md') {
+            gap: px-to-rem(56);
+        }
+    }
+
+    &__info-rating-layout {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(32);
+    }
+
+    &__avatar {
+        width: px-to-rem(128);
+        aspect-ratio: 1/1;
+        border-radius: $border-radius-full;
+    }
+
+    &__info {
+        @include flex-center;
+        gap: px-to-rem(6);
+        text-wrap: nowrap;
+        flex-wrap: wrap;
+    }
+
+    &__name {
+        color: $color-orange;
+    }
+
+    &__role {
+        color: $color-gray;
+    }
+
+    &__rating {
+        @include flex-center;
+        gap: px-to-rem(16);
+    }
+
+    &__rating-star {
+        font-size: $text-2xl;
+        color: $color-yellow;
+    }
+
+    &__text {
+        text-align: center;
+        color: $color-gray;
+        max-width: px-to-rem(750);
+        @include line-clamp(2);
+    }
+
+    &__navigation-dots {
+        @include flex-center;
+        gap: px-to-rem(24);
+        padding-top: px-to-rem(64);
+    }
+
+    &__dot {
+        width: px-to-rem(24);
+        height: px-to-rem(24);
+        border-radius: $border-radius-full;
+        background-color: color.scale($color-gray, $lightness: 80%);
+        transition: background-color 0.3 ease;
+
+        &.is-active,
+        &:hover {
+            background-color: $color-secondary;
+        }
+    }
+
+    &__navigation-buttons {
+        @include flex-center;
+        justify-content: space-between;
+        position: absolute;
+        min-width: 100%;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @include respond-to('md') {
+            top: 35%;
+        }
+    }
+
+    &__navigation-button {
+        @include flex-center;
+        font-size: $text-xl;
+        width: px-to-rem(64);
+        aspect-ratio: 1/1;
+        border-radius: $border-radius-full;
+        background-color: $color-background;
+        border: 1px solid color.scale($color-gray, $lightness: 80%);
+        box-shadow: $shadow-sm;
+        transition:
+            color 0.3s ease,
+            background-color 0.3s ease;
+
+        @include respond-to('md') {
+            width: px-to-rem(100);
+        }
+
+        &:hover {
+            background-color: $color-primary;
+            color: $color-background;
+        }
+    }
+
+    &__abstract-bg {
+        position: absolute;
+        width: px-to-rem(2524);
+        height: px-to-rem(950);
+        top: 38%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        z-index: $z-below;
+        opacity: 0.1;
+        display: none;
+        transform-origin: center;
+
+        @include respond-to('md') {
+            display: block;
+        }
+
+        @include respond-to('lg') {
+            top: 45%;
+        }
+    }
+}

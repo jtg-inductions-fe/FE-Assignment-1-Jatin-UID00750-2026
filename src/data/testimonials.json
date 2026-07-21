@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "name": "Mark Smith",
+            "role": "Travel Enthusiast",
+            "rating": 5,
+            "testimonial": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.",
+            "avatar": "/assets/mark-smith.png",
+            "alt": "Mark Smith Profile Image"
+        },
+        {
+            "name": "David Chen",
+            "role": "Family Traveler",
+            "rating": 5,
+            "testimonial": "Finding family-friendly accommodations that actually suit everyone is usually a nightmare. This service found us the perfect villa in Bali within minutes.",
+            "avatar": "/assets/mark-smith.png",
+            "alt": "David Chen Profile Image"
+        },
+        {
+            "name": "Elena Rostova",
+            "role": "Adventure Blogger",
+            "rating": 4,
+            "testimonial": "I travel for a living, and I am incredibly picky about logistics. The seamless booking flow and 24/7 support team saved my mountain trek when plans shifted.",
+            "avatar": "/assets/mark-smith.png",
+            "alt": "Elena Rostova Profile Image"
+        }
+    ]
+}

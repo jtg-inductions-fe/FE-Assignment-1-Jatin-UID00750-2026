@@ -1,0 +1,48 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.wheel {
+    @include flex-center;
+    width: px-to-rem(236);
+    height: px-to-rem(236);
+    position: relative;
+
+    &__pointer {
+        position: absolute;
+        top: -2%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 16px solid $color-salmon;
+        z-index: $z-layer-1;
+    }
+
+    &__canvas {
+        filter: drop-shadow($shadow-md);
+    }
+
+    &__spin-button {
+        width: px-to-rem(60);
+        height: px-to-rem(60);
+        font-size: $text-xs;
+        font-weight: bold;
+        background-color: $color-background;
+        color: $color-salmon;
+        border: 3px solid $color-salmon;
+        border-radius: $border-radius-full;
+        cursor: pointer;
+        box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+        position: absolute;
+
+        &:hover {
+            background-color: color.scale($color-gray, $lightness: 95%);
+        }
+        &:disabled {
+            background-color: color.scale($color-gray, $lightness: 95%);
+            cursor: not-allowed;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+/*  explicitly unlocks animations for keyword values like auto, max-content, min-content, and fit-content */
+:root {
+    interpolate-size: allow-keywords;
+}
+
+html:has(dialog[open]) {
+    overflow: hidden;
+}

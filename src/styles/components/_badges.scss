@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+
+.badge {
+    @include flex-center;
+    gap: px-to-rem(16);
+    font-size: $text-sm;
+    width: max-content;
+    padding: px-to-rem(16 32);
+    letter-spacing: $letter-sm;
+    font-weight: $weight-bold;
+    border-radius: $border-radius-2xl;
+    color: $color-text;
+    box-shadow: $shadow-sm;
+
+    &__icon {
+        font-size: $text-xl;
+
+        &--sm {
+            font-size: $text-xs;
+
+            @include respond-to('md') {
+                font-size: $text-xl;
+            }
+        }
+    }
+
+    &--sm {
+        font-size: px-to-rem(10);
+        gap: px-to-rem(8);
+        padding: px-to-rem(10 16);
+
+        @include respond-to('md') {
+            font-size: $text-sm;
+            padding: px-to-rem(16 32);
+        }
+    }
+
+    &--rounded {
+        border-radius: $border-radius-full;
+        padding: px-to-rem(8);
+        aspect-ratio: 1/1;
+        font-size: $text-md;
+
+        @include respond-to('md') {
+            font-size: $text-2xl;
+            padding: px-to-rem(16);
+        }
+    }
+}

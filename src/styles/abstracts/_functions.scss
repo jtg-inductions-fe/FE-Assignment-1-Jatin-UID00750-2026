@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+/**
+ * Converts one or more pixel values to rem units.
+ *
+ * @param {Number | List} $values - The pixel value or list of values to convert.
+ * @param {Number} $base [16] - The base font-size pixel value.
+ * @return {List | Number} - The converted value(s) in rem units.
+ */
+
+@function px-to-rem($values, $base: 16) {
+    $rem-values: ();
+
+    @each $value in $values {
+        @if type-of($value) == 'number' and $value != 0 {
+            $rem-values: append($rem-values, math.div($value, $base) * 1rem);
+        } @else {
+            $rem-values: append($rem-values, $value);
+        }
+    }
+
+    @return $rem-values;
+}

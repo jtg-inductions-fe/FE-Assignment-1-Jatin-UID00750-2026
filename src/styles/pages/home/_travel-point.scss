@@ -1,0 +1,88 @@
+@use '../../abstracts' as *;
+
+.travel-point {
+    &__wrapper {
+        @include flex-center;
+        flex-direction: column;
+        margin-block: px-to-rem(64);
+        padding-top: px-to-rem(64);
+        gap: px-to-rem(16);
+
+        @include respond-to('md') {
+            gap: px-to-rem(64);
+        }
+
+        @include respond-to('lg') {
+            gap: 0;
+            flex-direction: row;
+        }
+    }
+
+    &__content {
+        @include respond-to('lg') {
+            max-width: 45%;
+        }
+    }
+
+    &__media-content {
+        flex: 1;
+    }
+
+    &__traveller-image {
+        transform: translateX(-2%);
+        scale: 1.05;
+
+        @include respond-to('md') {
+            transform: translateX(-4%);
+            scale: 1.1;
+        }
+
+        @include respond-to('lg') {
+            transform: translateX(-10%);
+            scale: 1.2;
+        }
+    }
+
+    &__subheadline {
+        color: $color-text-muted;
+        padding-top: px-to-rem(16);
+        max-width: px-to-rem(530);
+        @include line-clamp(2);
+    }
+
+    &__text-content {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(16);
+        text-align: center;
+        padding-block: px-to-rem(48);
+
+        @include respond-to('lg') {
+            text-align: start;
+            align-items: flex-start;
+        }
+    }
+
+    &__card-layout {
+        display: grid;
+        grid-template-columns: 1;
+        gap: px-to-rem(16);
+        position: relative;
+
+        @include respond-to('md') {
+            gap: px-to-rem(32);
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__reward-logo {
+        position: absolute;
+        top: -20%;
+        right: -30%;
+        display: none;
+
+        @include respond-to('lg') {
+            display: block;
+        }
+    }
+}

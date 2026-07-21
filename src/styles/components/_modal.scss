@@ -1,0 +1,156 @@
+@use '../abstracts' as *;
+
+.modal {
+    padding: px-to-rem(24);
+    background-color: $color-background;
+    border-radius: $border-radius-xl $border-radius-xl 0 0;
+    min-width: px-to-rem(360);
+    min-height: px-to-rem(480);
+    max-height: px-to-rem(620);
+    font-family: $font-secondary;
+    border: none;
+    position: fixed;
+    opacity: 1;
+    bottom: 0;
+    top: auto;
+    margin: auto;
+    transform: translateY(100%);
+    transition:
+        opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        display 0.3s allow-discrete,
+        height 0.3s ease;
+
+    @include respond-to('lg') {
+        top: 50%;
+        left: 50%;
+        margin: 0;
+        transform: scale(0.9) translate(-50%, -50%);
+        transform-origin: top left;
+    }
+
+    &[open] {
+        @include flex-center;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: px-to-rem(20);
+        transform: translateY(0);
+
+        @include respond-to('lg') {
+            border-radius: $border-radius-xl;
+            opacity: 1;
+            transform: scale(1) translate(-50%, -50%);
+        }
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+        transition:
+            background-color 0.3s ease,
+            backdrop-filter 0.3s ease,
+            display 0.3s allow-discrete;
+    }
+
+    &[open]::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+    }
+
+    @starting-style {
+        &[open] {
+            transform: translateY(100%);
+
+            @include respond-to('lg') {
+                opacity: 0;
+                transform: scale(0.9) translate(-50%, -50%);
+            }
+        }
+    }
+
+    &__panel {
+        display: none;
+        width: 100%;
+
+        &--active {
+            @include flex-center;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: px-to-rem(20);
+        }
+    }
+
+    &__header {
+        @include flex-center;
+        flex-direction: column;
+        gap: px-to-rem(10);
+    }
+
+    &__close-btn {
+        font-size: $text-sm;
+        font-weight: $weight-bold;
+        position: absolute;
+        top: px-to-rem(24);
+        right: px-to-rem(24);
+    }
+
+    &__label {
+        color: $color-salmon;
+        font-size: $text-xs;
+        @include flex-center;
+        gap: px-to-rem(4);
+    }
+
+    &__label-icon {
+        font-size: $text-md;
+    }
+
+    &__title {
+        font-size: $text-xl;
+    }
+
+    &__description {
+        font-size: $text-xs;
+        color: $color-gray;
+    }
+
+    &__body {
+        @include flex-center;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: px-to-rem(260);
+        max-height: px-to-rem(380);
+        gap: px-to-rem(20);
+    }
+
+    &__coupon-wrapper {
+        @include flex-center;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: px-to-rem(10);
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__alert {
+        font-size: $text-xs;
+        font-weight: $weight-bold;
+    }
+
+    &__footer,
+    &__button {
+        width: 100%;
+    }
+
+    &__counter {
+        background-color: $color-primary;
+        color: $color-background;
+        width: px-to-rem(18);
+        aspect-ratio: 1/1;
+        font-size: $text-xs;
+        font-weight: $weight-medium;
+        border-radius: $border-radius-full;
+    }
+}

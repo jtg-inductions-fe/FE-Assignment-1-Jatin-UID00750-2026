@@ -1,7 +1,13 @@
 {
-    "name": "static-html-base-template",
-    "description": "",
-    "keywords": [],
+    "name": "Travlog",
+    "description": "Travlog - Find Your Dream Destination & Travel The World",
+    "keywords": [
+        "travel",
+        "blog",
+        "experiences",
+        "adventures",
+        "stories"
+    ],
     "version": "0.0.0",
     "private": true,
     "type": "module",
@@ -39,5 +45,8 @@
             "eslint --max-warnings=0"
         ],
         "*.{html,scss,json}": "prettier --check"
+    },
+    "dependencies": {
+        "@splidejs/splide": "^4.1.4"
     }
 }
