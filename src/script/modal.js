@@ -251,7 +251,7 @@ const drawLoading = () => {
     ctx.fillStyle = WHEEL_THEME.placeholderBgOuter;
     ctx.fill();
 
-    // Draw the inner white base circle (matching your drawWheel layout)
+    // Draw the inner white base circle
     ctx.beginPath();
     ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
     ctx.fillStyle = WHEEL_THEME.placeholderBgInner;
